@@ -20,6 +20,7 @@
     --blanco2:#ece8e8;
     --negro:#000;
     --negro2:#111111;
+    --negro3:#3c3c3c;
 }    
 *{font-family: poc;font-size: 18px; margin: 0;}
 
@@ -329,7 +330,29 @@ input:focus,select:focus{
     grid-column: span 7;
 }
 /***********contenido grids fin***********/
+/***********alumno**************/
+.row-Grid{
+    display: grid;
+    flex-direction: row;
+    margin: 5px 0;
+    width: 100%;
+    height: auto;
+    grid-template:auto/repeat(4,25%) ;
+    grid-gap: 10px 0;
+}
+.row-Grid label{
+    color: var(--negro3);
+    font-size: 18px;
+}
+.row-Grid input[type="checkbox"].computadora{
+    width: 10%;
+}
+.row-Grid div{
+    display: flex;
+    flex-direction: row;
+}
 
+/***********alumno fin**************/
 /*************@media*************/
 @media (max-width: 600px) {
     input[type="text"],input[type="password"]{

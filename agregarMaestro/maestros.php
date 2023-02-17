@@ -92,7 +92,7 @@
             <span> Preparación Profecional:</span>
             <input type="text" name="PreparaciónP"/>
         </div>
-        <div class="colC-4">
+        <div class="colC-3">
             <span> CURP:</span>
             <input type="text" name="CURP"/>
         </div>
@@ -108,7 +108,7 @@
             <span> Clave Servidor:</span>
             <input type="text" name="ClaveS"/>
         </div>
-        <div class="colC-2">
+        <div class="colC-3">
             <span> Número De plaza:</span>
             <input type="number" name="NumeroP"/>
         </div>
@@ -116,8 +116,8 @@
             <span> Código Puesto:</span>
             <input type="number" name="CoddigoPuesto"/>
         </div>
-        <div class="colC-3">
-            <span> Años De Servicio En La Función</span>
+        <div class="colC-5">
+            <span> Años De Servicio En La Función:</span>
             <input type="number" name="AnosSerFUncion"/>
         </div>
         <div class="colC-3">

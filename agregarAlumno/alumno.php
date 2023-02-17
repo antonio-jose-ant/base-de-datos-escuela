@@ -1,9 +1,4 @@
 <?php
-        $conexion=mysqli_connect("localhost", "root", "TOYOTS99", "escuela");
-        mysqli_set_charset($conexion, "utf8");
-
-
-        $usuarios ="SELECT * FROM   alumnos";
         include_once '../includes/user.php';
         include_once '../includes/user_session.php';
         
@@ -71,17 +66,18 @@
                     <p> CURP:</p>
                     <input type="text" name="CURP"/>
                 </div>
+
                 <div class="colC-3">
                     <p> Fecha de nacimiento:</p>
-                    <input type="date" name="ApeidoM"/>
+                    <input type="date" name="Fecha_n"/>
                 </div>
                 <div>
-                    <p> Edad:</p>
-                    <input type="number" name="ApeidoM"/>
+                    <p>Edad:</p>
+                    <input type="number" name="edad"/>
                 </div>
                 <div class="colC-4">
                     <p> Correo Electronico:</p>
-                    <input type="email" name="ApeidoM"/>
+                    <input type="email" name="CorreoAlu"/>
                 </div>
 <!------------------------------------DOMICILIO---------------------------------------------------->
                 <div class="colC-Complet">
@@ -107,9 +103,9 @@
                     <p> Y CALLE</p>
                     <input type="text" name="Calle2"/>
                 </div>
-                <div class="colC-4 colR-2">
+                <div class="colC-6 colR-2">
                     <p>OTRA REFERENCIA</p>
-                    <textarea> </textarea>
+                    <textarea name="referencia"> </textarea>
                 </div>
                 <div class="colC-3">
                     <p>COLONIA</p>
@@ -130,31 +126,31 @@
                 </div>
                 <div class="colC-4">
                     <p>NUMERO DE EMERGENCIA:</p>
-                    <input type="tel" name="TelCasa"/>
+                    <input type="tel" name="numEmergencia"/>
                 </div>
                 <div>
                     <p>TALLA:</p>
-                    <input type="tel" name="TelCasa"/>
+                    <input type="tel" name="Talla"/>
                 </div>
                 <div>
                     <p>PESO:</p>
-                    <input type="tel" name="TelCasa"/>
+                    <input type="tel" name="peso"/>
                 </div>
                 <div class="colC-3">
                     <p>TIPO DE SANGRE:</p>
-                    <input type="tel" name="TelCasa"/>
+                    <input type="tel" name="tipoSangre"/>
                 </div>
                 <div class="colC-3">
                     <p>ALERGIAS:</p>
-                    <input type="tel" name="TelCasa"/>
+                    <input type="tel" name="alergia"/>
                 </div>
                 <div class="colC-3">
                     <p>PADECIMIENTOS:</p>
-                    <input type="tel" name="TelCasa"/>
+                    <input type="tel" name="padecimiento"/>
                 </div>
                 <div class="colC-2">
                     <p>PIE PLANO:</p>
-                    <select name="Turno">
+                    <select name="piePlano">
                         <option>  </option>
                         <option value="Matutino">No</option>
                         <option value="Vespertino">Si</option>
@@ -162,7 +158,7 @@
                 </div>
                 <div class="colC-2">
                     <p>USA LENTES:</p>
-                    <select name="Turno">
+                    <select name="lentes">
                         <option>  </option>
                         <option value="Matutino">No</option>
                         <option value="Vespertino">Si</option>
@@ -174,39 +170,48 @@
                 </div>
                 <div class="colC-3">
                     <p>NOMBRE:</p>
-                    <input type="tel" name="TelCasa"/>
+                    <input type="tel" name="nombreT1"/>
                 </div>
                 <div class="colC-3">
                     <p>Apeido Paterno:</p>
-                    <input type="tel" name="TelCasa"/>
+                    <input type="tel" name="apellidoPT1"/>
                 </div>
                 <div class="colC-3">
                     <p>Apeido Materno:</p>
-                    <input type="tel" name="TelCasa"/>
+                    <input type="tel" name="apellidoMT1"/>
                 </div>
                 <div class="colC-3">
                     <p>CURP:</p>
-                    <input type="tel" name="TelCasa"/>
+                    <input type="tel" name="CURPT1"/>
                 </div>
                 <div>
                     <p>EDAD:</p>
-                    <input type="tel" name="TelCasa"/>
+                    <input type="tel" name="edadT1"/>
                 </div>
                 <div class="colC-4">
                     <p>RELACIÓN DE PARENTESCO:</p>
-                    <input type="tel" name="TelCasa"/>
+                    <input type="tel" name="parentescoT1"/>
                 </div>
                 <div class="colC-3">
                     <p>ESTADO CIVIL:</p>
-                    <input type="tel" name="TelCasa"/>
+                    <select name="Estado_civilT1">
+                        <option></option>
+                        <option value="Casado">Casado(a)</option>
+                        <option value="Conviviente">Conviviente</option>
+                        <option value="Anulado">Anulado(a)</option>
+                        <option value="Separado de unión legal">Separado de unión legal</option>
+                        <option value="Separado_union">Separado(a) de unión de hecho</option>
+                        <option value="Viudo">Viudo(a)</option>
+                        <option value="Soltero">Soltero(a)</option>
+                    </select>
                 </div>
                 <div class="colC-3">
                     <p>OCUPACION:</p>
-                    <input type="tel" name="TelCasa"/>
+                    <input type="tel" name="ocupacionT1"/>
                 </div>
                 <div class="colC-3">
                     <p>GRADO DE ESTUDIOS:</p>
-                    <input type="tel" name="TelCasa"/>
+                    <input type="tel" name="estudioT1"/>
                 </div>
 <!-----------------------------------tutor2---------------------------------------------------->
                 <div class="colC-Complet">
@@ -214,43 +219,102 @@
                 </div>
                 <div class="colC-3">
                     <p>NOMBRE:</p>
-                    <input type="tel" name="TelCasa"/>
+                    <input type="tel" name="nombreT2"/>
                 </div>
                 <div class="colC-3">
                     <p>Apeido Paterno:</p>
-                    <input type="tel" name="TelCasa"/>
+                    <input type="tel" name="apellidoPT2"/>
                 </div>
                 <div class="colC-3">
                     <p>Apeido Materno:</p>
-                    <input type="tel" name="TelCasa"/>
+                    <input type="tel" name="apellidoMT2"/>
                 </div>
                 <div class="colC-3">
                     <p>CURP:</p>
-                    <input type="tel" name="TelCasa"/>
+                    <input type="tel" name="CURPT2"/>
                 </div>
                 <div>
                     <p>EDAD:</p>
-                    <input type="tel" name="TelCasa"/>
+                    <input type="tel" name="edadT2"/>
                 </div>
                 <div class="colC-4">
                     <p>RELACIÓN DE PARENTESCO:</p>
-                    <input type="tel" name="TelCasa"/>
+                    <input type="tel" name="parentescoT2"/>
                 </div>
                 <div class="colC-3">
                     <p>ESTADO CIVIL:</p>
-                    <input type="tel" name="TelCasa"/>
+                    <select name="Estado_civilT2">
+                        <option></option>
+                        <option value="Casado">Casado(a)</option>
+                        <option value="Conviviente">Conviviente</option>
+                        <option value="Anulado">Anulado(a)</option>
+                        <option value="Separado de unión legal">Separado de unión legal</option>
+                        <option value="Separado_union">Separado(a) de unión de hecho</option>
+                        <option value="Viudo">Viudo(a)</option>
+                        <option value="Soltero">Soltero(a)</option>
+                    </select>
                 </div>
                 <div class="colC-3">
                     <p>OCUPACION:</p>
-                    <input type="tel" name="TelCasa"/>
+                    <input type="tel" name="ocupacionT2"/>
                 </div>
                 <div class="colC-3">
                     <p>GRADO DE ESTUDIOS:</p>
-                    <input type="tel" name="TelCasa"/>
+                    <input type="tel" name="estudioT2"/>
                 </div>
-<!-----------------------------------DATOS MEDICOS---------------------------------------------------->
+<!-----------------------------------DATOS GENERALES---------------------------------------------------->
                 <div class="colC-Complet">
                     <h2>DATOS GENERALES:</h2>
+                </div>
+                <div class="colC-Complet">
+                    <p>¿CUANTAS PERSONAS INCLUYENDO AL ALUMNO (A) VIVEN EN ESE DOMICILIO?:</p>
+                    <input type="text" name="vivenC"/>
+                </div>
+                <div class="colC-Complet">
+                    <p>¿QUIÉN SOSTIENE ECONOMICAMENTE AL HOGAR? SEÑALE LA OPCIÓN </p>
+                    <div class="row-Grid">  
+                        <div>
+                            <label for="hogarPadre">PADRE</label>                    
+                            <input type="radio" name="sostenHogar" id="hogarPadre"/>
+                        </div>
+                        <div>
+                            <label for="hogarMadre">MADRE</label>                    
+                            <input type="radio" name="sostenHogar" id="hogarMadre"/>
+                        </div>
+                        <div>
+                            <label for="hogarAmbos">AMBOS</label>                    
+                            <input type="radio" name="sostenHogar" id="hogarAmbos"/>
+                        </div>
+                        <div>
+                            <label for="hogarOtro">OTRO</label>                    
+                            <input type="radio" name="sostenHogar" id="hogarOtro"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="colC-Complet">
+                    <p>¿CON QUE MEDIOS CUENTA?</p>
+                    <div class="row-Grid">
+                        <div> 
+                            <label for="medioInternet">INTERNET</label>                    
+                            <input type="checkbox" name="internet" id="medioInternet"/>
+                        </div>
+                        <div>
+                            <label for="medioTelevision">TELEVISIÓN</label>                    
+                            <input type="checkbox" name="television" id="medioTelevision"/>
+                        </div>
+                        <div>
+                            <label for="medioCelular">CELULAR</label>                    
+                            <input type="checkbox" name="celular" id="medioCelular"/>
+                        </div>
+                        <div>
+                            <label for="medioTablet">TABLET</label>                    
+                            <input type="checkbox" name="tablet" id="medioTablet"/>
+                        </div>
+                        <div class="colC-Complet">
+                            <label for="medioComputadora">COMPUTADORA (POSTATIL O DE ESCRITORIO)</label>                    
+                            <input type="checkbox" name="computadora" id="medioComputadora" class="computadora"/>
+                        </div>
+                    </div>
                 </div>
                 <div class="colC-Complet">
                     <input type="submit"value="Guardar Datos" class="btn"/>
