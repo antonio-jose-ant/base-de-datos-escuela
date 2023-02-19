@@ -26,7 +26,14 @@ create table DatosPersonales(
     PreparacionProfecional varchar(100), 
     primary key (id_personal)
 );
-create table usuario(IdUsuario INT NOT NULL AUTO_INCREMENT ,Nombre varchar(50), UserName varchar(25), password varchar(50), primary key (IdUsuario), unique key (UserName));
+create table usuario(
+    IdUsuario INT NOT NULL AUTO_INCREMENT,
+    Nombre varchar(50), 
+    UserName varchar(25),
+    password varchar(50), 
+    primary key (IdUsuario), 
+    unique key (UserName)
+);
 CREATE TABLE profesor(
     nomina varchar(30), 
     nombre varchar(30), 

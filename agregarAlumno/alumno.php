@@ -130,38 +130,47 @@
                 </div>
                 <div>
                     <p>TALLA:</p>
-                    <input type="tel" name="Talla"/>
+                    <input type="text" name="Talla"/>
                 </div>
                 <div>
                     <p>PESO:</p>
-                    <input type="tel" name="peso"/>
+                    <input type="text" name="peso"/>
                 </div>
                 <div class="colC-3">
                     <p>TIPO DE SANGRE:</p>
-                    <input type="tel" name="tipoSangre"/>
+                    <select name="tipoSangre">
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                    </select>
                 </div>
                 <div class="colC-3">
                     <p>ALERGIAS:</p>
-                    <input type="tel" name="alergia"/>
+                    <input type="text" name="alergia"/>
                 </div>
                 <div class="colC-3">
                     <p>PADECIMIENTOS:</p>
-                    <input type="tel" name="padecimiento"/>
+                    <input type="text" name="padecimiento"/>
                 </div>
                 <div class="colC-2">
                     <p>PIE PLANO:</p>
                     <select name="piePlano">
                         <option>  </option>
-                        <option value="Matutino">No</option>
-                        <option value="Vespertino">Si</option>
+                        <option value="No">No</option>
+                        <option value="Si">Si</option>
                     </select>
                 </div>
                 <div class="colC-2">
                     <p>USA LENTES:</p>
                     <select name="lentes">
                         <option>  </option>
-                        <option value="Matutino">No</option>
-                        <option value="Vespertino">Si</option>
+                        <option value="No">No</option>
+                        <option value="Si">Si</option>
                     </select>
                 </div>
 <!-----------------------------------tutor1---------------------------------------------------->
@@ -170,27 +179,27 @@
                 </div>
                 <div class="colC-3">
                     <p>NOMBRE:</p>
-                    <input type="tel" name="nombreT1"/>
+                    <input type="text" name="nombreT1"/>
                 </div>
                 <div class="colC-3">
                     <p>Apeido Paterno:</p>
-                    <input type="tel" name="apellidoPT1"/>
+                    <input type="text" name="apellidoPT1"/>
                 </div>
                 <div class="colC-3">
                     <p>Apeido Materno:</p>
-                    <input type="tel" name="apellidoMT1"/>
+                    <input type="text" name="apellidoMT1"/>
                 </div>
                 <div class="colC-3">
                     <p>CURP:</p>
-                    <input type="tel" name="CURPT1"/>
+                    <input type="text" name="CURPT1"/>
                 </div>
                 <div>
                     <p>EDAD:</p>
-                    <input type="tel" name="edadT1"/>
+                    <input type="number" name="edadT1"/>
                 </div>
                 <div class="colC-4">
                     <p>RELACIÓN DE PARENTESCO:</p>
-                    <input type="tel" name="parentescoT1"/>
+                    <input type="text" name="parentescoT1"/>
                 </div>
                 <div class="colC-3">
                     <p>ESTADO CIVIL:</p>
@@ -207,11 +216,11 @@
                 </div>
                 <div class="colC-3">
                     <p>OCUPACION:</p>
-                    <input type="tel" name="ocupacionT1"/>
+                    <input type="text" name="ocupacionT1"/>
                 </div>
                 <div class="colC-3">
                     <p>GRADO DE ESTUDIOS:</p>
-                    <input type="tel" name="estudioT1"/>
+                    <input type="text" name="estudioT1"/>
                 </div>
 <!-----------------------------------tutor2---------------------------------------------------->
                 <div class="colC-Complet">
@@ -219,27 +228,27 @@
                 </div>
                 <div class="colC-3">
                     <p>NOMBRE:</p>
-                    <input type="tel" name="nombreT2"/>
+                    <input type="text" name="nombreT2"/>
                 </div>
                 <div class="colC-3">
                     <p>Apeido Paterno:</p>
-                    <input type="tel" name="apellidoPT2"/>
+                    <input type="text" name="apellidoPT2"/>
                 </div>
                 <div class="colC-3">
                     <p>Apeido Materno:</p>
-                    <input type="tel" name="apellidoMT2"/>
+                    <input type="text" name="apellidoMT2"/>
                 </div>
                 <div class="colC-3">
                     <p>CURP:</p>
-                    <input type="tel" name="CURPT2"/>
+                    <input type="text" name="CURPT2"/>
                 </div>
                 <div>
                     <p>EDAD:</p>
-                    <input type="tel" name="edadT2"/>
+                    <input type="number" name="edadT2"/>
                 </div>
                 <div class="colC-4">
                     <p>RELACIÓN DE PARENTESCO:</p>
-                    <input type="tel" name="parentescoT2"/>
+                    <input type="text" name="parentescoT2"/>
                 </div>
                 <div class="colC-3">
                     <p>ESTADO CIVIL:</p>
@@ -256,11 +265,11 @@
                 </div>
                 <div class="colC-3">
                     <p>OCUPACION:</p>
-                    <input type="tel" name="ocupacionT2"/>
+                    <input type="text" name="ocupacionT2"/>
                 </div>
                 <div class="colC-3">
                     <p>GRADO DE ESTUDIOS:</p>
-                    <input type="tel" name="estudioT2"/>
+                    <input type="text" name="estudioT2"/>
                 </div>
 <!-----------------------------------DATOS GENERALES---------------------------------------------------->
                 <div class="colC-Complet">
@@ -275,19 +284,19 @@
                     <div class="row-Grid">  
                         <div>
                             <label for="hogarPadre">PADRE</label>                    
-                            <input type="radio" name="sostenHogar" id="hogarPadre"/>
+                            <input type="radio" name="sostenHogar"  value="PADRE" id="hogarPadre"/>
                         </div>
                         <div>
                             <label for="hogarMadre">MADRE</label>                    
-                            <input type="radio" name="sostenHogar" id="hogarMadre"/>
+                            <input type="radio" name="sostenHogar"  value="MADRE" id="hogarMadre"/>
                         </div>
                         <div>
                             <label for="hogarAmbos">AMBOS</label>                    
-                            <input type="radio" name="sostenHogar" id="hogarAmbos"/>
+                            <input type="radio" name="sostenHogar"  value="AMBOS" id="hogarAmbos"/>
                         </div>
                         <div>
                             <label for="hogarOtro">OTRO</label>                    
-                            <input type="radio" name="sostenHogar" id="hogarOtro"/>
+                            <input type="radio" name="sostenHogar"  value="OTRO" id="hogarOtro"/>
                         </div>
                     </div>
                 </div>
@@ -296,23 +305,23 @@
                     <div class="row-Grid">
                         <div> 
                             <label for="medioInternet">INTERNET</label>                    
-                            <input type="checkbox" name="internet" id="medioInternet"/>
+                            <input type="checkbox" name="internet" value="si" id="medioInternet"/>
                         </div>
                         <div>
                             <label for="medioTelevision">TELEVISIÓN</label>                    
-                            <input type="checkbox" name="television" id="medioTelevision"/>
+                            <input type="checkbox" name="television" value="si" id="medioTelevision"/>
                         </div>
                         <div>
                             <label for="medioCelular">CELULAR</label>                    
-                            <input type="checkbox" name="celular" id="medioCelular"/>
+                            <input type="checkbox" name="celular" value="si" id="medioCelular"/>
                         </div>
                         <div>
                             <label for="medioTablet">TABLET</label>                    
-                            <input type="checkbox" name="tablet" id="medioTablet"/>
+                            <input type="checkbox" name="tablet" value="si" id="medioTablet"/>
                         </div>
                         <div class="colC-Complet">
                             <label for="medioComputadora">COMPUTADORA (POSTATIL O DE ESCRITORIO)</label>                    
-                            <input type="checkbox" name="computadora" id="medioComputadora" class="computadora"/>
+                            <input type="checkbox" name="computadora" value="si" id="medioComputadora" class="computadora"/>
                         </div>
                     </div>
                 </div>
