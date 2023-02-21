@@ -1,7 +1,5 @@
 <?php
-        $conexion=mysqli_connect("localhost", "root", "TOYOTS99", "escuela");
-        mysqli_set_charset($conexion, "utf8");
-        $usuarios ="SELECT * FROM   profesor";
+        include '../includes/conexion-BD.php';
         include_once '../includes/user.php';
         include_once '../includes/user_session.php';
         $userSession = new UserSession();
@@ -9,6 +7,18 @@
         if(isset($_SESSION['user'])){
             //echo "hay sesion";
         $user->setUser($userSession->getCurrentUser());
+        $consultaMaestro = "SELECT 
+        profesor.nomina,
+        profesor.nombre,
+        profesor.apellidoP,
+        profesor.apellidoM, 
+        profesor.telefonoPersonal,
+        profesor.CURP,
+        profesor.RFC,
+        datospersonales.PreparacionProfecional
+        FROM   profesor
+        INNER JOIN datospersonales 
+        ON profesor.RFC=datospersonales.RFC";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -21,9 +31,8 @@
     <title>Agregar</title>
 </head>
 <body>
-    <div class="Acontainer">
-        <div>
-            <div>
+        <div class="tabla profesor">
+            <!--<div>
                 <form action="../mostrarDatos/maestroCompleto.php" method="post"  name="form" >
                     <div>
                         <p>ingresa nomina:</p>
@@ -41,38 +50,30 @@
                         <input type="submit" value="buscar" class="bus">
                     </div>
                 </form>
+            </div>-->
+            <div class="title"><p>Sel </p></div> 
+            <div class="title"><p>Nomina </p></div>    
+            <div class="title"><p>Nombre </p></div>        
+            <div class="title"><p>TEL. Celular</p></div>   
+            <div class="title"><p>CURP</p></div> 
+            <div class="title"><p>RFC</p></div>       
+            <div class="title"><p>PREPARAION</p></div>       
+            <div class="colC-Complet contenidoT profesor">    
+
+                <?php
+                    $resultado = mysqli_query($conexion,$consultaMaestro);
+                    while($row=mysqli_fetch_assoc($resultado)){
+                ?>
+                <?php echo "<div> <input name='buscaP' type='radio'></div>";?>
+                <?php echo "<div><p>".$row['nomina']."</p></div>";?>
+                <?php echo "<div><p>".$row["nombre"]." ".$row["apellidoP"]." ".$row["apellidoM"]."</p></div>";?>
+                <?php echo "<div><p>".$row["telefonoPersonal"]."</p></div>";?>
+                <?php echo "<div><p>".$row["CURP"]."</p></div>";?>
+                <?php echo "<div><p>".$row["RFC"]."</p></div>";?>
+                <?php echo "<div><p>".$row["PreparacionProfecional"]."</p></div>";?>
+                <?php }?>
             </div>
-            <div><p>Nomina </p></div>    
-            <div><p>Nombre </p></div>    
-            <div><p>Apeido Paterno</p></div>    
-            <div><p>Apellido Materno</p></div>    
-            <div><p>Localidad o Colonia</p></div>    
-            <div><p>Dirección</p></div>    
-            <div><p>Municipio</p></div>    
-            <div><p>C.P</p></div>       
-            <div><p>TEL. Celular</p></div>    
-            <div><p>Correo Electrónico</p></div>    
-            <div><p>Edad</p></div>    
-            <?php $resultado = mysqli_query($conexion,$usuarios);
-            while($row=mysqli_fetch_assoc($resultado)){
-                $cont=1;
-                $cont++;
-                $table="table";
-            ?>
-                <div><?php echo $row["nomina"];?></div>    
-                <div><?php echo $row["nombre"];?></div>    
-                <div><?php echo $row["apellidoP"];?></div>    
-                <div><?php echo $row["apellidoM"];?></div>    
-                <div><?php echo $row["localidadOcolonia"];?></div>    
-                <div><?php echo $row["Direccion"];?></div>    
-                <div><?php echo $row["municipio"];?></div>    
-                <div><?php echo $row["CP"];?></div>    
-                <div><?php echo $row["telefonoPersonal"];?></div>  
-                <div><?php echo $row["correoElectronico"];?></div>    
-                <div><?php echo $row["edad"];?></div>          
-            <?php }?>
         </div>
-    </div>
 
 </body>
 </html>

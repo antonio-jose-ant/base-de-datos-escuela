@@ -21,8 +21,9 @@
     --negro:#000;
     --negro2:#111111;
     --negro3:#3c3c3c;
+    --gris:#cacaca;
 }    
-*{font-family: poc;font-size: 18px; margin: 0;}
+*{font-family: poc;font-size: 18px; margin: 0;text-transform: capitalize;}
 
 html,
 body {
@@ -40,7 +41,9 @@ iframe{
     border: none;
 }
 
-
+.mayusculas{
+    text-transform: uppercase;
+}
 a {
     font-size: 30px;
     text-decoration: none;
@@ -350,6 +353,48 @@ input:focus,select:focus{
 .row-Grid div{
     display: flex;
     flex-direction: row;
+}
+/********tablas**********/
+
+/********tablas fin**********/
+.title{
+    background-color: #235f81;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.tabla{
+    width: 100%;
+    height: auto;
+    display: grid;
+    justify-content: center;
+    box-sizing: border-box;
+    background: var(--gris);
+}
+.tabla>.contenidoT{
+    width: 100%;
+    height: auto;
+    display: grid;
+    font-size: 12px;
+}
+.tabla>.contenidoT p{
+    margin: 0;
+    padding: 0;
+    height: auto;
+    width: auto;
+    font-size: 16px;
+}
+.col1{
+    background-color: var(--blanco2);
+    border-left: 1px solid var(--gris);
+}
+.profesor{
+    grid-template: 50px/32px 68px 136px 85px 150px 112px auto;
+    align-items: center;
+    grid-gap: 1px;
 }
 
 /***********alumno fin**************/

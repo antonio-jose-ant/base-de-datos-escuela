@@ -54,7 +54,7 @@
                     <select name="Grupo">
                         <option>  </option> 
                         <option value="A">A</option>
-                        <option value="B">B</option>
+                        <CURPoption value="B">B</option>
                     </select>
                 </div>
                 <div class="colC-3 ">
@@ -67,7 +67,7 @@
                 </div>
                 <div class="colC-3 ">
                     <p> CURP:</p>
-                    <input type="text" name="CURP"/>
+                    <input type="text" name="CURP"  class="mayusculas"/>
                 </div>
                 <div class="colC-3 ">
                     <p> Fecha de nacimiento:</p>
@@ -193,7 +193,7 @@
                 </div>
                 <div class="colC-3 ">
                     <p>CURP:</p>
-                    <input type="text" name="CURPT1"/>
+                    <input type="text" name="CURPT1" class="mayusculas"/>
                 </div>
                 <div>
                     <p>EDAD:</p>
@@ -242,7 +242,7 @@
                 </div>
                 <div class="colC-3 ">
                     <p>CURP:</p>
-                    <input type="text" name="CURPT2"/>
+                    <input type="text" name="CURPT2"  class="mayusculas"/>
                 </div>
                 <div>
                     <p>EDAD:</p>
@@ -284,16 +284,20 @@
                 <div class="colC-Complet">
                     <p>¿QUIÉN SOSTIENE ECONOMICAMENTE AL HOGAR? SEÑALE LA OPCIÓN </p>
                     <div class="row-Grid">  
-                        <di       <label for="hogarPadre">PADRE</label>                    
+                        <div>
+                            <label for="hogarPadre">PADRE</label>                    
                             <input type="radio" name="sostenHogar"  value="PADRE" id="hogarPadre"/>
                         </div>
-                        <di       <label for="hogarMadre">MADRE</label>                    
+                        <div>
+                            <label for="hogarMadre">MADRE</label>                    
                             <input type="radio" name="sostenHogar"  value="MADRE" id="hogarMadre"/>
                         </div>
-                        <di       <label for="hogarAmbos">AMBOS</label>                    
+                        <div>
+                            <label for="hogarAmbos">AMBOS</label>                    
                             <input type="radio" name="sostenHogar"  value="AMBOS" id="hogarAmbos"/>
                         </div>
-                        <di       <label for="hogarOtro">OTRO</label>                    
+                        <div>
+                            <label for="hogarOtro">OTRO</label>                    
                             <input type="radio" name="sostenHogar"  value="OTRO" id="hogarOtro"/>
                         </div>
                     </div>

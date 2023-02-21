@@ -3,9 +3,9 @@
     $insert = true;
     $Datos_Alumno =array( 
         'matricula'=>strtoupper(substr($_POST['Nombre'],0,3).substr($_POST['ApeidoP'],0,2).substr($_POST['ApeidoM'],0,2).substr($_POST['Grado'],0,1).substr($_POST['Grupo'],0,1).substr($_POST['Turno'],0,1).substr($_POST['CURP'],-2)),
-        'Nombre'=>(!empty($_POST['Nombre'])) ? $_POST['Nombre'] : "",
-        'ApeidoP'=>(!empty($_POST['ApeidoP'])) ? $_POST['ApeidoP'] : "",
-        'ApeidoM'=>(!empty($_POST['ApeidoM'])) ? $_POST['ApeidoM'] : "",
+        'Nombre'=>(!empty(ucwords($_POST['Nombre']))) ? $_POST['Nombre'] : "",
+        'ApeidoP'=>(!empty(ucwords($_POST['ApeidoP']))) ? $_POST['ApeidoP'] : "",
+        'ApeidoM'=>(!empty(ucwords($_POST['ApeidoM']))) ? $_POST['ApeidoM'] : "",
         'Grado'=>(!empty($_POST['Grado'])) ? $_POST['Grado'] : "",
         'Grupo'=>(!empty($_POST['Grupo'])) ? $_POST['Grupo'] : "",
         'Turno'=>(!empty($_POST['Turno'])) ? $_POST['Turno'] : "",
@@ -24,9 +24,9 @@
         'padecimiento'=>(!empty($_POST['padecimiento'])) ? $_POST['padecimiento']:"",
         'piePlano'=>(!empty($_POST['piePlano'])) ? $_POST['piePlano']:"",
         'lentes'=>(!empty($_POST['lentes'])) ? $_POST['lentes']:""
-    );
+    ); 
     $tutor1 =array( 
-        'CURPT1'=>(!empty($_POST['CURPT1'])) ? $_POST['CURPT1']:"",
+        'CURPT1'=>(!empty(strtoupper($_POST['CURPT1']))) ? $_POST['CURPT1']:"",
         'nombreT1'=>(!empty($_POST['nombreT1'])) ? $_POST['nombreT1']:"",
         'apellidoPT1'=>(!empty($_POST['apellidoPT1'])) ? $_POST['apellidoPT1']:"",
         'apellidoMT1'=>(!empty($_POST['apellidoMT1'])) ? $_POST['apellidoMT1']:"",
@@ -37,7 +37,7 @@
         'estudioT1'=>(!empty($_POST['estudioT1'])) ? $_POST['estudioT1']:""
     );
     $tutor2 =array( 
-        'CURPT2'=>(!empty($_POST['CURPT2'])) ? $_POST['CURPT2']:"",
+        'CURPT2'=>(!empty(strtoupper($_POST['CURPT2']))) ? $_POST['CURPT2']:"",
         'nombreT2'=>(!empty($_POST['nombreT2'])) ? $_POST['nombreT2']:"",
         'apellidoPT2'=>(!empty($_POST['apellidoPT2'])) ? $_POST['apellidoPT2']:"",
         'apellidoMT2'=>(!empty($_POST['apellidoMT2'])) ? $_POST['apellidoMT2']:"",

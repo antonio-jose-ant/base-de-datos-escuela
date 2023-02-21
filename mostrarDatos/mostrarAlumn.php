@@ -1,7 +1,6 @@
 <?php
-        $conexion=mysqli_connect("localhost", "root", "TOYOTS99", "escuela");
-        mysqli_set_charset($conexion, "utf8");
-        $usuarios ="SELECT * FROM alumnos";
+        include '../includes/conexion-BD.php';
+        $usuarios ="SELECT * FROM datos_alumno";
         include_once '../includes/user.php';
         include_once '../includes/user_session.php';
         $userSession = new UserSession();
@@ -41,8 +40,8 @@
                     while($row=mysqli_fetch_assoc($resultado)){
                     
                     ?>
-                        <div><?php echo $row["matricula"];?></div>    
-                        <div>"><?php echo $row["nombreAlumno"];?></div>    
+                        <div><?php echo $row["Nombre_alu"];?></div>    
+                        <div><?php echo $row["nombreAlumno"];?></div>    
                         <div><?php echo $row["ApellidoPaterno"];?></div>    
                         <div><?php echo $row["ApellidoMaterno"];?></div>    
                         <div><?php echo $row["Grado"];?></div>    

@@ -1,30 +1,29 @@
 create database escuela;
 use escuela;
 CREATE TABLE datosadministracion ( 
-    id_Adminitracion varchar(30), 
-    CedeLugarAdminitracion VARCHAR(60) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL, 
-    Domicilio VARCHAR(250) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL , 
-    LocalidadColonia VARCHAR(60) NOT NULL , 
-    MunicipioEscuela VARCHAR(60) NOT NULL , 
-    C_C_T VARCHAR(60) NOT NULL , 
-    Telefono INT(15) NULL DEFAULT NULL , 
-    CorreoInstituto VARCHAR(80) NOT NULL , 
-    PRIMARY KEY (id_Adminitracion)
+    CURP varchar(18) NOT NULL, 
+    CedeLugarAdminitracion VARCHAR(60), 
+    Domicilio VARCHAR(250), 
+    LocalidadColonia VARCHAR(60), 
+    MunicipioEscuela VARCHAR(60), 
+    C_C_T VARCHAR(60), 
+    Telefono INT(15), 
+    CorreoInstituto VARCHAR(80), 
+    PRIMARY KEY (CURP)
 );
 create table DatosPersonales(
-    id_personal varchar(30), 
+    RFC varchar(13), 
     categoria varchar(60), 
     EstadoCategoria varchar(60),
     AñosServico int (2), 
     preparacionPersonal varchar(20), 
     ClaevServidor varchar(30), 
-    RFC varchar(13), CURP varchar(13), 
     FechaIngreso date, 
     NumeroPlaza int(60), 
     fechaIngresoFuncionActual date, 
     CodigoPuesto varchar(30),
     PreparacionProfecional varchar(100), 
-    primary key (id_personal)
+    primary key (RFC)
 );
 create table usuario(
     IdUsuario INT NOT NULL AUTO_INCREMENT,
@@ -49,11 +48,11 @@ CREATE TABLE profesor(
     edad int, 
     EstadoCivil varchar(8), 
     redSocial varchar(30),
-    id_Adminitracion varchar(30), 
+    CURP varchar(30), 
     primary key (nomina),
-    id_personal varchar(30),
-    FOREIGN KEY (id_Adminitracion) REFERENCES datosadministracion(id_Adminitracion),
-    FOREIGN KEY (id_personal) REFERENCES datospersonales(id_personal)
+    RFC varchar(30),
+    FOREIGN KEY (CURP) REFERENCES datosadministracion(CURP),
+    FOREIGN KEY (RFC) REFERENCES datospersonales(RFC)
 );
 
 opcional ALTER TABLE profesor ADD FOREIGN KEY (id_personal) REFERENCES datospersonales (id_personal);
