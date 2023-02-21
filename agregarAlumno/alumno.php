@@ -14,6 +14,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/style.css">
+    <script src="../assets/js/jquery-1.10.2.js"></script>
+    <script src="../assets/js/jquery-1.9.1.js"></script>
+    <script src="../assets/js/jquery-ui-1.11.0/jquery-ui.js"></script>
 </head>
     <body> 
         <div>   
@@ -50,11 +53,11 @@
                     <p> Grupo:</p>
                     <select name="Grupo">
                         <option>  </option> 
-                        <option value="a">A</option>
-                        <option value="b">B</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
                     </select>
                 </div>
-                <div class="colC-3">
+                <div class="colC-3 ">
                     <p> Turno:</p>
                     <select name="Turno">
                         <option>  </option>
@@ -62,12 +65,11 @@
                         <option value="Vespertino">Vespertino</option>
                     </select>
                 </div>
-                <div class="colC-3">
+                <div class="colC-3 ">
                     <p> CURP:</p>
                     <input type="text" name="CURP"/>
                 </div>
-
-                <div class="colC-3">
+                <div class="colC-3 ">
                     <p> Fecha de nacimiento:</p>
                     <input type="date" name="Fecha_n"/>
                 </div>
@@ -75,7 +77,7 @@
                     <p>Edad:</p>
                     <input type="number" name="edad"/>
                 </div>
-                <div class="colC-4">
+                <div class="colC-4 ">
                     <p> Correo Electronico:</p>
                     <input type="email" name="CorreoAlu"/>
                 </div>
@@ -83,7 +85,7 @@
                 <div class="colC-Complet">
                     <h2>DOMICILIO:</h2>
                 </div>
-                <div class="colC-3">
+                <div class="colC-3 ">
                     <p> Calle:</p>
                     <input type="text" name="Calle"/>
                 </div>
@@ -95,27 +97,27 @@
                     <p> C.P:</p>
                     <input type="text" name="CP"/>
                 </div>
-                <div class="colC-3">
+                <div class="colC-3 ">
                     <p> ENTRE CALLE</p>
                     <input type="text" name="Calle1"/>
                 </div>
-                <div class="colC-3">
+                <div class="colC-3 ">
                     <p> Y CALLE</p>
                     <input type="text" name="Calle2"/>
                 </div>
-                <div class="colC-6 colR-2">
+                <div class="colC-6 colR-2 ">
                     <p>OTRA REFERENCIA</p>
                     <textarea name="referencia"> </textarea>
                 </div>
-                <div class="colC-3">
+                <div class="colC-3 ">
                     <p>COLONIA</p>
                     <input type="text" name="Colonia"/>
                 </div>
-                <div class="colC-3">
+                <div class="colC-3 ">
                     <p>MUNICIPIO</p>
                     <input type="text" name="Municipio"/>
                 </div>
-                <div class="colC-3">
+                <div class="colC-3 ">
                     <p>TELEFONO DE CASA</p>
                     <input type="tel" name="TelCasa"/>
                 </div>
@@ -124,7 +126,7 @@
                 <div class="colC-Complet">
                     <h2>DATOS MEDICOS:</h2>
                 </div>
-                <div class="colC-4">
+                <div class="colC-4 ">
                     <p>NUMERO DE EMERGENCIA:</p>
                     <input type="tel" name="numEmergencia"/>
                 </div>
@@ -136,7 +138,7 @@
                     <p>PESO:</p>
                     <input type="text" name="peso"/>
                 </div>
-                <div class="colC-3">
+                <div class="colC-3 ">
                     <p>TIPO DE SANGRE:</p>
                     <select name="tipoSangre">
                         <option value="A+">A+</option>
@@ -149,15 +151,15 @@
                         <option value="O-">O-</option>
                     </select>
                 </div>
-                <div class="colC-3">
+                <div class="colC-3 ">
                     <p>ALERGIAS:</p>
                     <input type="text" name="alergia"/>
                 </div>
-                <div class="colC-3">
+                <div class="colC-3 ">
                     <p>PADECIMIENTOS:</p>
                     <input type="text" name="padecimiento"/>
                 </div>
-                <div class="colC-2">
+                <div class="colC-2 ">
                     <p>PIE PLANO:</p>
                     <select name="piePlano">
                         <option>  </option>
@@ -165,7 +167,7 @@
                         <option value="Si">Si</option>
                     </select>
                 </div>
-                <div class="colC-2">
+                <div class="colC-2 ">
                     <p>USA LENTES:</p>
                     <select name="lentes">
                         <option>  </option>
@@ -177,19 +179,19 @@
                 <div class="colC-Complet">
                     <h2>DATOS DEL PADRE/MADRE/TUTOR:</h2>
                 </div>
-                <div class="colC-3">
+                <div class="colC-3 ">
                     <p>NOMBRE:</p>
                     <input type="text" name="nombreT1"/>
                 </div>
-                <div class="colC-3">
+                <div class="colC-3 ">
                     <p>Apeido Paterno:</p>
                     <input type="text" name="apellidoPT1"/>
                 </div>
-                <div class="colC-3">
+                <div class="colC-3 ">
                     <p>Apeido Materno:</p>
                     <input type="text" name="apellidoMT1"/>
                 </div>
-                <div class="colC-3">
+                <div class="colC-3 ">
                     <p>CURP:</p>
                     <input type="text" name="CURPT1"/>
                 </div>
@@ -197,11 +199,11 @@
                     <p>EDAD:</p>
                     <input type="number" name="edadT1"/>
                 </div>
-                <div class="colC-4">
+                <div class="colC-4 ">
                     <p>RELACIÓN DE PARENTESCO:</p>
                     <input type="text" name="parentescoT1"/>
                 </div>
-                <div class="colC-3">
+                <div class="colC-3 ">
                     <p>ESTADO CIVIL:</p>
                     <select name="Estado_civilT1">
                         <option></option>
@@ -214,11 +216,11 @@
                         <option value="Soltero">Soltero(a)</option>
                     </select>
                 </div>
-                <div class="colC-3">
+                <div class="colC-3 ">
                     <p>OCUPACION:</p>
                     <input type="text" name="ocupacionT1"/>
                 </div>
-                <div class="colC-3">
+                <div class="colC-3 ">
                     <p>GRADO DE ESTUDIOS:</p>
                     <input type="text" name="estudioT1"/>
                 </div>
@@ -226,19 +228,19 @@
                 <div class="colC-Complet">
                     <h2>DATOS DEL SEGUNDO PADRE/MADRE/TUTOR:</h2>
                 </div>
-                <div class="colC-3">
+                <div class="colC-3 ">
                     <p>NOMBRE:</p>
                     <input type="text" name="nombreT2"/>
                 </div>
-                <div class="colC-3">
+                <div class="colC-3 ">
                     <p>Apeido Paterno:</p>
                     <input type="text" name="apellidoPT2"/>
                 </div>
-                <div class="colC-3">
+                <div class="colC-3 ">
                     <p>Apeido Materno:</p>
                     <input type="text" name="apellidoMT2"/>
                 </div>
-                <div class="colC-3">
+                <div class="colC-3 ">
                     <p>CURP:</p>
                     <input type="text" name="CURPT2"/>
                 </div>
@@ -246,11 +248,11 @@
                     <p>EDAD:</p>
                     <input type="number" name="edadT2"/>
                 </div>
-                <div class="colC-4">
+                <div class="colC-4 ">
                     <p>RELACIÓN DE PARENTESCO:</p>
                     <input type="text" name="parentescoT2"/>
                 </div>
-                <div class="colC-3">
+                <div class="colC-3 ">
                     <p>ESTADO CIVIL:</p>
                     <select name="Estado_civilT2">
                         <option></option>
@@ -263,11 +265,11 @@
                         <option value="Soltero">Soltero(a)</option>
                     </select>
                 </div>
-                <div class="colC-3">
+                <div class="colC-3 ">
                     <p>OCUPACION:</p>
                     <input type="text" name="ocupacionT2"/>
                 </div>
-                <div class="colC-3">
+                <div class="colC-3 ">
                     <p>GRADO DE ESTUDIOS:</p>
                     <input type="text" name="estudioT2"/>
                 </div>
@@ -282,20 +284,16 @@
                 <div class="colC-Complet">
                     <p>¿QUIÉN SOSTIENE ECONOMICAMENTE AL HOGAR? SEÑALE LA OPCIÓN </p>
                     <div class="row-Grid">  
-                        <div>
-                            <label for="hogarPadre">PADRE</label>                    
+                        <di       <label for="hogarPadre">PADRE</label>                    
                             <input type="radio" name="sostenHogar"  value="PADRE" id="hogarPadre"/>
                         </div>
-                        <div>
-                            <label for="hogarMadre">MADRE</label>                    
+                        <di       <label for="hogarMadre">MADRE</label>                    
                             <input type="radio" name="sostenHogar"  value="MADRE" id="hogarMadre"/>
                         </div>
-                        <div>
-                            <label for="hogarAmbos">AMBOS</label>                    
+                        <di       <label for="hogarAmbos">AMBOS</label>                    
                             <input type="radio" name="sostenHogar"  value="AMBOS" id="hogarAmbos"/>
                         </div>
-                        <div>
-                            <label for="hogarOtro">OTRO</label>                    
+                        <di       <label for="hogarOtro">OTRO</label>                    
                             <input type="radio" name="sostenHogar"  value="OTRO" id="hogarOtro"/>
                         </div>
                     </div>
@@ -303,7 +301,7 @@
                 <div class="colC-Complet">
                     <p>¿CON QUE MEDIOS CUENTA?</p>
                     <div class="row-Grid">
-                        <div> 
+                        <div>  
                             <label for="medioInternet">INTERNET</label>                    
                             <input type="checkbox" name="internet" value="si" id="medioInternet"/>
                         </div>

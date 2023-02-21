@@ -2,7 +2,7 @@
     include '../includes/conexion-BD.php';
     $insert = true;
     $Datos_Alumno =array( 
-        'matricula'=>strtoupper(substr($_POST['Nombre'],0,3).substr($_POST['ApeidoP'],0,2).substr($_POST['ApeidoM'],0,2).substr($_POST['Grado'],0,1).substr($_POST['Grupo'],0,1).substr($_POST['Turno'],0,1)),
+        'matricula'=>strtoupper(substr($_POST['Nombre'],0,3).substr($_POST['ApeidoP'],0,2).substr($_POST['ApeidoM'],0,2).substr($_POST['Grado'],0,1).substr($_POST['Grupo'],0,1).substr($_POST['Turno'],0,1).substr($_POST['CURP'],-2)),
         'Nombre'=>(!empty($_POST['Nombre'])) ? $_POST['Nombre'] : "",
         'ApeidoP'=>(!empty($_POST['ApeidoP'])) ? $_POST['ApeidoP'] : "",
         'ApeidoM'=>(!empty($_POST['ApeidoM'])) ? $_POST['ApeidoM'] : "",
@@ -53,7 +53,7 @@
         'CP'=>(!empty($_POST['CP'])) ? $_POST['CP']:"",
         'Calle1'=>(!empty($_POST['Calle1'])) ? $_POST['Calle1']:"",
         'Calle2'=>(!empty($_POST['Calle2'])) ? $_POST['Calle2']:"",
-        'referencia'=>(!empty($_POST['referencia'])) ? $_POST['referencia']:"",
+        'referencia'=>(!empty($_POST['referencia'])) ? $_POST['referencia']:"sin Referencias",
         'Colonia'=>(!empty($_POST['Colonia'])) ? $_POST['Colonia']:"",
         'Municipio'=>(!empty($_POST['Municipio'])) ? $_POST['Municipio']:"",
         'TelCasa'=>(!empty($_POST['TelCasa'])) ? $_POST['TelCasa']:""
@@ -110,7 +110,6 @@
         }
     }
     if($insert){
-        
         $datos_medicosInsert="INSERT INTO datos_medicos (CURPAlu, Tel_emergencia, Talla, Peso, Tipo_sangre, Alergias, padecimiento, Pie_plano,lentes)
         VALUES('".$Datos_Alumno['CURP']."'
             ,'".$datos_medicos['numEmergencia']."'
@@ -196,7 +195,7 @@
     if($resultadoBDAlu){
         echo "<script> alert('se a registrado con exito'); window.location='/escuela/agregarAlumno/alumno.php'</script>";
     }else{
-        echo "<script> alert('no se registro'); window.location='/escuela/agregarMaestro/maestros.php'</script>";
+        echo "<script> alert('no se registro'); window.location='/escuela/agregarAlumno/alumno.php'</script>";
         echo mysqli_errno($conexion) . ": " . mysqli_error($conexion). "\n";
     }
 ?>

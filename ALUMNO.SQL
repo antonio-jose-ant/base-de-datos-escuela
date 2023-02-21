@@ -1,10 +1,10 @@
 create table Datos_Alumno(
-    matricula varchar(11) not null,
+    matricula varchar(12) not null,
     Nombre_alu varchar(25),
     Apellido_p varchar(25),
     Apellido_m varchar(25),
     CURP_alu varchar(18),
-    Fecha_n_alu DATE,
+    Fecha_n_alu DATE, 
     Edad_alu int(2), 
     Correo_alu varchar(50),
     grado int(1),

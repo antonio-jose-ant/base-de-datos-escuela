@@ -31,22 +31,22 @@ include_once 'includes/user_session.php';
                     <li>
                             <p id="menu-desplega"><img src="assets/img/iconos/Agregar.png"><span> Agregar Datos</span></p>
                             <div id="menu-I" class="oculta">
-                                <a onclick="changueContentH('#divContentNav','agregarAlumno/alumno.php')" ><img src="assets/img/iconos/Vacantes.png"><span>Agregar Alumno</span></a>
-                                <a onclick="changueContentH('#divContentNav','agregarMaestro/maestros.php')" ><img src="assets/img/iconos/Vacantes.png"><span>Agregar Docente</span></a>
+                                <a onclick="changueContentH('#divContentNav','agregarAlumno/alumno.php')"  id="contraeMenu700"><img src="assets/img/iconos/Vacantes.png"><span>Agregar Alumno</span></a>
+                                <a onclick="changueContentH('#divContentNav','agregarMaestro/maestros.php')"  id="contraeMenu600"><img src="assets/img/iconos/Vacantes.png"><span>Agregar Docente</span></a>
                             </div>
                     </li>
                     <li>
                         <p id="menu-desplega2"><img src="assets/img/iconos/expediente.png"><span> Mostrar Datos</span></p>
                         <div id="menu-II" class="oculta">
-                            <a onclick="changueContentH('#divContentNav','mostrarDatos/mostrarAlumn.php')"><img src="assets/img/iconos/Vacantes.png"><span>Mostrar Alumno</span></a>
-                            <a onclick="changueContentH('#divContentNav','mostrarDatos/mosrarprofeor.php')"><img src="assets/img/iconos/Vacantes.png"><span>Mostrar Docente</span></a>
+                            <a onclick="changueContentH('#divContentNav','mostrarDatos/mostrarAlumn.php')" id="contraeMenu500"><img src="assets/img/iconos/Vacantes.png"><span>Mostrar Alumno</span></a>
+                            <a onclick="changueContentH('#divContentNav','mostrarDatos/mosrarprofeor.php')" id="contraeMenu400"><img src="assets/img/iconos/Vacantes.png"><span>Mostrar Docente</span></a>
                         </div>
                     </li>
                     <li>
                         <p id="menu-desplega3"><img src="assets/img/iconos/expediente.png"><span>Eliminar Datos</span></p>
                         <div id="menu-III" class="oculta">
-                            <a onclick="changueContentH('#divContentNav','eliminar/eliminaAlumno.php')"><img src="assets/img/iconos/Vacantes.png"><span>Eliminar Alumno</span></a>
-                            <a onclick="changueContentH('#divContentNav','eliminar/eliminaMaesetro.php')"><img src="assets/img/iconos/Vacantes.png"><span>Eliminar Docente</span></a>
+                            <a onclick="changueContentH('#divContentNav','eliminar/eliminaAlumno.php')" id="contraeMenu300"><img src="assets/img/iconos/Vacantes.png"><span>Eliminar Alumno</span></a>
+                            <a onclick="changueContentH('#divContentNav','eliminar/eliminaMaesetro.php')" id="contraeMenu200"><img src="assets/img/iconos/Vacantes.png"><span>Eliminar Docente</span></a>
                         </div>
                     </li>
                 </ul>
