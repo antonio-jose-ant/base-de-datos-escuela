@@ -16,6 +16,7 @@ create table DatosPersonales(
     categoria varchar(60), 
     EstadoCategoria varchar(60),
     AñosServico int (2), 
+    AñosServicoEnFuncion int (2), 
     preparacionPersonal varchar(20), 
     ClaevServidor varchar(30), 
     FechaIngreso date, 

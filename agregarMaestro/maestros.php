@@ -116,7 +116,7 @@
             <input type="number" name="NumeroP"/>
         </div>
         <div class="colC-2">
-            <span> Código Puesto:</span>
+            <span> Código Puesto:</span> 
             <input type="number" name="CoddigoPuesto"/>
         </div>
         <div class="colC-5">

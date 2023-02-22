@@ -44,27 +44,6 @@
         'EmailInstituto'=> (!empty($_POST['emailInstituto'])) ? $_POST['emailInstituto'] : ""
     );
     $insert = true;
-    foreach ($maestrosDatos as $key => $value) {
-        if (empty($value)) {
-            $insert = false;
-            echo "<script>alert('El campo $key está vacío');</script>";
-            break;
-        }
-    }
-    foreach ($datosadministracion as $key2 => $value2) {
-        if (empty($value2)) {
-            $insert = false;
-            echo "<script>alert('El campo $key2 está vacío');</script>";
-            break;
-        }
-    }
-    foreach ($datospersonales as $key1 => $value1) {
-        if (empty($value1)) {
-            $insert = false;
-            echo "<script>alert('El campo $key1 está vacío');</script>";
-            break;
-        }
-    }
     if($insert){
 /******************base datos maestrosDatos***********************/
         /******************base datos datospersonales***********************/

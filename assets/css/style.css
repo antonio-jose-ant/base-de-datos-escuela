@@ -358,45 +358,73 @@ input:focus,select:focus{
 
 /********tablas fin**********/
 .title{
-    background-color: #235f81;
+    background-color: var(--azul2);
+    border-right: solid 1px var(--blanco2);
     height: 100%;
-    width: 100%;
+    width: calc(100% - 1px);
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
+    color: var(--blanco);
+}
+.footerTable{
+    background-color: var(--azul2);
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    padding-left:10px ;
+    color: var(--blanco);
 }
 .tabla{
     width: 100%;
     height: auto;
     display: grid;
-    justify-content: center;
     box-sizing: border-box;
     background: var(--gris);
 }
-.tabla>.contenidoT{
-    width: 100%;
-    height: auto;
-    display: grid;
-    font-size: 12px;
-}
-.tabla>.contenidoT p{
-    margin: 0;
-    padding: 0;
-    height: auto;
-    width: auto;
-    font-size: 16px;
-}
-.col1{
+.even{
     background-color: var(--blanco2);
-    border-left: 1px solid var(--gris);
 }
-.profesor{
-    grid-template: 50px/32px 68px 136px 85px 150px 112px auto;
+.even div{
+    display: flex;
     align-items: center;
-    grid-gap: 1px;
+    justify-content: center;
+    border-left: 1px solid var(--gris);
+    height: 100%;
+    width: auto;
+}
+.odd{
+    background-color: var(--gris);
+}
+.odd div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 1px solid var(--blanco2);
+    height: 100%;
+    width: auto;
 }
 
+.contenidoT{
+    max-height: 450px;
+    overflow: auto;
+    width: 100%;
+}
+
+.profesor{
+    grid-template: 50px/32px 68px 138px 85px 156px 118px auto;
+    align-items: center;
+}
+.profesorContenido{
+    display: grid;
+    width: 100%;
+    height: auto;
+}
+.profesorContenido p{
+    font-size: 16px;/*tamaño de letra para todos los p que tengan la clase profesorContenido*/
+}
 /***********alumno fin**************/
 /*************@media*************/
 @media (max-width: 600px) {
@@ -504,8 +532,15 @@ input:focus,select:focus{
     .colCMin-7{
         grid-column: span 7;
     }
+    .colCMin-8{
+        grid-column: span 8;
+    }
     .colC-CompletMin{
         grid-column: 1/-1;
     }
     /********adaptacion del formulario a pantallas pequeñas fin**********/
 }
+
+
+/***********a qui quiero hacer tamños  //brendaaa*********/
+/***********a qui quiero hacer tamños  //brendaaa fin *********/

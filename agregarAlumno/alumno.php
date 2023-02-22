@@ -25,7 +25,7 @@
                 <div class="colC-Complet">
                     <h2>DATOS DEL ALUMNO:</h2>
                 </div>
-                <div class="colC-4">
+                <div class="colC-4 colRMin-2">
                     <p> Nombre(s):</p>
                     <input type="text" name="Nombre"/>
                 </div>
@@ -54,7 +54,7 @@
                     <select name="Grupo">
                         <option>  </option> 
                         <option value="A">A</option>
-                        <CURPoption value="B">B</option>
+                        <option value="B">B</option>
                     </select>
                 </div>
                 <div class="colC-3 ">

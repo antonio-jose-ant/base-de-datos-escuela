@@ -1,12 +1,19 @@
 <?php
-        $conexion=mysqli_connect("localhost", "root", "TOYOTS99", "escuela");
-        mysqli_set_charset($conexion, "utf8");
-        $profe=$_POST['profe'];
-        $datospersonales=$_POST['datospersonales'];
-        $datosadministracion=$_POST['datosadministracion'];
-        $usuarios ="SELECT * from profesor where nomina='$profe'";
-        $profeC="SELECT * from datospersonales where id_personal='$datospersonales'";
-        $profea="SELECT * from datosadministracion where id_Adminitracion='$datosadministracion'";
+        include '../includes/conexion-BD.php';
+
+
+        $nomina=$_POST['nomina'];
+        $CURP=$_POST['curpProfe'];
+        $RFC=$_POST['rfcProfe'];
+        $conMaestro ="SELECT * FROM profesor 
+        inner JOIN datosadministracion 
+        on profesor.CURP=datosadministracion.CURP
+        inner join datospersonales 
+        on profesor.RFC=datospersonales.RFC 
+        where profesor.nomina='$nomina' 
+        and  datosadministracion.CURP= '$CURP'
+        and  datospersonales.RFC= '$RFC'";
+
         include_once '../includes/user.php';
         include_once '../includes/user_session.php';
         $userSession = new UserSession();
@@ -21,168 +28,168 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/style.css">
+    <script src="../assets/js/jquery-1.10.2.js"></script>
+    <script src="../assets/js/jquery-1.9.1.js"></script>
+    <script src="../assets/js/jquery-ui-1.11.0/jquery-ui.js"></script>
     <title>escuela</title>
 </head>
 <body>
-    <form action="insertar.php" method="post" name="form" class="container">
-        <div class="tituloForm">
+    <form action="./modificar/modificarM.php" method="post" name="form" class="form">
+        <?php 
+            $resultado=mysqli_query($conexion,$conMaestro);
+            while($row=mysqli_fetch_assoc($resultado)){
+        ?>
+            <div class="colC-Complet">
                 <h2>Datos personales</h2>
             </div>
-            <?php $resultado = mysqli_query($conexion,$usuarios);
-            while($row=mysqli_fetch_assoc($resultado)){
-                $cont=1;
-                $resu=$cont%2;
-                $cont++;
-                $table="table";
-            ?>
-            <div class="item">
+            <div class="colC-2">
                 <span> Nomina:</span>
-                <div class="items <? if($resu == 0){echo($table);}?>"><?php echo $row["nomina"];?></div>    
+                <input type="text" name="nomina" value="<?php echo $row['nomina'];?>"/>
             </div>
-            <div class="item">
+            <div class="colC-4">
                 <span> Nombre:</span>
-                <div class="items <? if($resu == 0){echo($table);}?>"><?php echo $row["nombre"];?></div>    
+                <input type="text" name="nombre" value="<?php echo $row['nombre'];?>"/>
             </div>
-            <div class="item">
+            <div class="colC-3">
                 <span> Apeido Paterno:</span>
-                <div class="items <?echo($table);?>"><?php echo $row["apellidoP"];?></div>    
+                <input type="text" name="apellidoP" value="<?php echo $row['apellidoP']; ?>"/>
             </div>
-            <div class="item">
+            <div class="colC-3">
                 <span> Apeido Materno:</span>
-                <div class="items"><?php echo $row["apellidoM"];?></div>    
+                <input type="text" name="apellidoM" value="<?php echo $row['apellidoM']; ?>"/>
             </div>
-            <div class="item">
+            <div class="colC-3">
                 <span> Localidad o Colonia:</span>
-                <div class="items"><?php echo $row["localidadOcolonia"];?></div>    
+                <input type="text" name="localidad" value="<?php echo $row['localidadOcolonia']; ?>"/>
             </div>
-            <div class="item">
+            <div class="colC-4">
                 <span> Dirección:</span>
-                <div class="items"><?php echo $row["Direccion"];?></div>    
+                <input type="text" name="direccion" value="<?php echo $row['Direccion']; ?>"/>
             </div>
-            <div class="item">
+            <div class="colC-3">
                 <span> Municipio:</span>
-                <div class="items"><?php echo $row["municipio"];?></div>    
+                <input type="text" name="municipioDocente" value="<?php echo $row['municipio']; ?>"/>
             </div>
-            <div class="item">
+            <div class="colC-2">
                 <span> C.P:</span>
-                <div class="items"><?php echo $row["CP"];?></div>    
+                <input type="text" name="CP" value="<?php echo $row['CP']; ?>"/>
             </div>
-            <div class="item">
+            <div class="colC-2">
                 <span> TEL. Casa:</span>
-                <div class="items"><?php echo $row["telefonoPersonal"];?></div>
+                <input type="tel" name="telCasa" value="<?php echo $row['telefonoPersonal']; ?>"/>
             </div>
-            <div class="item">
+            <div class="colC-2">
                 <span> TEL. Celular:</span>
-                <div class="items"><?php echo $row["telefonoCasa"];?></div>    
+                <input type="tel" name="telCel" value="<?php echo $row['telefonoCasa']; ?>"/>
             </div>
-            <div class="item">
+            <div class="colC-5">
                 <span> Correo Electrónico:</span>
-                <div class="items"><?php echo $row["correoElectronico"];?></div>    
+                <input type="Email" name="emailpersonal" value="<?php echo $row['correoElectronico']; ?>"/>
             </div>
-            <div class="item">
+            <div>
                 <span> Edad:</span>
-                <div class="items"><?php echo $row["edad"];?></div>    
+                <input type="number" name="edad" value="<?php echo $row['edad']; ?>"/>
             </div>
-            <div class="item">
+            <div class="colC-2">
                 <span> Estado Civil:</span>
-                <div class="items"><?php echo $row["EstadoCivil"];?></div>    
+                <input type="text" name="estadoC" value="<?php echo $row['EstadoCivil']; ?>"/>
             </div>
-            <div class="item">
+            <div class="colC-7">
                 <span> Red Social:</span>
-                <div class="items"><?php echo $row["redSocial"];?></div> 
+                <input type="text" name="RedSocial" value="<?php echo $row['redSocial']; ?>"/>
             </div>
-            <?php }?>
-            <div class="tituloForm">
-                    <h2>Datos Profesionales</h2>
-                </div> 
-            <?php $resultadoo = mysqli_query($conexion,$profeC);
-            
-            while($rowa=mysqli_fetch_assoc($resultadoo)){?>
-
-                <div class="item">
-                    <span>Categoria: </span>
-                    <div class="items"><?php echo $rowa["categoria"];?></div>    
-                </div>
-                <div class="item">
-                    <span> Estado De Categoria:</span>
-                    <div class="items"><?php echo $rowa["EstadoCategoria"];?></div>    
-                </div>
-                <div class="item">
-                    <span> Preparación Profecional:</span>
-                    <div class="items"><?php echo $rowa["preparacionPersonal"];?></div>    
-                </div>
-                <div class="item may">
-                    <span> CURP:</span>
-                    <div class="items"><?php echo $rowa["CURP"];?></div>    
-                </div>
-                <div class="item">
-                    <span> Años de Servicio:</span>
-                    <div class="items"><?php echo $rowa["AñosServico"];?></div>    
-                </div>
-                <div class="item may">
-                    <span> RFC:</span>
-                    <div class="items"><?php echo $rowa["RFC"];?></div>    
-                </div>
-                <div class="item">
-                    <span> Clave Servidor:</span>
-                    <div class="items"><?php echo $rowa["ClaevServidor"];?></div>    
-                </div>
-                <div class="item">
-                    <span> Número De plaza:</span>
-                    <div class="items"><?php echo $rowa["NumeroPlaza"];?></div>    
-                </div>
-                <div class="item">
-                    <span> Código Puesto:</span>
-                    <div class="items"><?php echo $rowa["CodigoPuesto"];?></div>    
-                </div>
-                <div class="item">
-                    <span> Años De Servicio En La Función</span>
-                    <div class="items"><?php echo $rowa["fechaIngresoFuncionActual"];?></div>    
-                </div>
-                <div class="item">
-                    <span> Prepaaración Profecional:</span>
-                    <div class="items"><?php echo $rowa["PreparacionProfecional"];?></div>    
-                </div>
-                <div class="item">
-                    <span> Fecha De Ingreso A La Funcion Actual:</span>
-                    <div class="items"><?php echo $rowa["fechaIngresoFuncionActual"];?></div>    
-                </div>
-            <?php } ?>
-            <div class="tituloForm">
-                <h2>Datos Adscripción</h2>
+            <!--aqui empieza datos profecionales -->
+            <div class="colC-Complet">
+                <h2>Datos Profesionales</h2>
             </div> 
+            <div class="colC-4">
+                <span>Categoria: </span>
+                <input type="text" name="CategoriaProfesor" value="<?php echo $row['categoria']; ?>"/>
+            </div>
+            <div class="colC-4">
+                <span> Estado De Categoria:</span>
+                <input type="text" name="EstadCategoria" value="<?php echo $row['EstadoCategoria']; ?>"/>
+            </div>
+            <div class="colC-4">
+                <span> Preparación Profecional:</span>
+                <input type="text" name="PreparaciónP" value="<?php echo $row['preparacionPersonal']; ?>"/>
+            </div>
+            <div class="colC-3">
+                <span> CURP:</span>
+                <input type="text" name="CURP" value="<?php echo $row['CURP']; ?>"  class="mayusculas"/>
+            </div>
+            <div class="colC-3">
+                <span> RFC:</span>
+                <input type="text" name="RFC" value="<?php echo $row['RFC']; ?>"  class="mayusculas"/>
+            </div>
+            <div class="colC-4">
+                <span> Años de Servicio:</span>
+                <input type="number" name="AnosS" value="<?php echo $row['AñosServico']; ?>"/>
+            </div>
+            <div class="colC-2">
+                <span> Clave Servidor:</span>
+                <input type="text" name="ClaveS" value="<?php echo $row['ClaevServidor']; ?>"/>
+            </div>
+            <div class="colC-3">
+                <span> Número De plaza:</span>
+                <input type="number" name="NumeroP" value="<?php echo $row['NumeroPlaza']; ?>"/>
+            </div>
+            <div class="colC-2">
+                <span> Código Puesto:</span>
+                <input type="number" name="CoddigoPuesto" value="<?php echo $row['CodigoPuesto']; ?>"/>
+            </div>
+            <div class="colC-5">
+                <span> Años De Servicio En La Función:</span>
+                <input type="number" name="AnosSerFUncion" value="<?php echo $row['AñosServicoEnFuncion']; ?>"/>
+            </div>
+            <div class="colC-3">
+                <span> Prepaaración Profecional:</span>
+                <input type="text" name="PreparacionPro" value="<?php echo $row['PreparacionProfecional']; ?>"/>
+            </div>
+            <div class="colC-4">
+                <span> Fecha De Ingreso A La Funcion Actual:</span>
+                <input type="date" name="FechaINgreso" value="<?php echo $row['fechaIngresoFuncionActual']; ?>"/>
+            </div>
+            <!--aqui empieza datos profecionales -->
+            <div class="colC-Complet"><h2>Datos Adscripción</h2></div> 
+            <div class="colC-5">
+                <span>Sede o Lugar De Administración: </span>
+                <input type="text" name="SedeLugarAD" value="<?php echo $row['CedeLugarAdminitracion']; ?>"/>
+            </div>
+            <div class="colC-4">
+                <span> Domicilio:</span>
+                <input type="text" name="Domicilio" value="<?php echo $row['Domicilio']; ?>"/>
+            </div>
+            <div class="colC-3">
+                <span> Localidad o Colonia:</span>
+                <input type="text" name="LocalidadColonia" value="<?php echo $row['LocalidadColonia']; ?>"/>
+            </div>
+            <div class="colC-2">
+                <span> Municipio:</span>
+                <input type="text" name="MunicipioEscuela" value="<?php echo $row['MunicipioEscuela']; ?>"/>
+            </div>
+            <div>
+                <span> CCT:</span>
+                <input type="text" name="CCT" value="<?php echo $row['C_C_T']; ?>"/>
+            </div>
+            <div class="colC-2">
+                <span> Telefono:</span>
+                <input type="tel" name="Telefono" value="<?php echo $row['Telefono']; ?>"/>
+            </div>
+            <div class="colC-4">
+                <span> Correo Oficial:</span>
+                <input type="Email" name="emailInstituto" value="<?php echo $row['CorreoInstituto']; ?>"/>
+            </div>
+            <div class="colC-3">
+                <span> Fecha de Ingreso:</span>
+                <input type="date" name="FechaFuncionA" value="<?php echo $row['FechaIngreso']; ?>"/>
+            </div>
+            <div class="colC-Complet">
+                <input type="submit" value="Modificar Datos" class="btn" />
+            </div>
         <?php 
-            $resultadooa = mysqli_query($conexion,$profea);    
-            while($rowa=mysqli_fetch_assoc($resultadooa)){?>
-                <div class="item">
-                    <span>Sede o Lugar De Administración: </span>
-                    <div class="items"><?php echo $rowa["CedeLugarAdminitracion"];?></div>    
-                </div>
-                <div class="item">
-                    <span> Domicilio:</span>
-                    <div class="items"><?php echo $rowa["Domicilio"];?></div>    
-                </div>
-                <div class="item">
-                    <span> Localidad o Colonia:</span>
-                    <div class="items"><?php echo $rowa["LocalidadColonia"];?></div>    
-                </div>
-                <div class="item">
-                    <span> Municipio:</span>
-                    <div class="items"><?php echo $rowa["Municipio"];?></div>    
-                </div>
-                <div class="item">
-                    <span> CCT:</span>
-                    <div class="items"><?php echo $rowa["C_C_T"];?></div>    
-                </div>
-                <div class="item">
-                    <span> Telefono:</span>
-                    <div class="items"><?php echo $rowa["Telefono"];?></div>    
-                </div>
-                <div class="item">
-                    <span> Correo Oficial:</span>
-                    <div class="items"><?php echo $rowa["CorreoElectronico"];?></div>    
-                </div>
-        <?php } ?>
+            }
+        ?>
     </form>
 </body>
 </html>

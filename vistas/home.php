@@ -27,7 +27,7 @@ include_once 'includes/user_session.php';
                 <div>
                     <p>¡Bienvenido!  <?php echo $user->getNombre();?></p>
                 </div>
-                <ul >
+                <ul>
                     <li>
                             <p id="menu-desplega"><img src="assets/img/iconos/Agregar.png"><span> Agregar Datos</span></p>
                             <div id="menu-I" class="oculta">
