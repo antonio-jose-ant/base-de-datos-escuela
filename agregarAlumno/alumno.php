@@ -25,19 +25,19 @@
                 <div class="colC-Complet">
                     <h2>DATOS DEL ALUMNO:</h2>
                 </div>
-                <div class="colC-4 colRMin-2">
+                <div class="colC-4 colCMin-6">
                     <p> Nombre(s):</p>
                     <input type="text" name="Nombre"/>
                 </div>
-                <div class="colC-3">
+                <div class="colC-3 colCMin-3">
                     <p> Apeido Paterno:</p>
                     <input type="text"  name="ApeidoP"/>
                 </div>
-                <div class="colC-3">
+                <div class="colC-3 colCMin-3">
                     <p> Apeido Materno:</p>
                     <input type="text" name="ApeidoM"/>
                 </div>
-                <div>
+                <div class="colCMin-2">
                     <p> Grado:</p>
                     <select name="Grado">
                         <option>  </option>
@@ -49,7 +49,7 @@
                         <option value="6">6</option>
                     </select>
                 </div>
-                <div>
+                <div class=" colCMin-2">
                     <p> Grupo:</p>
                     <select name="Grupo">
                         <option>  </option> 
@@ -57,7 +57,7 @@
                         <option value="B">B</option>
                     </select>
                 </div>
-                <div class="colC-3 ">
+                <div class="colC-3 colCMin-2">
                     <p> Turno:</p>
                     <select name="Turno">
                         <option>  </option>
@@ -65,47 +65,47 @@
                         <option value="Vespertino">Vespertino</option>
                     </select>
                 </div>
-                <div class="colC-3 ">
+                <div class="colC-3 colCMin-6">
                     <p> CURP:</p>
                     <input type="text" name="CURP"  class="mayusculas"/>
                 </div>
-                <div class="colC-3 ">
+                <div class="colC-3 colCMin-4 ">
                     <p> Fecha de nacimiento:</p>
                     <input type="date" name="Fecha_n"/>
                 </div>
-                <div>
+                <div class=" colCMin-2">
                     <p>Edad:</p>
                     <input type="number" name="edad"/>
                 </div>
-                <div class="colC-4 ">
+                <div class="colC-4 colCMin-6 ">
                     <p> Correo Electronico:</p>
                     <input type="email" name="CorreoAlu"/>
                 </div>
 <!------------------------------------DOMICILIO---------------------------------------------------->
-                <div class="colC-Complet">
+                <div class="colC-Complet ">
                     <h2>DOMICILIO:</h2>
                 </div>
-                <div class="colC-3 ">
+                <div class="colC-3 colCMin-7">
                     <p> Calle:</p>
                     <input type="text" name="Calle"/>
                 </div>
-                <div>
+                <div class="colCMin-2">
                     <p> No:</p>
                     <input type="number"  name="No"/>
                 </div>
-                <div>
+                <div class=" colCMin-3">
                     <p> C.P:</p>
                     <input type="text" name="CP"/>
                 </div>
-                <div class="colC-3 ">
+                <div class="colC-3 colCMin-5 ">
                     <p> ENTRE CALLE</p>
                     <input type="text" name="Calle1"/>
                 </div>
-                <div class="colC-3 ">
+                <div class="colC-3  colCMin-5">
                     <p> Y CALLE</p>
                     <input type="text" name="Calle2"/>
                 </div>
-                <div class="colC-6 colR-2 ">
+                <div class="colC-6 colR-2  ">
                     <p>OTRA REFERENCIA</p>
                     <textarea name="referencia"> </textarea>
                 </div>
@@ -117,7 +117,7 @@
                     <p>MUNICIPIO</p>
                     <input type="text" name="Municipio"/>
                 </div>
-                <div class="colC-3 ">
+                <div class="colC-3 colCMin-6">
                     <p>TELEFONO DE CASA</p>
                     <input type="tel" name="TelCasa"/>
                 </div>
