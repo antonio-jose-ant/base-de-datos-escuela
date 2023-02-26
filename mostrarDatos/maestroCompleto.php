@@ -1,18 +1,12 @@
 <?php
         include '../includes/conexion-BD.php';
-
-
-        $nomina=$_POST['nomina'];
-        $CURP=$_POST['curpProfe'];
-        $RFC=$_POST['rfcProfe'];
+        $nomina=$_POST['buscaP'];
         $conMaestro ="SELECT * FROM profesor 
         inner JOIN datosadministracion 
         on profesor.CURP=datosadministracion.CURP
         inner join datospersonales 
         on profesor.RFC=datospersonales.RFC 
-        where profesor.nomina='$nomina' 
-        and  datosadministracion.CURP= '$CURP'
-        and  datospersonales.RFC= '$RFC'";
+        where profesor.nomina='$nomina'";
 
         include_once '../includes/user.php';
         include_once '../includes/user_session.php';
@@ -31,7 +25,8 @@
     <script src="../assets/js/jquery-1.10.2.js"></script>
     <script src="../assets/js/jquery-1.9.1.js"></script>
     <script src="../assets/js/jquery-ui-1.11.0/jquery-ui.js"></script>
-    <title>escuela</title>
+    <script src="../assets/js/mainad.js"></script>
+    <title>escuela</title> 
 </head>
 <body>
     <form action="./modificar/modificarM.php" method="post" name="form" class="form">
@@ -116,11 +111,11 @@
             </div>
             <div class="colC-3">
                 <span> CURP:</span>
-                <input type="text" name="CURP" value="<?php echo $row['CURP']; ?>"  class="mayusculas"/>
+                <input type="text" name="CURP" value="<?php echo $row['CURP']; ?>"  class="mayusculas" disabled/>
             </div>
             <div class="colC-3">
                 <span> RFC:</span>
-                <input type="text" name="RFC" value="<?php echo $row['RFC']; ?>"  class="mayusculas"/>
+                <input type="text" name="RFC" value="<?php echo $row['RFC']; ?>"  class="mayusculas" disabled/>
             </div>
             <div class="colC-4">
                 <span> Años de Servicio:</span>
@@ -148,7 +143,7 @@
             </div>
             <div class="colC-4">
                 <span> Fecha De Ingreso A La Funcion Actual:</span>
-                <input type="date" name="FechaINgreso" value="<?php echo $row['fechaIngresoFuncionActual']; ?>"/>
+                <input type="text" id="date2" name="FechaINgreso" value="<?php echo $row['fechaIngresoFuncionActual']; ?>"/>
             </div>
             <!--aqui empieza datos profecionales -->
             <div class="colC-Complet"><h2>Datos Adscripción</h2></div> 
@@ -182,10 +177,16 @@
             </div>
             <div class="colC-3">
                 <span> Fecha de Ingreso:</span>
-                <input type="date" name="FechaFuncionA" value="<?php echo $row['FechaIngreso']; ?>"/>
+                <input type="text" id="date3" name="FechaFuncionA" value="<?php echo $row['FechaIngreso']; ?>"/>
             </div>
-            <div class="colC-Complet">
-                <input type="submit" value="Modificar Datos" class="btn" />
+            <div class="colC-4">
+                <input type="submit" value="PDF" class="btn btnPDF" />
+            </div>
+            <div class="colC-4">
+                <input type="submit" value="Modificar Datos" class="btn btnModificar" />
+            </div>
+            <div class="colC-4">
+                <input type="submit" value="Eliminar Datos" class="btn btnEliminar" />
             </div>
         <?php 
             }

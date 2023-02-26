@@ -16,6 +16,8 @@
     <script src="../assets/js/jquery-1.10.2.js"></script>
     <script src="../assets/js/jquery-1.9.1.js"></script>
     <script src="../assets/js/jquery-ui-1.11.0/jquery-ui.js"></script>
+    <script src="../assets/js/mainad.js"></script>
+
     <title>escuela</title>
 </head>
 <body>
@@ -129,7 +131,7 @@
         </div>
         <div class="colC-4">
             <span> Fecha De Ingreso A La Funcion Actual:</span>
-            <input type="date" name="FechaINgreso"/>
+            <input type="text" id="date2" name="FechaINgreso"/>
         </div>
          <!--aqui empieza datos profecionales -->
         <div class="colC-Complet"><h2>Datos Adscripción</h2></div> 
@@ -163,7 +165,7 @@
         </div>
         <div class="colC-3">
             <span> Fecha de Ingreso:</span>
-            <input type="date" name="FechaFuncionA"/>
+            <input type="text" id="date3" name="FechaFuncionA"/>
         </div>
         <div class="colC-Complet">
             <input type="submit" value="Guardar Datos" class="btn" />
@@ -174,6 +176,6 @@
 <?php
 }else{
     //echo "login";
-            echo "<script> alert('se a registrado con exito'); window.location='/escuela/agregarMaestro/maestros.php'</script>";
+    echo "<script> alert('se a registrado con exito'); window.location='/test/base-de-datos-escuela/'</script>";
 }
 ?>

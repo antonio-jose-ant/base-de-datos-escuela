@@ -99,6 +99,34 @@ input:focus,select:focus{
     background-origin:content-box;
     background-size: contain;
 }
+.btnEliminar{
+    background-color: var(--rojo) !important;
+    background-image: url(../img/iconos/borrar.png);
+    background-position: 30%;
+    cursor: pointer;
+    transition-duration: .5s;
+}
+.btnAgregar{
+    background-color: var(--azul2) !important;
+    background-image: url(../img/iconos/agregar.png);
+    background-position: 30%;
+    cursor: pointer;
+    transition-duration: .5s;
+}
+.btnModificar{
+    background-color: var(--azul2) !important;
+    background-image: url(../img/iconos/modificar.png);
+    background-position: 30%;
+    cursor: pointer;
+    transition-duration: .5s;
+}
+.btnPDF{
+    background-color: var(--naranja) !important;
+    background-image: url(../img/iconos/pdf.png);
+    background-position: 30%;
+    cursor: pointer;
+    transition-duration: .5s;
+}
 .btn:focus{
     background-color: var(--azul2) !important;
 }
@@ -311,6 +339,9 @@ input:focus,select:focus{
 .colR-2{
     grid-row: span 2;
 }
+.colR-3{
+    grid-row: span 3;
+}
 .colC-2{
     grid-column: span 2;
 }
@@ -333,7 +364,6 @@ input:focus,select:focus{
     grid-column: span 7;
 }
 /***********contenido grids fin***********/
-/***********alumno**************/
 .row-Grid{
     display: grid;
     flex-direction: row;
@@ -356,7 +386,7 @@ input:focus,select:focus{
 }
 /********tablas**********/
 
-/********tablas fin**********/
+
 .title{
     background-color: var(--azul2);
     border-right: solid 1px var(--blanco2);
@@ -414,7 +444,7 @@ input:focus,select:focus{
 }
 
 .profesor{
-    grid-template: 50px/32px 68px 138px 85px 156px 118px auto;
+    grid-template: 60px/32px 68px 138px 85px 156px 118px auto;
     align-items: center;
 }
 .profesorContenido{
@@ -425,7 +455,11 @@ input:focus,select:focus{
 .profesorContenido p{
     font-size: 16px;/*tamaño de letra para todos los p que tengan la clase profesorContenido*/
 }
-/***********alumno fin**************/
+.busquedaP{
+    grid-template: 50px/repeat(3,1fr);
+    align-items: center;
+}
+/********tablas fin**********/
 /*************@media*************/
 @media (max-width: 600px) {
     input[type="text"],input[type="password"]{
@@ -541,6 +575,18 @@ input:focus,select:focus{
     /********adaptacion del formulario a pantallas pequeñas fin**********/
 }
 
+.ui-datepicker {
+    background: var(--gris);
+}
+.ui-widget {
 
-/***********a qui quiero hacer tamños  //brendaaa*********/
-/***********a qui quiero hacer tamños  //brendaaa fin *********/
+}
+.ui-widget-content {
+
+}
+.ui-helper-clearfix {
+
+}
+.ui-corner-all{
+
+}

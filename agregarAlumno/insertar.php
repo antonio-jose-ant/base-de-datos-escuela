@@ -193,9 +193,9 @@
         $resultadoBDGenerales=mysqli_query($conexion,$Datos_generalesInsert);
     }
     if($resultadoBDAlu){
-        echo "<script> alert('se a registrado con exito'); window.location='/escuela/agregarAlumno/alumno.php'</script>";
+        echo "<script> alert('se a registrado con exito'); window.location='/base-de-datos-escuela/agregarAlumno/alumno.php'</script>";
     }else{
-        echo "<script> alert('no se registro'); window.location='/escuela/agregarAlumno/alumno.php'</script>";
+        echo "<script> alert('no se registro');</script>";
         echo mysqli_errno($conexion) . ": " . mysqli_error($conexion). "\n";
     }
 ?>

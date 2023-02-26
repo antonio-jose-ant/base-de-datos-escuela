@@ -1,6 +1,8 @@
 <?php
-    include '../includes/conexion-BD.php';
+    include '../../includes/conexion-BD.php';
         #a qui comienza datos profecionales 
+        $Buscar =$_POST['Buscar'];
+        $Eliminar =$_POST['Eliminar'];
     $maestrosDatos = array(
          'nomina'=> (!empty($_POST['nomina'])) ? $_POST['nomina'] : "",
          'nombre'=> (!empty(ucwords($_POST['nombre']))) ? $_POST['nombre'] : "",
@@ -22,7 +24,6 @@
         'Categoria'=>  (!empty($_POST['CategoriaProfesor'])) ? $_POST['CategoriaProfesor'] : "",
         'EstadCategoria'=>  (!empty($_POST['EstadCategoria'])) ? $_POST['EstadCategoria'] : "",
         'AnosS'=>  (!empty($_POST['AnosS'])) ? $_POST['AnosS'] : "",
-        
         'PreparaciónPa'=>  (!empty($_POST['PreparaciónP'])) ? $_POST['PreparaciónP'] : "",
         'ClaveS'=>  (!empty($_POST['ClaveS'])) ? $_POST['ClaveS'] : "",
         'FechaINgreso'=>  (!empty($_POST['FechaINgreso'])) ? $_POST['FechaINgreso'] : "",
@@ -43,58 +44,61 @@
         'Telefono'=> (!empty($_POST['Telefono'])) ? $_POST['Telefono'] : "",
         'EmailInstituto'=> (!empty($_POST['emailInstituto'])) ? $_POST['emailInstituto'] : ""
     );
-    $insert = true;
-    if($insert){
+
 /******************base datos maestrosDatos***********************/
         /******************base datos datospersonales***********************/
-        $insertarprof="INSERT INTO DatosPersonales (RFC,categoria,EstadoCategoria,AñosServico,AñosServicoEnFuncion,preparacionPersonal,ClaevServidor,FechaIngreso,NumeroPlaza,fechaIngresoFuncionActual,CodigoPuesto,PreparacionProfecional)
-        values ('".$datospersonales['RFC']."'
-        ,'".$datospersonales['Categoria']."'
-        ,'".$datospersonales['EstadCategoria']."'
-        ,'".$datospersonales['AnosS']."'
-        ,'".$datospersonales['AnosSerFUnciona']."'
-        ,'".$datospersonales['PreparaciónPa']."'
-        ,'".$datospersonales['ClaveS']."'
-        ,'".$datospersonales['FechaINgreso']."'
-        ,'".$datospersonales['NumeroPa']."'
-        ,'".$datospersonales['FechaFuncionA']."'
-        ,'".$datospersonales['CoddigoPuesto']."'
-        ,'".$datospersonales['PreparacionPro']."')";
-        $resultadoo=mysqli_query($conexion,$insertarprof);
-        /**********base datos datosadministracion***************/
-        $insertaadmin="INSERT INTO datosadministracion (CURP,CedeLugarAdminitracion,Domicilio,LocalidadColonia,MunicipioEscuela,C_C_T,Telefono,CorreoInstituto)
-        values ('".$datosadministracion['CURP']."'
-        ,'".$datosadministracion['SedeLugarAD']."'
-        ,'".$datosadministracion['Domicilio']."'
-        ,'".$datosadministracion['LocalidadColonia']."'
-        ,'".$datosadministracion['MunicipioEscuela']."'
-        ,'".$datosadministracion['CCT']."'
-        ,'".$datosadministracion['Telefono']."'
-        ,'".$datosadministracion['EmailInstituto']."')";
-        $resultadooo=mysqli_query($conexion,$insertaadmin);
-        $insertar="INSERT INTO profesor (nomina,nombre,apellidoP,apellidoM,localidadOcolonia,Direccion,municipio,CP,telefonoPersonal,telefonoCasa,correoElectronico,edad,EstadoCivil,redSocial,CURP,RFC) 
-        values ('".$maestrosDatos['nomina']."'
-        ,'".$maestrosDatos['nombre']."'
-        ,'".$maestrosDatos['apellidoP']."'
-        ,'".$maestrosDatos['apellidoM']."'
-        ,'".$maestrosDatos['localidadOcolonia']."'
-        ,'".$maestrosDatos['Direccion']."'
-        ,'".$maestrosDatos['municipio']."'
-        ,'".$maestrosDatos['CP']."'
-        ,'".$maestrosDatos['telefonoPersonal']."'
-        ,'".$maestrosDatos['telefonoCasa']."'
-        ,'".$maestrosDatos['correoElectronico']."'
-        ,'".$maestrosDatos['edad']."'
-        ,'".$maestrosDatos['EstadoCivil']."'
-        ,'".$maestrosDatos['redSocial']."'
-        ,'".$datosadministracion['CURP']."'
-        ,'".$datospersonales['RFC']."')";
-        $resultado=mysqli_query($conexion,$insertar);
-    }
+        $insertarprof=" 
+        datospersonales.categoria='".$datospersonales['RFC']."'
+        ,datospersonales.categoria='".$datospersonales['Categoria']."'
+        ,datospersonales.EstadoCategoria='".$datospersonales['EstadCategoria']."'
+        ,datospersonales.AñosServico='".$datospersonales['AnosS']."'
+        ,datospersonales.AñosServicoEnFuncion='".$datospersonales['AnosSerFUnciona']."'
+        ,datospersonales.preparacionPersonal='".$datospersonales['PreparaciónPa']."'
+        ,datospersonales.ClaevServidor='".$datospersonales['ClaveS']."'
+        ,datospersonales.FechaIngreso='".$datospersonales['FechaINgreso']."'
+        ,datospersonales.NumeroPlaza='".$datospersonales['NumeroPa']."'
+        ,datospersonales.fechaIngresoFuncionActual='".$datospersonales['FechaFuncionA']."'
+        ,datospersonales.CodigoPuesto='".$datospersonales['CoddigoPuesto']."'
+        ,datospersonales.PreparacionProfecional='".$datospersonales['PreparacionPro']."' ";
+        
+        $insertaadmin=" 
+        ,datosadministracion.CedeLugarAdminitracion='".$datosadministracion['CURP']."'
+        ,datosadministracion.CedeLugarAdminitracion='".$datosadministracion['SedeLugarAD']."'
+        ,datosadministracion.Domicilio='".$datosadministracion['Domicilio']."'
+        ,datosadministracion.LocalidadColonia='".$datosadministracion['LocalidadColonia']."'
+        ,datosadministracion.MunicipioEscuela='".$datosadministracion['MunicipioEscuela']."'
+        ,datosadministracion.C_C_T='".$datosadministracion['CCT']."'
+        ,datosadministracion.Telefono='".$datosadministracion['Telefono']."'
+        ,datosadministracion.CorreoInstituto='".$datosadministracion['EmailInstituto']."'";
+        
+        $insertar="
+        ,profesor.nomina='".$maestrosDatos['nomina']."'
+        ,profesor.nombre='".$maestrosDatos['nombre']."'
+        ,profesor.apellidoP='".$maestrosDatos['apellidoP']."'
+        ,profesor.apellidoM='".$maestrosDatos['apellidoM']."'
+        ,profesor.localidadOcolonia='".$maestrosDatos['localidadOcolonia']."'
+        ,profesor.Direccion='".$maestrosDatos['Direccion']."'
+        ,profesor.municipio='".$maestrosDatos['municipio']."'
+        ,profesor.CP='".$maestrosDatos['CP']."'
+        ,profesor.telefonoPersonal='".$maestrosDatos['telefonoPersonal']."'
+        ,profesor.telefonoCasa='".$maestrosDatos['telefonoCasa']."'
+        ,profesor.correoElectronico='".$maestrosDatos['correoElectronico']."'
+        ,profesor.edad='".$maestrosDatos['edad']."'
+        ,profesor.EstadoCivil='".$maestrosDatos['EstadoCivil']."'
+        ,profesor.redSocial ='".$maestrosDatos['redSocial']."'
+        ,datosadministracion.CedeLugarAdminitracion='".$datosadministracion['CURP']."'
+        ,datospersonales.categoria='".$datospersonales['RFC']."'
+        ";
+        $queryUpdate="UPDATE profesor
+        inner JOIN datosadministracion on profesor.CURP=datosadministracion.CURP
+        inner JOIN datospersonales on profesor.RFC=datospersonales.RFC
+        set ".$insertarprof.$insertaadmin.$insertar." WHERE datospersonales.RFC='".$datospersonales['RFC']."'";
+        
+        $resultado=mysqli_query($conexion,$queryUpdate);
+
     if($resultado){
-        echo "<script> alert('se a registrado con exito'); window.location='/escuela/agregarMaestro/maestros.php'</script>";
+        echo "<script> alert('se a registrado con exito');</script>";
     }else{
-        echo "<script> alert('no se registro'); window.location='/escuela/agregarMaestro/maestros.php'</script>";
-        echo mysqli_errno($conexion) . ": " . mysqli_error($conexion). "\n";
+        echo $queryUpdate;
     }
 ?> 

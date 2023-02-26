@@ -17,6 +17,7 @@
     <script src="../assets/js/jquery-1.10.2.js"></script>
     <script src="../assets/js/jquery-1.9.1.js"></script>
     <script src="../assets/js/jquery-ui-1.11.0/jquery-ui.js"></script>
+    <script src="../assets/js/mainad.js"></script>
 </head>
     <body> 
         <div>   
@@ -71,7 +72,7 @@
                 </div>
                 <div class="colC-3 colCMin-4 ">
                     <p> Fecha de nacimiento:</p>
-                    <input type="date" name="Fecha_n"/>
+                    <input type="text" id="date1" name="Fecha_n"/>
                 </div>
                 <div class=" colCMin-2">
                     <p>Edad:</p>
@@ -337,6 +338,6 @@
 <?php
 }else{
     //echo "login";
-    echo "<script> alert('no existe un inicio de secion'); window.location='/escuela'</script>";
+    echo "<script> alert('no existe un inicio de secion'); window.location='/base-de-datos-escuela'</script>";
 }
 ?>

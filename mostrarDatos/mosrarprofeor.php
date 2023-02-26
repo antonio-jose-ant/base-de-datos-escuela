@@ -7,6 +7,8 @@
         if(isset($_SESSION['user'])){
             //echo "hay sesion";
         $user->setUser($userSession->getCurrentUser());
+        
+        
         $consultaMaestro = "SELECT 
         profesor.nomina,
         profesor.nombre,
@@ -33,23 +35,22 @@
 </head>
 <body>
     <form class="tabla profesor" action="maestroCompleto.php" method="post"  name="form">
-        <div class="colC-Complet">
-            <!--<form class="" action="maestroCompleto.php" method="post"  name="form">
-                <div>
-                    <p>ingresa nomina:</p>
-                    <input type="text" name="profe"/>
-                </div>
-                <div>
-                    <p>ingresa RFC</p>
-                    <input type="text" name="datospersonales"/>
-                </div>
-                <div>
-                    <p>ingresa CURP</p>
-                    <input type="text" name="datosadministracion"/>
-                </div>
-                    
-            </form>-->
-            <input type="submit" value="buscar" class="btn">
+        <div class="colR-3 colC-Complet tabla busquedaP">
+            <div>
+                <p>Nombre:</p>
+                <input type="text" name="profe"/>
+            </div>
+            <div>
+                <p>ingresa RFC</p>
+                <input type="text" name="datospersonales"/>
+            </div>
+            <div>
+                <p>ingresa CURP</p>
+                <input type="text" name="datosadministracion"/>
+            </div>
+            <div class="colC-Complet">
+                <input type="submit" value="Buscar" name="Buscar"  class="btn">
+            </div>
         </div>
         <div class="title"><p>Sel </p></div> 
         <div class="title"><p>Nomina </p></div>    

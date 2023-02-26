@@ -19,15 +19,15 @@ create table DatosPersonales(
     AñosServicoEnFuncion int (2), 
     preparacionPersonal varchar(20), 
     ClaevServidor varchar(30), 
-    FechaIngreso date, 
+    FechaIngreso varchar(10), 
     NumeroPlaza int(60), 
-    fechaIngresoFuncionActual date, 
+    fechaIngresoFuncionActual varchar(10), 
     CodigoPuesto varchar(30),
     PreparacionProfecional varchar(100), 
     primary key (RFC)
 );
 create table usuario(
-    IdUsuario INT NOT NULL AUTO_INCREMENT,
+    IdUsuario INT NOT NULL ,
     Nombre varchar(50), 
     UserName varchar(25),
     password varchar(50), 
