@@ -65,6 +65,7 @@
             break;
         }
     }
+    
     if($insert){
 /******************base datos maestrosDatos***********************/
         /******************base datos datospersonales***********************/
