@@ -21,7 +21,7 @@
     <title>escuela</title>
 </head>
 <body>
-    <form action="insertarM.php" method="post" name="form" class="form">
+    <form action="./insertarM.php" method="post" name="form" class="form">
         <div class="colC-Complet">
             <h2>Datos personales</h2>
         </div>
@@ -75,7 +75,16 @@
         </div>
         <div class="colC-2">
             <span> Estado Civil:</span>
-            <input type="text" name="estadoC"/>
+            <select name="estadoC">
+                        <option></option>
+                        <option value="Casado">Casado(a)</option>
+                        <option value="Conviviente">Conviviente</option>
+                        <option value="Anulado">Anulado(a)</option>
+                        <option value="Separado de unión legal">Separado de unión legal</option>
+                        <option value="Separado_union">Separado(a) de unión de hecho</option>
+                        <option value="Viudo">Viudo(a)</option>
+                        <option value="Soltero">Soltero(a)</option>
+                    </select>
         </div>
         <div class="colC-7">
             <span> Red Social:</span>

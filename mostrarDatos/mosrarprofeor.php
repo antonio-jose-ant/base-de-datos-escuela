@@ -34,7 +34,7 @@
     <title>Agregar</title>
 </head>
 <body>
-    <form class="tabla profesor" action="maestroCompleto.php" method="post"  name="form">
+    <form class="tabla profesor" action="maestroCompletoP.php" method="post"  name="form">
         <div class="colR-3 colC-Complet tabla busquedaP">
             <div>
                 <p>Nombre:</p>
@@ -83,6 +83,6 @@
 <?php
 }else{
     //echo "login";
-    echo "<script> alert('no existe un inicio de secion'); window.location='/escuela'</script>";
+    echo "<script> alert('no existe un inicio de secion'); window.location='/test/base-de-datos-escuela/mostrarDatos/maestroCompletoP'</script>";
 }
 ?>

@@ -113,7 +113,7 @@
         $resultado=mysqli_query($conexion,$insertar);
     }
     if($resultado){
-        echo "<script> alert('se a registrado con exito'); window.location='/base-de-datos-escuela/agregarMaestro/maestros.php'</script>";
+        echo "<script> alert('se a registrado con exito'); window.location='/test/base-de-datos-escuela/agregarMaestro/maestros.php'</script>";
     }else{
         echo "<script> alert('no se registro');</script>";
     }

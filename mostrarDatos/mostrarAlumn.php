@@ -1,6 +1,7 @@
 <?php
         include '../includes/conexion-BD.php';
-        $usuarios ="SELECT * FROM datos_alumno";
+        $usuarios ="SELECT * FROM datos_alumno 
+        inner join datos_medicos on datos_alumno.CURP_alu=datos_medicos.CURPAlu";
         include_once '../includes/user.php';
         include_once '../includes/user_session.php';
         $userSession = new UserSession();
@@ -21,40 +22,53 @@
     <title>Agregar</title>
 </head>
 <body>
-
-        <div>
+<form class="tabla alumno" action="maestroCompletoP.php" method="post"  name="form">
+        <div class="colR-3 colC-Complet tabla busquedaP">
             <div>
-                <div><p>Matricula</p></div>    
-                <div><p>nombre Alumno</p></div>    
-                <div><p>Apellido Paterno</p></div>    
-                <div><p>Apellido Materno</p></div>    
-                <div><p>Grado</p></div>    
-                <div><p>Grupo</p></div>    
-                <div><p>Turno</p></div>    
-                <div><p>Telefono</p></div>    
-                <div><p>Domicilio</p></div>    
-                <div><p>CURP</p></div>    
-                <div><p>C_P</p></div>    
-                <div><p>Edad</p></div>    
-                    <?php $resultado = mysqli_query($conexion,$usuarios);
-                    while($row=mysqli_fetch_assoc($resultado)){
-                    
-                    ?>
-                        <div><?php echo $row["Nombre_alu"];?></div>    
-                        <div><?php echo $row["nombreAlumno"];?></div>    
-                        <div><?php echo $row["ApellidoPaterno"];?></div>    
-                        <div><?php echo $row["ApellidoMaterno"];?></div>    
-                        <div><?php echo $row["Grado"];?></div>    
-                        <div><?php echo $row["Grupo"];?></div>    
-                        <div><?php echo $row["Turno"];?></div>    
-                        <div><?php echo $row["Telefono"];?></div>
-                        <div><?php echo $row["Domicilio"];?></div>    
-                        <div><?php echo $row["CURP"];?></div>    
-                        <div><?php echo $row["C_P"];?></div>    
-                        <div><?php echo $row["Edad"];?></div>        
-                    <?php }?>
-                </div>
-
+                <p>Nombre:</p>
+                <input type="text" name="profe"/>
+            </div>
+            <div>
+                <p>ingresa RFC</p>
+                <input type="text" name="datospersonales"/>
+            </div>
+            <div>
+                <p>ingresa CURP</p>
+                <input type="text" name="datosadministracion"/>
+            </div>
+            <div class="colC-Complet">
+                <input type="submit" value="Buscar" name="Buscar"  class="btn">
+            </div>
+        </div>
+    <div class="title"><p>Sel </p></div>     
+    <div class="title"><p>Matricula</p></div>    
+    <div class="title"><p>Nombre</p></div>   
+    <div class="title"><p>Grado</p></div>    
+    <div class="title"><p>Grupo</p></div>    
+    <div class="title"><p>Turno</p></div>    
+    <div class="title"><p>Telefono</p></div>
+    <div class="title"><p>Tipo De Sangre</p></div>
+    <div class="contenidoT colC-Complet">
+        <?php $resultado = mysqli_query($conexion,$usuarios);
+        $nrow=0;
+        while($row=mysqli_fetch_assoc($resultado)){
+        
+        ?>
+            <?php echo "<div class='alumno alumnoContenido ".($nrow++%2?'even':'odd')."'>"?>
+            <?php echo "<div> <input name='buscaP' value='".$row['matricula']."' type='radio'></div>";?>
+            <?php echo "<div><p>".$row['matricula']."  <input name='nombre' value='".$row['nomina']."' type='hidden'> </p></div>";?>
+            <?php echo "<div><p>".$row["Nombre_alu"]." ".$row["Apellido_p"]." ".$row["Apellido_m"]."</p></div>";?>
+            <?php echo "<div><p>".$row["grado"]."</p></div>";?>
+            <?php echo "<div><p>".$row["grupo"]."</p></div>";?>
+            <?php echo "<div><p>".$row["turno"]."</p></div>";?>
+            <?php echo "<div><p>".$row["Tel_emergencia"]."</p></div>";?>
+            <?php echo "<div><p>".$row["Tipo_sangre"]."</p></div>";?>
+            <?php echo "</div>"?>      
+        <?php }?>
+    </div>
+    <div class="colC-Complet footerTable"><p>Numero De Alumnos: <?php echo $nrow;  ?></p></div>  
+    </div>
+</form>
 </body>
 </html>
 <?php

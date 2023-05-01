@@ -1,9 +1,12 @@
 <?php
 class profesoresDatos{
-    public $maestrosDatos = array();
-    public $datospersonales = array();
-    public $datosadministracion = array();
-    public function __construct($maestrosDatos, $datospersonales,$datosadministracion){
+    public  $maestrosDatos = array();
+    public  $datospersonales = array();
+    public  $datosadministracion = array();
+    public function guardarDatos($datos) {
+        $this->maestrosDatos[] = $datos;
+        $this->datospersonales[]= $datos;
+        $this->datosadministracion[]= $datos;
     }
 }
 class AlumnosDatos{

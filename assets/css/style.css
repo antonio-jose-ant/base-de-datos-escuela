@@ -89,43 +89,35 @@ input:focus,select:focus{
 }
 .btn{
     width: auto;
-    height: 30px;
+    height: 38px;
     background-color: var(--azul);
     border: solid 2px var(--azul);
     color: var(--blanco2);
+    padding: 5px 5px 5px 10px;
     border-radius: 5px;
     background-repeat: no-repeat;
     background-position: left;
-    background-origin:content-box;
-    background-size: contain;
+    cursor: pointer;
+    transition-duration: .5s;
+    background-origin: content-box;
+    background-size: 28px;
 }
 .btnEliminar{
     background-color: var(--rojo) !important;
-    background-image: url(../img/iconos/borrar.png);
-    background-position: 30%;
-    cursor: pointer;
-    transition-duration: .5s;
+    background-image: url(../img/iconos/eliminar.png);
+
 }
 .btnAgregar{
     background-color: var(--azul2) !important;
     background-image: url(../img/iconos/agregar.png);
-    background-position: 30%;
-    cursor: pointer;
-    transition-duration: .5s;
 }
 .btnModificar{
     background-color: var(--azul2) !important;
     background-image: url(../img/iconos/modificar.png);
-    background-position: 30%;
-    cursor: pointer;
-    transition-duration: .5s;
 }
 .btnPDF{
     background-color: var(--naranja) !important;
     background-image: url(../img/iconos/pdf.png);
-    background-position: 30%;
-    cursor: pointer;
-    transition-duration: .5s;
 }
 .btn:focus{
     background-color: var(--azul2) !important;
@@ -390,7 +382,7 @@ input:focus,select:focus{
 .title{
     background-color: var(--azul2);
     border-right: solid 1px var(--blanco2);
-    height: 100%;
+    height: 60px;
     width: calc(100% - 1px);
     text-align: center;
     display: flex;
@@ -424,6 +416,7 @@ input:focus,select:focus{
     border-left: 1px solid var(--gris);
     height: 100%;
     width: auto;
+    text-align: center;
 }
 .odd{
     background-color: var(--gris);
@@ -435,12 +428,26 @@ input:focus,select:focus{
     border-left: 1px solid var(--blanco2);
     height: 100%;
     width: auto;
+    text-align: center;
 }
 
 .contenidoT{
     max-height: 450px;
     overflow: auto;
     width: 100%;
+}
+
+.alumno{
+    grid-template: 60px/32px 121px auto 53px 53px 75px 97px 126px;
+    align-items: center;
+}
+.alumnoContenido{
+    display: grid;
+    width: 100%;
+    height: auto;
+}
+.alumnoContenido p{
+    font-size: 16px;/*tamaño de letra para todos los p que tengan la clase profesorContenido*/
 }
 
 .profesor{

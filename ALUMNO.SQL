@@ -3,18 +3,18 @@ create table Datos_Alumno(
     Nombre_alu varchar(25),
     Apellido_p varchar(25),
     Apellido_m varchar(25),
-    CURP_alu varchar(18),
+    CURPAlu varchar(18),
     Fecha_n_alu DATE, 
-    Edad_alu int(2), 
+    Edad_alu int(3), 
     Correo_alu varchar(50),
-    grado int(1),
-    grupo char(1),
+    grado int(2),
+    grupo char(2),
     turno varchar(12),
     CURP_tutor1 varchar(18),
     CURP_tutor2 varchar(18),
     PRIMARY key (matricula),
     FOREIGN key (CURP_tutor1) REFERENCES tutor1 (CURP_tutor1),
-    FOREIGN key (CURP_alu)  REFERENCES datos_medicos(CURPAlu),
+    FOREIGN key (CURPAlu)  REFERENCES datos_medicos(CURPAlu),
     FOREIGN key (CURP_tutor2) REFERENCES tutor2 (CURP_tutor2)
 );
 

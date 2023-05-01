@@ -6,8 +6,6 @@ function desplegar1() {
     menu_desplega.addEventListener('click',mostrar);
     var menu_desplega2=document.getElementById('menu-desplega2');
     menu_desplega2.addEventListener('click',mostrar2);
-    var menu_desplega2=document.getElementById('menu-desplega3');
-    menu_desplega2.addEventListener('click',mostrar3);
     let menu_I=document.getElementById('menu-I');
     let menu_II=document.getElementById('menu-II');
     let menu_III=document.getElementById('menu-III');
@@ -27,14 +25,6 @@ function desplegar1() {
         } else{
             menu_II.className = "deplegado";
         }
-    }
-    function mostrar3(){
-        if (menu_III.className == "deplegado") {
-            menu_III.className = "oculta";
-        } else{
-            menu_III.className = "deplegado";
-        }
-        
     }
     function with700(){
         let  menu_contenedor=document.getElementById('menu-contenedor');

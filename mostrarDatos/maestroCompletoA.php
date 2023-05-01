@@ -86,7 +86,7 @@
                 <div class="colC-Complet ">
                     <h2>DOMICILIO:</h2>
                 </div>
-                <div class="colC-3 colCMin-7"> 
+                <div class="colC-3 colCMin-7">
                     <p> Calle:</p>
                     <input type="text" name="Calle"/>
                 </div>

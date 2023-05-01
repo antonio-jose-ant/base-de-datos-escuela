@@ -78,7 +78,7 @@
                 <input type="tel" name="telCel" value="<?php echo $row['telefonoCasa']; ?>"/>
             </div>
             <div class="colC-5">
-                <span> Correo Electrónico:</span>
+               <span> Correo Electrónico:</span>
                 <input type="Email" name="emailpersonal" value="<?php echo $row['correoElectronico']; ?>"/>
             </div>
             <div>
@@ -111,15 +111,17 @@
             </div>
             <div class="colC-3">
                 <span> CURP:</span>
-                <input type="text" name="CURP" value="<?php echo $row['CURP']; ?>"  class="mayusculas" disabled/>
+                <input type="hidden" name="CURP" value="<?php echo $row['CURP']; ?>"  class="mayusculas"/>
+                <p  class="mayusculas"><?php echo $row['CURP']; ?></p>
             </div>
             <div class="colC-3">
                 <span> RFC:</span>
-                <input type="text" name="RFC" value="<?php echo $row['RFC']; ?>"  class="mayusculas" disabled/>
+                <input type="hidden" name="RFC" value="<?php echo $row['RFC']; ?>"  class="mayusculas"/>
+                <p  class="mayusculas"><?php echo $row['RFC']; ?></p>
             </div>
             <div class="colC-4">
                 <span> Años de Servicio:</span>
-                <input type="number" name="AnosS" value="<?php echo $row['AñosServico']; ?>"/>
+                <input  type="text" name="AnosS" value="<?php echo $row['AñosServico']; ?>"/>
             </div>
             <div class="colC-2">
                 <span> Clave Servidor:</span>
@@ -180,13 +182,14 @@
                 <input type="text" id="date3" name="FechaFuncionA" value="<?php echo $row['FechaIngreso']; ?>"/>
             </div>
             <div class="colC-4">
-                <input type="submit" value="PDF" class="btn btnPDF" />
+                <input type="submit" name="PDF" value="PDF" class="btn btnPDF" />
+    
             </div>
             <div class="colC-4">
-                <input type="submit" value="Modificar Datos" class="btn btnModificar" />
+                <input type="submit" name="Modificar" value="Modificar Datos" class="btn btnModificar" />
             </div>
             <div class="colC-4">
-                <input type="submit" value="Eliminar Datos" class="btn btnEliminar" />
+                <input type="submit" name="Eliminar" value="Eliminar Datos" class="btn btnEliminar" />
             </div>
         <?php 
             }
@@ -197,6 +200,6 @@
 <?php
 }else{
     //echo "login";
-    echo "<script> alert('no existe un inicio de secion'); window.location='/escuela'</script>";
+    echo "<script> alert('no existe un inicio de secion'); window.location='/test/base-de-datos-escuela/maestroCompletoP'</script>";
 }
 ?>

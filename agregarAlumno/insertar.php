@@ -1,7 +1,7 @@
 <?php
     include '../includes/conexion-BD.php';
     $insert = true;
-    $Datos_Alumno =array( 
+    $Datos_Alumno =array(  
         'matricula'=>strtoupper(substr($_POST['Nombre'],0,3).substr($_POST['ApeidoP'],0,2).substr($_POST['ApeidoM'],0,2).substr($_POST['Grado'],0,1).substr($_POST['Grupo'],0,1).substr($_POST['Turno'],0,1).substr($_POST['CURP'],-2)),
         'Nombre'=>(!empty(ucwords($_POST['Nombre']))) ? $_POST['Nombre'] : "",
         'ApeidoP'=>(!empty(ucwords($_POST['ApeidoP']))) ? $_POST['ApeidoP'] : "",
@@ -66,7 +66,7 @@
         'celular'=>(!empty($_POST['celular'])) ? $_POST['celular']:"No",
         'tablet'=>(!empty($_POST['tablet'])) ? $_POST['tablet']:"No",
         'computadora'=>(!empty($_POST['computadora'])) ? $_POST['computadora']:"No"
-    );
+    );/*
     foreach ($Datos_Alumno as $key => $value) {
         if (empty($value)) {
             $insert = false;
@@ -108,7 +108,7 @@
             echo "<script>alert('El campo $key está vacío');</script>";
             break;
         }
-    }
+    }*/
     if($insert){
         $datos_medicosInsert="INSERT INTO datos_medicos (CURPAlu, Tel_emergencia, Talla, Peso, Tipo_sangre, Alergias, padecimiento, Pie_plano,lentes)
         VALUES('".$Datos_Alumno['CURP']."'
@@ -147,9 +147,9 @@
             ,'".$tutor2['ocupacionT2']."'
             ,'".$tutor2['estudioT2']."'
         )";
-        $resultadoBDtutor2=mysqli_query($conexion,$tutor2Insert);
+        $resultadoBDtutor2=mysqli_query($conexion,$tutor2Insert); 
 
-        $Datos_AlumnoInsert="INSERT INTO Datos_Alumno (matricula,Nombre_alu,Apellido_p,Apellido_m,CURP_alu,Fecha_n_alu,Edad_alu,Correo_alu,grado,grupo,turno,CURP_tutor1,CURP_tutor2)
+        $Datos_AlumnoInsert="INSERT INTO Datos_Alumno (matricula,Nombre_alu,Apellido_p,Apellido_m,CURPAlu,Fecha_n_alu,Edad_alu,Correo_alu,grado,grupo,turno,CURP_tutor1,CURP_tutor2)
         VALUES('".$Datos_Alumno['matricula']."'
             ,'".$Datos_Alumno['Nombre']."'
             ,'".$Datos_Alumno['ApeidoP']."'
@@ -166,7 +166,7 @@
         )";
         $resultadoBDAlu=mysqli_query($conexion,$Datos_AlumnoInsert);
 
-        $domicilioInsert="INSERT INTO domicilio (Calle,Numero,CP,Calle1,Calle2,Referencia,Colonia,Municipio,Tel_casa,matricula)
+        $domicilioInsert="INSERT INTO domicilio(Calle,Numero,CP,Calle1,Calle2,Referencia,Colonia,Municipio,Tel_casa,matricula)
         VALUES('".$domicilio['Calle']."'
             ,'".$domicilio['No']."'
             ,'".$domicilio['CP']."'
@@ -192,7 +192,7 @@
         )";
         $resultadoBDGenerales=mysqli_query($conexion,$Datos_generalesInsert);
     }
-    if($resultadoBDAlu){
+    if($domicilioInsert){
         echo "<script> alert('se a registrado con exito'); window.location='/base-de-datos-escuela/agregarAlumno/alumno.php'</script>";
     }else{
         echo "<script> alert('no se registro');</script>";

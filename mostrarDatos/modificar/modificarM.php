@@ -1,8 +1,21 @@
 <?php
     include '../../includes/conexion-BD.php';
         #a qui comienza datos profecionales 
-        $Buscar =$_POST['Buscar'];
-        $Eliminar =$_POST['Eliminar'];
+    $queryUpdate=" ";
+    class profesoresDatos{
+        public  $maestrospdf = array();
+        public function guardarDatos($datos) {
+            $this->maestrospdf[] = $datos;
+        }
+    }
+    $maestro = new profesoresDatos();
+
+    $maestro->guardarDatos(array(
+        'nomina' => (!empty($_POST['nomina'])) ? $_POST['nomina'] : "",
+        'CURP' => (!empty($_POST['CURP'])) ? $_POST['CURP'] : "",
+        'RFC' => (!empty($_POST['RFC'])) ? $_POST['RFC'] : ""
+    ));
+    $nomina = $maestro->maestrospdf[0]['nomina'];
     $maestrosDatos = array(
          'nomina'=> (!empty($_POST['nomina'])) ? $_POST['nomina'] : "",
          'nombre'=> (!empty(ucwords($_POST['nombre']))) ? $_POST['nombre'] : "",
@@ -20,7 +33,7 @@
          'redSocial'=> (!empty($_POST['RedSocial'])) ? $_POST['RedSocial'] : ""
     );
     $datospersonales= array(
-        'RFC'=>  (strtoupper(!empty($_POST['RFC']))) ? $_POST['RFC'] : "",
+        'RFC'=>  (!empty($_POST['RFC'])) ? $_POST['RFC'] : "",
         'Categoria'=>  (!empty($_POST['CategoriaProfesor'])) ? $_POST['CategoriaProfesor'] : "",
         'EstadCategoria'=>  (!empty($_POST['EstadCategoria'])) ? $_POST['EstadCategoria'] : "",
         'AnosS'=>  (!empty($_POST['AnosS'])) ? $_POST['AnosS'] : "",
@@ -35,7 +48,7 @@
     );
 
     $datosadministracion = array(
-        'CURP'=> strtoupper((!empty($_POST['CURP']))) ? $_POST['CURP'] : "",
+        'CURP'=> (!empty($_POST['CURP'])) ? $_POST['CURP'] : "",
         'SedeLugarAD'=> (!empty($_POST['SedeLugarAD'])) ? $_POST['SedeLugarAD'] : "",
         'Domicilio'=> (!empty($_POST['Domicilio'])) ? $_POST['Domicilio'] : "",
         'LocalidadColonia'=> (!empty($_POST['LocalidadColonia'])) ? $_POST['LocalidadColonia'] : "",
@@ -47,6 +60,8 @@
 
 /******************base datos maestrosDatos***********************/
         /******************base datos datospersonales***********************/
+    if(isset($_POST['Modificar'])){
+        $cons="Modifico";
         $insertarprof=" 
         datospersonales.categoria='".$datospersonales['RFC']."'
         ,datospersonales.categoria='".$datospersonales['Categoria']."'
@@ -93,12 +108,19 @@
         inner JOIN datosadministracion on profesor.CURP=datosadministracion.CURP
         inner JOIN datospersonales on profesor.RFC=datospersonales.RFC
         set ".$insertarprof.$insertaadmin.$insertar." WHERE datospersonales.RFC='".$datospersonales['RFC']."'";
-        
-        $resultado=mysqli_query($conexion,$queryUpdate);
-
+    }elseif(isset($_POST['Eliminar'])) {
+        $cons="Elimino";
+        $queryUpdate="DELETE profesor 
+        FROM profesor 
+        INNER JOIN datosadministracion ON profesor.CURP = datosadministracion.CURP 
+        INNER JOIN datospersonales ON profesor.RFC = datospersonales.RFC 
+        WHERE datospersonales.RFC = '".$datospersonales['RFC']."'";
+    }elseif(isset($_POST['PDF'])) {
+        header("Location: ../../pdf/pdfma.php");
+        exit();
+    }
+    $resultado=mysqli_query($conexion,$queryUpdate);
     if($resultado){
-        echo "<script> alert('se a registrado con exito');</script>";
-    }else{
-        echo $queryUpdate;
+        echo "<script> alert(' se ".$cons." con exito'); window.location='/test/base-de-datos-escuela/mostrarDatos/mosrarprofeor.php';</script>";
     }
 ?> 
