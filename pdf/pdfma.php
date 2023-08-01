@@ -1,6 +1,9 @@
 <?php
 require('fpdf/fpdf.php');
-
+session_start();
+$maestroDatos = $_SESSION['maestroDatos'];
+$datosPersonales = $_SESSION['datosPersonales'];
+$datosAdministracion = $_SESSION['datosAdministracion'];
 class PDF extends FPDF
 {
 
@@ -59,20 +62,6 @@ function Footer()
 }
 }
 
-
-//mandar a llamar la base de datos
-include '../includes/conexion-BD.php';
-include '../mostrarDatos/modificar/modificarM.php';
-$maestro = new profesoresDatos();
-$nomina = $maestro->maestrospdf['nomina']['nomina'];
-//$nomina="12345";
-//consulta SELECCIONA DE LA TRABLA X
-$consulta = "SELECT * FROM profesor 
-inner JOIN datosadministracion 
-on profesor.CURP=datosadministracion.CURP
-inner join datospersonales 
-on profesor.RFC=datospersonales.RFC 
-where profesor.nomina='".$nomina."'";
 //mostrar los resultados, estamos pasando el texto de la consulta y la ejecutamos usando mysql
 $resultado =mysqli_query($conexion,$consulta);
 
@@ -91,7 +80,6 @@ $pdf->Ln(7);
 
 
 //hace un recorrido por el resultado y se guarda en row 
-while($row = $resultado ->fetch_assoc()){
 //en cada selda se colocara una ip de la base de datos
 //ancho, alto, texto imp por row, jalamos la colunms de la b_d
 //bode, salto de linea, justificacion, relleno
@@ -99,10 +87,10 @@ while($row = $resultado ->fetch_assoc()){
 $pdf->SetFont('Arial','B',8);
 $pdf->SetTextColor(0,0,0);//COLOR NEGRO
 $pdf->Cell(75,5, 'Nomina: ',1,0,'C',0);
-$pdf->Cell(105,5,utf8_decode( $row['nomina']),1,0,'C',0);
+$pdf->Cell(105,5,utf8_decode( $maestroDatos['nomina']),1,0,'C',0);
 $pdf->Ln(5);
 $pdf->Cell(75,5, 'Nombre: ',1,0,'C',0);
-$pdf->Cell(105,5,utf8_decode( $row['nombre']." ".$row['apellidoP'].$row['apellidoM']),1,0,'C',0);
+$pdf->Cell(105,5,utf8_decode( "hola"." ".$row['apellidoP'].$row['apellidoM']),1,0,'C',0);
 $pdf->Ln(5);
 $pdf->Cell(75,5, 'Localidad o colonia: ',1,0,'C',0);
 $pdf->Cell(105,5,utf8_decode( $row['localidadOcolonia']),1,0,'C',0);
@@ -203,7 +191,6 @@ $pdf->Cell(75,5,utf8_decode( 'Correo Oficial '),1,0,'C',0);
 $pdf->Cell(105,5,utf8_decode( $row['CorreoInstituto']),1,0,'C',0);
 $pdf->Ln(8);
 
-}
 
 $pdf->Output('I','Datos_Docente_.pdf');
 ?>

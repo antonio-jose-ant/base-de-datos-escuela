@@ -1,4 +1,5 @@
 <?php
+session_start();
     class maestros {
         public $accion; 
         public $maestrosDatos;
@@ -93,5 +94,12 @@
     }
     if($consulta=="Eliminar Datos"){
         include_once 'eliminar.php';
+    }
+    if($consulta=="PDF"){
+        $_SESSION['maestroDatos'] = $mDatos->get_maestrosDatos();
+        $_SESSION['datosPersonales'] = $mDP->get_datospersonales();
+        $_SESSION['datosAdministracion'] = $mDA->get_datosadministracion();
+        header("Location: ../pdf/pdfma.php");
+        exit;
     }
 ?>

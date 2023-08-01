@@ -1,11 +1,19 @@
 <?php
-        include_once '../includes/user.php';
-        include_once '../includes/user_session.php';
-        
-        $userSession = new UserSession();
-        $user = new User();
-        if(isset($_SESSION['user'])){
-            //echo "hay sesion";
+    include '../includes/conexion-BD.php';
+    $nomina=$_POST['buscaP'];
+    $conMaestro ="SELECT * FROM profesor 
+    inner JOIN datosadministracion 
+    on profesor.CURP=datosadministracion.CURP
+    inner join datospersonales 
+    on profesor.RFC=datospersonales.RFC 
+    where profesor.nomina='$nomina'";
+
+    include_once '../includes/user.php';
+    include_once '../includes/user_session.php';
+    $userSession = new UserSession();
+    $user = new User();
+    if(isset($_SESSION['user'])){ 
+        //echo "hay sesion";
     $user->setUser($userSession->getCurrentUser());
 ?>
 <!DOCTYPE html>

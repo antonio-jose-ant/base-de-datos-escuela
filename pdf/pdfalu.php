@@ -59,20 +59,6 @@ function Footer()
 }
 }
 
-
-//mandar a llamar la base de datos
-include '../includes/conexion-BD.php';
-
-//consulta SELECCIONA DE LA TRABLA X
-$consulta = "SELECT * FROM datos_alumno 
-inner join datos_medicos on  datos_alumno.CURP_alu=datos_medicos.CURPAlu
-inner join tutor1 on  datos_alumno.CURP_tutor1=tutor1.CURP_tutor1
-inner join tutor2 on  datos_alumno.CURP_tutor2=tutor2.CURP_tutor2
-WHERE matricula='ANAROSE6BM06'";
-//mostrar los resultados, estamos pasando el texto de la consulta y la ejecutamos usando mysql
-$resultado =mysqli_query($conexion,$consulta);
-
-
 //apartir de esta line se mostrara el contenido del pdf
 $pdf = new PDF();
 $pdf->AliasNbPages();
@@ -83,17 +69,6 @@ $pdf->SetFont('Arial','B',9);
 $pdf->SetTextColor(0,240,97);//COLOR VERDE BONITO
 $pdf->Cell(55,10, 'DATOS DEL ALUMNO',0,0,'B',0);
 $pdf->Ln(7);
-
-
-
-
-//hace un recorrido por el resultado y se guarda en row 
-while($row = $resultado ->fetch_assoc()){
-
-
-//en cada selda se colocara una ip de la base de datos
-//ancho, alto, texto imp por row, jalamos la colunms de la b_d
-//bode, salto de linea, justificacion, relleno
 
 $pdf->SetFont('Arial','B',8);
 $pdf->SetTextColor(0,0,0);//COLOR NEGRO
@@ -273,8 +248,6 @@ $pdf->SetTextColor(0,0,0);//COLOR NEGRO
 $pdf->Cell(75,5, utf8_decode('¿EL TUTOR O PADRE O MADRE DE FAMILIA PADECIO COVID-19? '),0,0,'c',0);
 $pdf->Ln(5);
 
-
-}
 
 $pdf->Output('I','Datos_Alumno:.pdf');
 ?>

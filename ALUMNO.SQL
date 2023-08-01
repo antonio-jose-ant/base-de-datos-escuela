@@ -65,7 +65,7 @@ create table domicilio(
     Colonia varchar(50),
     Municipio varchar(40),
     Tel_casa varchar(14),
-    matricula varchar(11),
+    matricula varchar(12),
     FOREIGN KEY (matricula) REFERENCES Datos_Alumno(matricula)
 );
 
@@ -77,6 +77,6 @@ create table Datos_generales(
     CELULAR varchar(2),
     TABLET varchar(2),
     COMPUTADORA varchar(2),
-    matricula varchar(11),
+    matricula varchar(12),
     FOREIGN KEY (matricula) REFERENCES Datos_Alumno(matricula)
 );

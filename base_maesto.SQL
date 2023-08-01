@@ -19,13 +19,13 @@ create table DatosPersonales(
     AñosServicoEnFuncion int (2), 
     preparacionPersonal varchar(20), 
     ClaevServidor varchar(30), 
-    FechaIngreso varchar(10), 
+    FechaIngreso DATE(10), 
     NumeroPlaza int(60), 
-    fechaIngresoFuncionActual varchar(10), 
+    fechaIngresoFuncionActual DATE(10), 
     CodigoPuesto varchar(30),
     PreparacionProfecional varchar(100), 
     primary key (RFC)
-);
+); 
 
 CREATE TABLE profesor(
     nomina varchar(30), 

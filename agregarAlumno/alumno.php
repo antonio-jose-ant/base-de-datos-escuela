@@ -68,7 +68,7 @@
                 </div>
                 <div class="colC-3 colCMin-6">
                     <p> CURP:</p>
-                    <input type="text" name="CURP"  class="mayusculas"/>
+                    <input type="text" name="CURP"  class="mayusculas" maxlength="18"/>
                 </div>
                 <div class="colC-3 colCMin-4 ">
                     <p> Fecha de nacimiento:</p>
@@ -194,7 +194,7 @@
                 </div>
                 <div class="colC-3 ">
                     <p>CURP:</p>
-                    <input type="text" name="CURPT1" class="mayusculas"/>
+                    <input type="text" name="CURPT1" class="mayusculas" maxlength="18"/>
                 </div>
                 <div>
                     <p>EDAD:</p>
@@ -243,7 +243,7 @@
                 </div>
                 <div class="colC-3 ">
                     <p>CURP:</p>
-                    <input type="text" name="CURPT2"  class="mayusculas"/>
+                    <input type="text" name="CURPT2"  class="mayusculas" maxlength="18"/>
                 </div>
                 <div>
                     <p>EDAD:</p>

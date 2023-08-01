@@ -108,11 +108,11 @@
         </div>
         <div class="colC-3">
             <span> CURP:</span>
-            <input type="text" name="CURP"  class="mayusculas"/>
+            <input type="text" name="CURP"  class="mayusculas" maxlength="18"/>
         </div>
         <div class="colC-3">
             <span> RFC:</span>
-            <input type="text" name="RFC"  class="mayusculas"/>
+            <input type="text" name="RFC"  class="mayusculas" maxlength="12"/>
         </div>
         <div class="colC-4">
             <span> Años de Servicio:</span>

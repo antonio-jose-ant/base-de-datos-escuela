@@ -1,7 +1,6 @@
 <?php
         include '../includes/conexion-BD.php';
-        $usuarios ="SELECT * FROM datos_alumno 
-        inner join datos_medicos on datos_alumno.CURP_alu=datos_medicos.CURPAlu";
+        $usuarios ="SELECT * FROM datos_alumno inner join datos_medicos on datos_alumno.CURPAlu=datos_medicos.CURPAlu";
         include_once '../includes/user.php';
         include_once '../includes/user_session.php';
         $userSession = new UserSession();

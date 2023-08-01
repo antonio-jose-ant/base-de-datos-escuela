@@ -23,30 +23,30 @@
         if (empty($value1)) {
             $insert = false;
             echo "<script>alert('El campo $key1 está vacío');</script>";
-            break;
+            break; 
         }
     }
     
     if($insert){
 /******************base datos maestrosDatos***********************/
         /******************base datos datospersonales***********************/
-        $insertarprof="INSERT INTO DatosPersonales (RFC,categoria,EstadoCategoria,AñosServico,AñosServicoEnFuncion,preparacionPersonal,ClaevServidor,FechaIngreso,NumeroPlaza,fechaIngresoFuncionActual,CodigoPuesto,PreparacionProfecional)
-        values ('".$datosP['RFC']."'
+        echo "INSERT INTO DatosPersonales (RFC,categoria,EstadoCategoria,AñosServico,AñosServicoEnFuncion,preparacionPersonal,ClaevServidor,FechaIngreso,NumeroPlaza,fechaIngresoFuncionActual,CodigoPuesto,PreparacionProfecional)
+        values ('".strtoupper($datosP['RFC'])."'
         ,'".$datosP['Categoria']."'
         ,'".$datosP['EstadCategoria']."'
         ,'".$datosP['AnosS']."'
         ,'".$datosP['AnosSerFUnciona']."'
         ,'".$datosP['PreparaciónPa']."'
         ,'".$datosP['ClaveS']."'
-        ,'".$datosP['FechaINgreso']."'
+        ,'".date("Y-m-d", strtotime($datosP['FechaINgreso']))."'
         ,'".$datosP['NumeroPa']."'
-        ,'".$datosP['FechaFuncionA']."'
+        ,'".date("Y-m-d", strtotime($datosP['FechaFuncionA']))."'
         ,'".$datosP['CoddigoPuesto']."'
         ,'".$datosP['PreparacionPro']."')";
         $resultadoo=mysqli_query($conexion,$insertarprof);
         /**********base datos datosadministracion***************/
-        $insertaadmin="INSERT INTO datosadministracion (CURP,CedeLugarAdminitracion,Domicilio,LocalidadColonia,MunicipioEscuela,C_C_T,Telefono,CorreoInstituto)
-        values ('".$datosA['CURP']."'
+        echo "INSERT INTO datosadministracion (CURP,CedeLugarAdminitracion,Domicilio,LocalidadColonia,MunicipioEscuela,C_C_T,Telefono,CorreoInstituto)
+        values ('".strtoupper($datosA['CURP'])."'
         ,'".$datosA['SedeLugarAD']."'
         ,'".$datosA['Domicilio']."'
         ,'".$datosA['LocalidadColonia']."'
@@ -55,11 +55,11 @@
         ,'".$datosA['Telefono']."'
         ,'".$datosA['EmailInstituto']."')";
         $resultadooo=mysqli_query($conexion,$insertaadmin);
-        $insertar="INSERT INTO profesor (nomina,nombre,apellidoP,apellidoM,localidadOcolonia,Direccion,municipio,CP,telefonoPersonal,telefonoCasa,correoElectronico,edad,EstadoCivil,redSocial,CURP,RFC) 
+        echo "INSERT INTO profesor (nomina,nombre,apellidoP,apellidoM,localidadOcolonia,Direccion,municipio,CP,telefonoPersonal,telefonoCasa,correoElectronico,edad,EstadoCivil,redSocial,CURP,RFC) 
         values ('".$datos['nomina']."'
-        ,'".$datos['nombre']."'
-        ,'".$datos['apellidoP']."'
-        ,'".$datos['apellidoM']."'
+        ,'".ucwords($datos['nombre'])."'
+        ,'".ucwords($datos['apellidoP'])."'
+        ,'".ucwords($datos['apellidoM'])."'
         ,'".$datos['localidadOcolonia']."'
         ,'".$datos['Direccion']."'
         ,'".$datos['municipio']."'
@@ -70,10 +70,10 @@
         ,'".$datos['edad']."'
         ,'".$datos['EstadoCivil']."'
         ,'".$datos['redSocial']."'
-        ,'".$datosA['CURP']."'
-        ,'".$datosP['RFC']."')";
+        ,'".strtoupper($datosA['CURP'])."'
+        ,'".strtoupper($datosP['RFC'])."')";
         $resultado=mysqli_query($conexion,$insertar);
-    }
+    }/*
     if($resultadooo){
         echo "<script> alert('se a registrado con exito'); window.location='/test/base-de-datos-escuela/agregarMaestro/maestros.php'</script>";
     }else{
