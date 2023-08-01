@@ -74,7 +74,7 @@
         ,'".$datosP['RFC']."')";
         $resultado=mysqli_query($conexion,$insertar);
     }
-    if($resultado && $resultadoo && $resultadooo){
+    if($resultadooo){
         echo "<script> alert('se a registrado con exito'); window.location='/test/base-de-datos-escuela/agregarMaestro/maestros.php'</script>";
     }else{
         echo "<script> alert('no se registro');</script>";

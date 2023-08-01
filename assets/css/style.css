@@ -104,8 +104,8 @@ input:focus,select:focus{
 }
 .btnEliminar{
     background-color: var(--rojo) !important;
+    border-color: var(--rojo) !important;
     background-image: url(../img/iconos/eliminar.png);
-
 }
 .btnAgregar{
     background-color: var(--azul2) !important;
@@ -117,6 +117,7 @@ input:focus,select:focus{
 }
 .btnPDF{
     background-color: var(--naranja) !important;
+    border-color: var(--naranja) !important;
     background-image: url(../img/iconos/pdf.png);
 }
 .btn:focus{
