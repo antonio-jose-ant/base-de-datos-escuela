@@ -49,12 +49,10 @@ CREATE TABLE profesor(
     FOREIGN KEY (RFC) REFERENCES datospersonales(RFC)
 );
 create table usuario(
-    IdUsuario INT NOT NULL ,
     Nombre varchar(50), 
     UserName varchar(25),
     tipo_usuario varchar(30),
     password varchar(50), 
-    primary key (IdUsuario), 
     unique key (UserName)
 );
 

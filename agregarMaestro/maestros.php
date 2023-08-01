@@ -21,7 +21,7 @@
     <title>escuela</title>
 </head>
 <body>
-    <form action="./insertarM.php" method="post" name="form" class="form">
+    <form action="./maestro_C.php" method="post" name="form" class="form">
         <div class="colC-Complet">
             <h2>Datos personales</h2>
         </div>
@@ -177,7 +177,7 @@
             <input type="text" id="date3" name="FechaFuncionA"/>
         </div>
         <div class="colC-Complet">
-            <input type="submit" value="Guardar Datos" class="btn" />
+            <input type="submit" value="Guardar Datos" class="btn" name="acction" />
         </div>
     </form>
 </body>

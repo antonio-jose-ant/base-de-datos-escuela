@@ -29,7 +29,7 @@
     <title>escuela</title> 
 </head>
 <body>
-    <form action="./modificar/modificarM.php" method="post" name="form" class="form">
+    <form action="../agregarMaestro/maestro_C.php" method="post" name="form" class="form">
         <?php 
             $resultado=mysqli_query($conexion,$conMaestro);
             while($row=mysqli_fetch_assoc($resultado)){
@@ -182,14 +182,13 @@
                 <input type="text" id="date3" name="FechaFuncionA" value="<?php echo $row['FechaIngreso']; ?>"/>
             </div>
             <div class="colC-4">
-                <input type="submit" name="PDF" value="PDF" class="btn btnPDF" />
-    
+                <input type="submit" name="acction" value="PDF" class="btn btnPDF" />
             </div>
             <div class="colC-4">
-                <input type="submit" name="Modificar" value="Modificar Datos" class="btn btnModificar" />
+                <input type="submit" name="acction" value="Modificar Datos" class="btn btnModificar" />
             </div>
             <div class="colC-4">
-                <input type="submit" name="Eliminar" value="Eliminar Datos" class="btn btnEliminar" />
+                <input type="submit" name="acction" value="Eliminar Datos" class="btn btnEliminar" />
             </div>
         <?php 
             }
