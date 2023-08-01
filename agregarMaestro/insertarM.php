@@ -30,7 +30,7 @@
     if($insert){
 /******************base datos maestrosDatos***********************/
         /******************base datos datospersonales***********************/
-        echo "INSERT INTO DatosPersonales (RFC,categoria,EstadoCategoria,AñosServico,AñosServicoEnFuncion,preparacionPersonal,ClaevServidor,FechaIngreso,NumeroPlaza,fechaIngresoFuncionActual,CodigoPuesto,PreparacionProfecional)
+        $insertarprof="INSERT INTO DatosPersonales (RFC,categoria,EstadoCategoria,AñosServico,AñosServicoEnFuncion,preparacionPersonal,ClaevServidor,FechaIngreso,NumeroPlaza,fechaIngresoFuncionActual,CodigoPuesto,PreparacionProfecional)
         values ('".strtoupper($datosP['RFC'])."'
         ,'".$datosP['Categoria']."'
         ,'".$datosP['EstadCategoria']."'
@@ -45,7 +45,7 @@
         ,'".$datosP['PreparacionPro']."')";
         $resultadoo=mysqli_query($conexion,$insertarprof);
         /**********base datos datosadministracion***************/
-        echo "INSERT INTO datosadministracion (CURP,CedeLugarAdminitracion,Domicilio,LocalidadColonia,MunicipioEscuela,C_C_T,Telefono,CorreoInstituto)
+        $insertaadmin="INSERT INTO datosadministracion (CURP,CedeLugarAdminitracion,Domicilio,LocalidadColonia,MunicipioEscuela,C_C_T,Telefono,CorreoInstituto)
         values ('".strtoupper($datosA['CURP'])."'
         ,'".$datosA['SedeLugarAD']."'
         ,'".$datosA['Domicilio']."'
@@ -55,7 +55,7 @@
         ,'".$datosA['Telefono']."'
         ,'".$datosA['EmailInstituto']."')";
         $resultadooo=mysqli_query($conexion,$insertaadmin);
-        echo "INSERT INTO profesor (nomina,nombre,apellidoP,apellidoM,localidadOcolonia,Direccion,municipio,CP,telefonoPersonal,telefonoCasa,correoElectronico,edad,EstadoCivil,redSocial,CURP,RFC) 
+        $insertar="INSERT INTO profesor (nomina,nombre,apellidoP,apellidoM,localidadOcolonia,Direccion,municipio,CP,telefonoPersonal,telefonoCasa,correoElectronico,edad,EstadoCivil,redSocial,CURP,RFC) 
         values ('".$datos['nomina']."'
         ,'".ucwords($datos['nombre'])."'
         ,'".ucwords($datos['apellidoP'])."'
@@ -73,7 +73,7 @@
         ,'".strtoupper($datosA['CURP'])."'
         ,'".strtoupper($datosP['RFC'])."')";
         $resultado=mysqli_query($conexion,$insertar);
-    }/*
+    }
     if($resultadooo){
         echo "<script> alert('se a registrado con exito'); window.location='/test/base-de-datos-escuela/agregarMaestro/maestros.php'</script>";
     }else{

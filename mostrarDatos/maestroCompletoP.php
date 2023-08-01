@@ -145,7 +145,7 @@
             </div>
             <div class="colC-4">
                 <span> Fecha De Ingreso A La Funcion Actual:</span>
-                <input type="text" id="date2" name="FechaINgreso" value="<?php echo $row['fechaIngresoFuncionActual']; ?>"/>
+                <input type="text" id="date2" name="FechaINgreso" value="<?php echo $row['FechaIngreso']; ?>"/>
             </div>
             <!--aqui empieza datos profecionales -->
             <div class="colC-Complet"><h2>Datos Adscripción</h2></div> 
@@ -179,7 +179,7 @@
             </div>
             <div class="colC-3">
                 <span> Fecha de Ingreso:</span>
-                <input type="text" id="date3" name="FechaFuncionA" value="<?php echo $row['FechaIngreso']; ?>"/>
+                <input type="text" id="date3" name="FechaFuncionA" value="<?php echo $row['fechaIngresoFuncionActual']; ?>"/>
             </div>
             <div class="colC-4">
                 <input type="submit" name="acction" value="PDF" class="btn btnPDF" />
