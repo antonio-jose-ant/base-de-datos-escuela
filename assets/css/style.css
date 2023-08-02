@@ -588,7 +588,7 @@ input:focus,select:focus{
     background: var(--azul);
 }
 .ui-datepicker-header{
-    width: 100%;
+    width: 100%; 
     height: auto;
     display: grid;
     grid-template-columns: 20% 60% 20%;
