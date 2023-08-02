@@ -48,6 +48,7 @@ a {
     font-size: 30px;
     text-decoration: none;
     color: var(--negro2);
+    cursor: pointer;
 }
 li{list-style: none;}
 input[type="text"],input[type="password"]{
@@ -470,11 +471,15 @@ input:focus,select:focus{
 /********tablas fin**********/
 /*************@media*************/
 @media (max-width: 600px) {
-    input[type="text"],input[type="password"]{
+    input[type="text"],
+    input[type="password"],
+    input[type="number"],
+    input[type="email"],
+    input[type="tel"],select{
         height: auto;
         padding:15px 2px;
         font-size:18px;
-        margin: auto;
+        margin:2px auto;
     }
     /**************login**********/
     .formulario {
@@ -548,7 +553,7 @@ input:focus,select:focus{
     }
     /*********menu fin*************/
 } 
-@media (max-width: 850px) {
+@media (max-width: 730px) {
     /************adaptacion del formulario a pantallas pequeñas******************/
     .colRMin-2{
         grid-row: span 2;
@@ -577,19 +582,77 @@ input:focus,select:focus{
     .colCMin-8{
         grid-column: span 8;
     }
+    .colCMin-9{
+        grid-column: span 9;
+    }
+    .colCMin-10{
+        grid-column: span 10;
+    }
     .colC-CompletMin{
         grid-column: 1/-1;
     }
     /********adaptacion del formulario a pantallas pequeñas fin**********/
 }
- 
+/**********************calendario*********************/ 
 .ui-datepicker {
-    border-top: var(--naranja);
-    background: var(--azul);
+    border-top: solid 2px var(--naranja);
+    background: var(--gris);
+    box-shadow: 3px 7px 8px var(--negro3);
+}
+.ui-datepicker-title select{
+    border: 1px solid var(--negro3);
+}
+
+.ui-datepicker-title select:focus {
+    border: 1px solid var(--naranja) !important;
+    background: var(--blanco2) !important;
+    color: var(--negro2);
 }
 .ui-datepicker-header{
     width: 100%; 
     height: auto;
     display: grid;
     grid-template-columns: 20% 60% 20%;
+    align-items: center;
+    justify-items: center;
+    background: var(--blanco2);
+    padding: 10px 0;
 }
+.ui-datepicker-header span{
+    font-size: 30px;
+}
+.ui-datepicker-title{
+    grid-column: 2/3;
+    grid-row: 1;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    width: 100%;
+}
+.ui-datepicker-prev{
+    grid-column: 1/2;
+    width: 80%;
+    height: 100%;
+    text-align: center;
+}
+
+.ui-datepicker-next{
+    grid-column: 3/-1;
+    width: 80%;
+    height: 100%;
+    text-align: center;
+}
+.ui-datepicker-calendar{
+    margin: 10px;
+    padding: 5px 10px;
+    background: var(--blanco2);
+    border: solid 1px var(--naranja);
+}
+.ui-datepicker-calendar td{
+    margin: 1px;
+    border: solid 1px var(--negro3);
+    text-align: center;
+}
+.ui-datepicker-calendar th{
+    color: var(--naranja);
+}
+/**********************calendario fin*********************/ 

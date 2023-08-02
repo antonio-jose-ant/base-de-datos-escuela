@@ -4,7 +4,7 @@ include_once 'includes/user_session.php';
 ?>
 
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es"> 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,7 +16,7 @@ include_once 'includes/user_session.php';
     <title>Agregar</title>
 </head>
 <body>
-    <div id="menu-contenedor" class="menu-contenedor"> 
+    <div id="menu-container" class="menu-contenedor"> 
         <header class="menu">
             <div class="harmburger" id="harmburger">
                 <div></div>
