@@ -16,29 +16,10 @@ function Header()
 {
     $anchoPagina = $this->GetPageWidth();//210.00155555556
     $altoPagina = $this->GetPageHeight();//297.00008333333
-    $posicionX = $anchoPagina - 65; 
-    $titulo="2021. Año de la consumación de la independencia de México";
-    $this->Image('../assets/img/logo/edomex.png',$posicionX,2,55,20,'png','https://www.youtube.com/watch?v=vsoSeBHqLSQ');
-    $this->Image('../assets/img/pdf/go.png',10,2,30,20,'png','https://www.youtube.com/watch?v=30ptGTuG2tA');
-    $this->SetFont('arial','',10);
-    $this->SetXY(10, 22); // Establecer la posición x e y del texto
-    $this->Cell($anchoPagina-20, 10,utf8_decode('"'.$titulo.'".'), 0, 1, 'C',0); // Agregar el texto centrado
-    $this->SetFont('arial','B',10);
-    $this->SetXY(10, 28); // Establecer la posición x e y del texto
-    $this->Cell($anchoPagina-20, 10,utf8_decode("FICHA DE IDENTIFICACIÓN LABORAL"), 0, 1, 'C',0); // Agregar el texto centrado
-  
-    $anchoCuadro = 25; // 2.5 cm en milímetros
-    $altoCuadro = 30; // 3 cm en milímetros
-
-    // Convertir las medidas de milímetros a unidades del PDF (72 unidades = 1 pulgada)
-
-    $this->SetXY($anchoPagina-35, 22); // Establecer la posición x e y del texto
-    $this->Cell( $anchoCuadro, $altoCuadro,utf8_decode("foto"), 1, 0, 'C',0); // Agregar el texto centrado
-    
-    $this->SetFont('arial','B',10);
-    $this->SetXY(10, 38); // Establecer la posición x e y del texto
-    $this->Cell($anchoPagina-45, 10,utf8_decode("ESCUELA PRIMARIA".'"'."_____________________________".'"'. "    ZONA:_______"), 0, 1, 'B',0); // Agregar el texto centrado
-
+    $posicionX = $anchoPagina - 70; 
+    $this->Image('../assets/img/logo/edomex.png',$posicionX,1,59,12,'png','https://www.youtube.com/watch?v=vsoSeBHqLSQ');
+    $this->Image('../assets/img/pdf/go.png',10,1,24,12,'png','https://www.youtube.com/watch?v=30ptGTuG2tA');
+   
 }
 
 // Pie de página
@@ -63,19 +44,589 @@ $pdf = new PDF();
 $pdf->AliasNbPages();
 $anchoPag = 210.00155555556;
 $altoPag = 297.00008333333;
-//daots personales 
+$titulo="2021. Año de la consumación de la independencia de México";
+
 $pdf->AddPage();
-$pdf->SetFont('Arial','B',12);
-$pdf->SetXY(10, 52); // Establecer la posición x e y del texto
-$pdf->Cell($anchoPag-20,10, 'DATOS PERSONALES',1,0,'C',0);
+$pdf->SetFont('arial','',9);
+$pdf->ln(4); // Establecer la posición x e y del texto
+$pdf->Cell($anchoPag-20, 5,utf8_decode('"'.$titulo.'".'), 0, 1, 'C',0); // Agregar el texto centrado
+$pdf->SetFont('arial','B',9);
+$pdf->ln(1); // Establecer la posición x e y del texto
+$pdf->Cell($anchoPag-20, 5,utf8_decode("FICHA DE IDENTIFICACIÓN LABORAL"), 0, 1, 'C',0); // Agregar el texto centrado
+
+$anchoCuadro = 25; // 2.5 cm en milímetros
+$altoCuadro = 30; // 3 cm en milímetros
+
+// Convertir las medidas de milímetros a unidades del PDF (72 unidades = 1 pulgada)
+
+$pdf->SetXY($anchoPag-35, 13); // Establecer la posición x e y del texto
+$pdf->Cell( $anchoCuadro, $altoCuadro,utf8_decode("foto"), 1, 0, 'C',0); // Agregar el texto centrado
+
+$pdf->SetFont('arial','B',10);
+$pdf->ln(12); // Establecer la posición x e y del texto
+$pdf->Cell($anchoPag-45, 7,utf8_decode("ESCUELA PRIMARIA".'"'."_____________________________".'"'. "    ZONA:_______"), 0, 1, 'B',0); // Agregar el texto centrado
+
+//daots personales 
+
+$pdf->SetFont('Arial','B',8);
+$pdf->SetXY(10, 35); // Establecer la posición x e y del texto
+$pdf->Cell($anchoPag-20,4, 'DATOS PERSONALES',0,0,'C',0);
+$pdf->SetFont('Arial','',8);
+$pdf->ln(4);
+$pdf->Cell(50,4, 'Nombre Completo:',1,0,'A');
+$pdf->Cell($anchoPag-95,4,$maestroDatos['nombre']." ".$maestroDatos['apellidoP']." ".$maestroDatos['apellidoM'] ,1,0,'C');
+
+$pdf->ln(4);
+$pdf->Cell(17,4, 'RFC:',1,0,'A');
+$pdf->SetX(27); // Establecer la posición x e y del texto
+$pdf->Cell(40,4,$datosPersonales['RFC'],1,0,'C');
+$pdf->SetX(67); // Establecer la posición x e y del texto
+$pdf->Cell(17,4, 'CURP:',1,0,'A');
+$pdf->SetX(84); // Establecer la posición x e y del texto
+$pdf->Cell(56,4,$datosAdministracion['CURP'],1,0,'C');
+$pdf->SetX(140); // Establecer la posición x e y del texto
+$pdf->Cell(15,4, 'Edad:',1,0,'A');
+$pdf->SetX(155); // Establecer la posición x e y del texto
+$pdf->Cell(15,4,$maestroDatos['edad'],1,0,'C');
+$pdf->SetX(170); // Establecer la posición x e y del texto
+$pdf->Cell(15,4, 'Sexo:',1,0,'A');
+$pdf->SetX(185); // Establecer la posición x e y del texto
+$pdf->Cell(15,4,$maestroDatos['sexo'],1,0,'C');
+$pdf->ln(4);
+$pdf->Cell(40,4, 'Domicilio Particular:',1,0,'A');
+$pdf->SetX(50); // Establecer la posición x e y del texto
+$pdf->Cell(90,4,$datosPersonales['RFC'],1,0,'C');
+$pdf->SetX(140); // Establecer la posición x e y del texto
+$pdf->Cell(30,4, 'Estado Civil:',1,0,'A');
+$pdf->SetX(170); // Establecer la posición x e y del texto
+$pdf->Cell(30,4,$maestroDatos['EstadoCivil'],1,0,'C');
+
+$pdf->ln(4);
+$pdf->Cell(17,4, 'RFC:',1,0,'A');
+$pdf->SetX(27); // Establecer la posición x e y del texto
+$pdf->Cell(40,4,$datosPersonales['RFC'],1,0,'C');
+$pdf->SetX(67); // Establecer la posición x e y del texto
+$pdf->Cell(17,4, 'CURP:',1,0,'A');
+$pdf->SetX(84); // Establecer la posición x e y del texto
+$pdf->Cell(56,4,$datosAdministracion['CURP'],1,0,'C');
+$pdf->SetX(140); // Establecer la posición x e y del texto
+$pdf->Cell(15,4, 'Edad:',1,0,'A');
+$pdf->SetX(155); // Establecer la posición x e y del texto
+$pdf->Cell(15,4,$maestroDatos['edad'],1,0,'C');
+$pdf->SetX(170); // Establecer la posición x e y del texto
+$pdf->Cell(15,4, 'Sexo:',1,0,'A');
+$pdf->SetX(185); // Establecer la posición x e y del texto
+$pdf->Cell(15,4,$maestroDatos['sexo'],1,0,'C');
+$pdf->ln(4);
+$pdf->Cell(40,4, 'Domicilio Particular:',1,0,'A');
+$pdf->SetX(50); // Establecer la posición x e y del texto
+$pdf->Cell(90,4,$datosPersonales['RFC'],1,0,'C');
+$pdf->SetX(140); // Establecer la posición x e y del texto
+$pdf->Cell(30,4, 'Estado Civil:',1,0,'A');
+$pdf->SetX(170); // Establecer la posición x e y del texto
+$pdf->Cell(30,4,$maestroDatos['EstadoCivil'],1,0,'C');
+
+$pdf->ln(4);
+$pdf->Cell(17,4, 'RFC:',1,0,'A');
+$pdf->SetX(27); // Establecer la posición x e y del texto
+$pdf->Cell(40,4,$datosPersonales['RFC'],1,0,'C');
+$pdf->SetX(67); // Establecer la posición x e y del texto
+$pdf->Cell(17,4, 'CURP:',1,0,'A');
+$pdf->SetX(84); // Establecer la posición x e y del texto
+$pdf->Cell(56,4,$datosAdministracion['CURP'],1,0,'C');
+$pdf->SetX(140); // Establecer la posición x e y del texto
+$pdf->Cell(15,4, 'Edad:',1,0,'A');
+$pdf->SetX(155); // Establecer la posición x e y del texto
+$pdf->Cell(15,4,$maestroDatos['edad'],1,0,'C');
+$pdf->SetX(170); // Establecer la posición x e y del texto
+$pdf->Cell(15,4, 'Sexo:',1,0,'A');
+$pdf->SetX(185); // Establecer la posición x e y del texto
+$pdf->Cell(15,4,$maestroDatos['sexo'],1,0,'C');
+$pdf->ln(4);
+$pdf->Cell(40,4, 'Domicilio Particular:',1,0,'A');
+$pdf->SetX(50); // Establecer la posición x e y del texto
+$pdf->Cell(90,4,$datosPersonales['RFC'],1,0,'C');
+$pdf->SetX(140); // Establecer la posición x e y del texto
+$pdf->Cell(30,4, 'Estado Civil:',1,0,'A');
+$pdf->SetX(170); // Establecer la posición x e y del texto
+$pdf->Cell(30,4,$maestroDatos['EstadoCivil'],1,0,'C');
+
+$pdf->ln(4);
+$pdf->Cell(17,4, 'RFC:',1,0,'A');
+$pdf->SetX(27); // Establecer la posición x e y del texto
+$pdf->Cell(40,4,$datosPersonales['RFC'],1,0,'C');
+$pdf->SetX(67); // Establecer la posición x e y del texto
+$pdf->Cell(17,4, 'CURP:',1,0,'A');
+$pdf->SetX(84); // Establecer la posición x e y del texto
+$pdf->Cell(56,4,$datosAdministracion['CURP'],1,0,'C');
+$pdf->SetX(140); // Establecer la posición x e y del texto
+$pdf->Cell(15,4, 'Edad:',1,0,'A');
+$pdf->SetX(155); // Establecer la posición x e y del texto
+$pdf->Cell(15,4,$maestroDatos['edad'],1,0,'C');
+$pdf->SetX(170); // Establecer la posición x e y del texto
+$pdf->Cell(15,4, 'Sexo:',1,0,'A');
+$pdf->SetX(185); // Establecer la posición x e y del texto
+$pdf->Cell(15,4,$maestroDatos['sexo'],1,0,'C');
+$pdf->ln(4);
+$pdf->Cell(40,4, 'Domicilio Particular:',1,0,'A');
+$pdf->SetX(50); // Establecer la posición x e y del texto
+$pdf->Cell(90,4,$datosPersonales['RFC'],1,0,'C');
+$pdf->SetX(140); // Establecer la posición x e y del texto
+$pdf->Cell(30,4, 'Estado Civil:',1,0,'A');
+$pdf->SetX(170); // Establecer la posición x e y del texto
+$pdf->Cell(30,4,$maestroDatos['EstadoCivil'],1,0,'C');
+
+$pdf->ln(4);
+$pdf->Cell(17,4, 'RFC:',1,0,'A');
+$pdf->SetX(27); // Establecer la posición x e y del texto
+$pdf->Cell(40,4,$datosPersonales['RFC'],1,0,'C');
+$pdf->SetX(67); // Establecer la posición x e y del texto
+$pdf->Cell(17,4, 'CURP:',1,0,'A');
+$pdf->SetX(84); // Establecer la posición x e y del texto
+$pdf->Cell(56,4,$datosAdministracion['CURP'],1,0,'C');
+$pdf->SetX(140); // Establecer la posición x e y del texto
+$pdf->Cell(15,4, 'Edad:',1,0,'A');
+$pdf->SetX(155); // Establecer la posición x e y del texto
+$pdf->Cell(15,4,$maestroDatos['edad'],1,0,'C');
+$pdf->SetX(170); // Establecer la posición x e y del texto
+$pdf->Cell(15,4, 'Sexo:',1,0,'A');
+$pdf->SetX(185); // Establecer la posición x e y del texto
+$pdf->Cell(15,4,$maestroDatos['sexo'],1,0,'C');
+$pdf->ln(4);
+$pdf->Cell(40,4, 'Domicilio Particular:',1,0,'A');
+$pdf->SetX(50); // Establecer la posición x e y del texto
+$pdf->Cell(90,4,$datosPersonales['RFC'],1,0,'C');
+$pdf->SetX(140); // Establecer la posición x e y del texto
+$pdf->Cell(30,4, 'Estado Civil:',1,0,'A');
+$pdf->SetX(170); // Establecer la posición x e y del texto
+$pdf->Cell(30,4,$maestroDatos['EstadoCivil'],1,0,'C');
+
+$pdf->ln(4);
+$pdf->Cell(17,4, 'RFC:',1,0,'A');
+$pdf->SetX(27); // Establecer la posición x e y del texto
+$pdf->Cell(40,4,$datosPersonales['RFC'],1,0,'C');
+$pdf->SetX(67); // Establecer la posición x e y del texto
+$pdf->Cell(17,4, 'CURP:',1,0,'A');
+$pdf->SetX(84); // Establecer la posición x e y del texto
+$pdf->Cell(56,4,$datosAdministracion['CURP'],1,0,'C');
+$pdf->SetX(140); // Establecer la posición x e y del texto
+$pdf->Cell(15,4, 'Edad:',1,0,'A');
+$pdf->SetX(155); // Establecer la posición x e y del texto
+$pdf->Cell(15,4,$maestroDatos['edad'],1,0,'C');
+$pdf->SetX(170); // Establecer la posición x e y del texto
+$pdf->Cell(15,4, 'Sexo:',1,0,'A');
+$pdf->SetX(185); // Establecer la posición x e y del texto
+$pdf->Cell(15,4,$maestroDatos['sexo'],1,0,'C');
+$pdf->ln(4);
+$pdf->Cell(40,4, 'Domicilio Particular:',1,0,'A');
+$pdf->SetX(50); // Establecer la posición x e y del texto
+$pdf->Cell(90,4,$datosPersonales['RFC'],1,0,'C');
+$pdf->SetX(140); // Establecer la posición x e y del texto
+$pdf->Cell(30,4, 'Estado Civil:',1,0,'A');
+$pdf->SetX(170); // Establecer la posición x e y del texto
+$pdf->Cell(30,4,$maestroDatos['EstadoCivil'],1,0,'C');
+
+$pdf->ln(4);
+$pdf->Cell(17,4, 'RFC:',1,0,'A');
+$pdf->SetX(27); // Establecer la posición x e y del texto
+$pdf->Cell(40,4,$datosPersonales['RFC'],1,0,'C');
+$pdf->SetX(67); // Establecer la posición x e y del texto
+$pdf->Cell(17,4, 'CURP:',1,0,'A');
+$pdf->SetX(84); // Establecer la posición x e y del texto
+$pdf->Cell(56,4,$datosAdministracion['CURP'],1,0,'C');
+$pdf->SetX(140); // Establecer la posición x e y del texto
+$pdf->Cell(15,4, 'Edad:',1,0,'A');
+$pdf->SetX(155); // Establecer la posición x e y del texto
+$pdf->Cell(15,4,$maestroDatos['edad'],1,0,'C');
+$pdf->SetX(170); // Establecer la posición x e y del texto
+$pdf->Cell(15,4, 'Sexo:',1,0,'A');
+$pdf->SetX(185); // Establecer la posición x e y del texto
+$pdf->Cell(15,4,$maestroDatos['sexo'],1,0,'C');
+$pdf->ln(4);
+$pdf->Cell(40,4, 'Domicilio Particular:',1,0,'A');
+$pdf->SetX(50); // Establecer la posición x e y del texto
+$pdf->Cell(90,4,$datosPersonales['RFC'],1,0,'C');
+$pdf->SetX(140); // Establecer la posición x e y del texto
+$pdf->Cell(30,4, 'Estado Civil:',1,0,'A');
+$pdf->SetX(170); // Establecer la posición x e y del texto
+$pdf->Cell(30,4,$maestroDatos['EstadoCivil'],1,0,'C');
+
+$pdf->ln(4);
+$pdf->Cell(17,4, 'RFC:',1,0,'A');
+$pdf->SetX(27); // Establecer la posición x e y del texto
+$pdf->Cell(40,4,$datosPersonales['RFC'],1,0,'C');
+$pdf->SetX(67); // Establecer la posición x e y del texto
+$pdf->Cell(17,4, 'CURP:',1,0,'A');
+$pdf->SetX(84); // Establecer la posición x e y del texto
+$pdf->Cell(56,4,$datosAdministracion['CURP'],1,0,'C');
+$pdf->SetX(140); // Establecer la posición x e y del texto
+$pdf->Cell(15,4, 'Edad:',1,0,'A');
+$pdf->SetX(155); // Establecer la posición x e y del texto
+$pdf->Cell(15,4,$maestroDatos['edad'],1,0,'C');
+$pdf->SetX(170); // Establecer la posición x e y del texto
+$pdf->Cell(15,4, 'Sexo:',1,0,'A');
+$pdf->SetX(185); // Establecer la posición x e y del texto
+$pdf->Cell(15,4,$maestroDatos['sexo'],1,0,'C');
+$pdf->ln(4);
+$pdf->Cell(40,4, 'Domicilio Particular:',1,0,'A');
+$pdf->SetX(50); // Establecer la posición x e y del texto
+$pdf->Cell(90,4,$datosPersonales['RFC'],1,0,'C');
+$pdf->SetX(140); // Establecer la posición x e y del texto
+$pdf->Cell(30,4, 'Estado Civil:',1,0,'A');
+$pdf->SetX(170); // Establecer la posición x e y del texto
+$pdf->Cell(30,4,$maestroDatos['EstadoCivil'],1,0,'C');
 //daots loaborales
-$pdf->SetFont('Arial','B',12);
-$pdf->ln(10);
-$pdf->Cell($anchoPag-20,10, 'DATOS LABORALES',1,0,'C',0);
+$pdf->SetFont('Arial','B',8);
+$pdf->ln(4);
+$pdf->Cell($anchoPag-20,4, 'DATOS LABORALES',0,0,'C',0);
+
+$pdf->ln(4);
+$pdf->Cell(50,4, 'Nombre Completo:',1,0,'A');
+$pdf->Cell($anchoPag-95,4,$maestroDatos['nombre']." ".$maestroDatos['apellidoP']." ".$maestroDatos['apellidoM'] ,1,0,'C');
+
+$pdf->ln(4);
+$pdf->Cell(17,4, 'RFC:',1,0,'A');
+$pdf->SetX(27); // Establecer la posición x e y del texto
+$pdf->Cell(40,4,$datosPersonales['RFC'],1,0,'C');
+$pdf->SetX(67); // Establecer la posición x e y del texto
+$pdf->Cell(17,4, 'CURP:',1,0,'A');
+$pdf->SetX(84); // Establecer la posición x e y del texto
+$pdf->Cell(56,4,$datosAdministracion['CURP'],1,0,'C');
+$pdf->SetX(140); // Establecer la posición x e y del texto
+$pdf->Cell(15,4, 'Edad:',1,0,'A');
+$pdf->SetX(155); // Establecer la posición x e y del texto
+$pdf->Cell(15,4,$maestroDatos['edad'],1,0,'C');
+$pdf->SetX(170); // Establecer la posición x e y del texto
+$pdf->Cell(15,4, 'Sexo:',1,0,'A');
+$pdf->SetX(185); // Establecer la posición x e y del texto
+$pdf->Cell(15,4,$maestroDatos['sexo'],1,0,'C');
+$pdf->ln(4);
+$pdf->Cell(40,4, 'Domicilio Particular:',1,0,'A');
+$pdf->SetX(50); // Establecer la posición x e y del texto
+$pdf->Cell(90,4,$datosPersonales['RFC'],1,0,'C');
+$pdf->SetX(140); // Establecer la posición x e y del texto
+$pdf->Cell(30,4, 'Estado Civil:',1,0,'A');
+$pdf->SetX(170); // Establecer la posición x e y del texto
+$pdf->Cell(30,4,$maestroDatos['EstadoCivil'],1,0,'C');
+
+$pdf->ln(4);
+$pdf->Cell(17,4, 'RFC:',1,0,'A');
+$pdf->SetX(27); // Establecer la posición x e y del texto
+$pdf->Cell(40,4,$datosPersonales['RFC'],1,0,'C');
+$pdf->SetX(67); // Establecer la posición x e y del texto
+$pdf->Cell(17,4, 'CURP:',1,0,'A');
+$pdf->SetX(84); // Establecer la posición x e y del texto
+$pdf->Cell(56,4,$datosAdministracion['CURP'],1,0,'C');
+$pdf->SetX(140); // Establecer la posición x e y del texto
+$pdf->Cell(15,4, 'Edad:',1,0,'A');
+$pdf->SetX(155); // Establecer la posición x e y del texto
+$pdf->Cell(15,4,$maestroDatos['edad'],1,0,'C');
+$pdf->SetX(170); // Establecer la posición x e y del texto
+$pdf->Cell(15,4, 'Sexo:',1,0,'A');
+$pdf->SetX(185); // Establecer la posición x e y del texto
+$pdf->Cell(15,4,$maestroDatos['sexo'],1,0,'C');
+$pdf->ln(4);
+$pdf->Cell(40,4, 'Domicilio Particular:',1,0,'A');
+$pdf->SetX(50); // Establecer la posición x e y del texto
+$pdf->Cell(90,4,$datosPersonales['RFC'],1,0,'C');
+$pdf->SetX(140); // Establecer la posición x e y del texto
+$pdf->Cell(30,4, 'Estado Civil:',1,0,'A');
+$pdf->SetX(170); // Establecer la posición x e y del texto
+$pdf->Cell(30,4,$maestroDatos['EstadoCivil'],1,0,'C');
+
+$pdf->ln(4);
+$pdf->Cell(17,4, 'RFC:',1,0,'A');
+$pdf->SetX(27); // Establecer la posición x e y del texto
+$pdf->Cell(40,4,$datosPersonales['RFC'],1,0,'C');
+$pdf->SetX(67); // Establecer la posición x e y del texto
+$pdf->Cell(17,4, 'CURP:',1,0,'A');
+$pdf->SetX(84); // Establecer la posición x e y del texto
+$pdf->Cell(56,4,$datosAdministracion['CURP'],1,0,'C');
+$pdf->SetX(140); // Establecer la posición x e y del texto
+$pdf->Cell(15,4, 'Edad:',1,0,'A');
+$pdf->SetX(155); // Establecer la posición x e y del texto
+$pdf->Cell(15,4,$maestroDatos['edad'],1,0,'C');
+$pdf->SetX(170); // Establecer la posición x e y del texto
+$pdf->Cell(15,4, 'Sexo:',1,0,'A');
+$pdf->SetX(185); // Establecer la posición x e y del texto
+$pdf->Cell(15,4,$maestroDatos['sexo'],1,0,'C');
+$pdf->ln(4);
+$pdf->Cell(40,4, 'Domicilio Particular:',1,0,'A');
+$pdf->SetX(50); // Establecer la posición x e y del texto
+$pdf->Cell(90,4,$datosPersonales['RFC'],1,0,'C');
+$pdf->SetX(140); // Establecer la posición x e y del texto
+$pdf->Cell(30,4, 'Estado Civil:',1,0,'A');
+$pdf->SetX(170); // Establecer la posición x e y del texto
+$pdf->Cell(30,4,$maestroDatos['EstadoCivil'],1,0,'C');
+
+$pdf->ln(4);
+$pdf->Cell(17,4, 'RFC:',1,0,'A');
+$pdf->SetX(27); // Establecer la posición x e y del texto
+$pdf->Cell(40,4,$datosPersonales['RFC'],1,0,'C');
+$pdf->SetX(67); // Establecer la posición x e y del texto
+$pdf->Cell(17,4, 'CURP:',1,0,'A');
+$pdf->SetX(84); // Establecer la posición x e y del texto
+$pdf->Cell(56,4,$datosAdministracion['CURP'],1,0,'C');
+$pdf->SetX(140); // Establecer la posición x e y del texto
+$pdf->Cell(15,4, 'Edad:',1,0,'A');
+$pdf->SetX(155); // Establecer la posición x e y del texto
+$pdf->Cell(15,4,$maestroDatos['edad'],1,0,'C');
+$pdf->SetX(170); // Establecer la posición x e y del texto
+$pdf->Cell(15,4, 'Sexo:',1,0,'A');
+$pdf->SetX(185); // Establecer la posición x e y del texto
+$pdf->Cell(15,4,$maestroDatos['sexo'],1,0,'C');
+$pdf->ln(4);
+$pdf->Cell(40,4, 'Domicilio Particular:',1,0,'A');
+$pdf->SetX(50); // Establecer la posición x e y del texto
+$pdf->Cell(90,4,$datosPersonales['RFC'],1,0,'C');
+$pdf->SetX(140); // Establecer la posición x e y del texto
+$pdf->Cell(30,4, 'Estado Civil:',1,0,'A');
+$pdf->SetX(170); // Establecer la posición x e y del texto
+$pdf->Cell(30,4,$maestroDatos['EstadoCivil'],1,0,'C');
+
+$pdf->ln(4);
+$pdf->Cell(17,4, 'RFC:',1,0,'A');
+$pdf->SetX(27); // Establecer la posición x e y del texto
+$pdf->Cell(40,4,$datosPersonales['RFC'],1,0,'C');
+$pdf->SetX(67); // Establecer la posición x e y del texto
+$pdf->Cell(17,4, 'CURP:',1,0,'A');
+$pdf->SetX(84); // Establecer la posición x e y del texto
+$pdf->Cell(56,4,$datosAdministracion['CURP'],1,0,'C');
+$pdf->SetX(140); // Establecer la posición x e y del texto
+$pdf->Cell(15,4, 'Edad:',1,0,'A');
+$pdf->SetX(155); // Establecer la posición x e y del texto
+$pdf->Cell(15,4,$maestroDatos['edad'],1,0,'C');
+$pdf->SetX(170); // Establecer la posición x e y del texto
+$pdf->Cell(15,4, 'Sexo:',1,0,'A');
+$pdf->SetX(185); // Establecer la posición x e y del texto
+$pdf->Cell(15,4,$maestroDatos['sexo'],1,0,'C');
+$pdf->ln(4);
+$pdf->Cell(40,4, 'Domicilio Particular:',1,0,'A');
+$pdf->SetX(50); // Establecer la posición x e y del texto
+$pdf->Cell(90,4,$datosPersonales['RFC'],1,0,'C');
+$pdf->SetX(140); // Establecer la posición x e y del texto
+$pdf->Cell(30,4, 'Estado Civil:',1,0,'A');
+$pdf->SetX(170); // Establecer la posición x e y del texto
+$pdf->Cell(30,4,$maestroDatos['EstadoCivil'],1,0,'C');
+
+$pdf->ln(4);
+$pdf->Cell(17,4, 'RFC:',1,0,'A');
+$pdf->SetX(27); // Establecer la posición x e y del texto
+$pdf->Cell(40,4,$datosPersonales['RFC'],1,0,'C');
+$pdf->SetX(67); // Establecer la posición x e y del texto
+$pdf->Cell(17,4, 'CURP:',1,0,'A');
+$pdf->SetX(84); // Establecer la posición x e y del texto
+$pdf->Cell(56,4,$datosAdministracion['CURP'],1,0,'C');
+$pdf->SetX(140); // Establecer la posición x e y del texto
+$pdf->Cell(15,4, 'Edad:',1,0,'A');
+$pdf->SetX(155); // Establecer la posición x e y del texto
+$pdf->Cell(15,4,$maestroDatos['edad'],1,0,'C');
+$pdf->SetX(170); // Establecer la posición x e y del texto
+$pdf->Cell(15,4, 'Sexo:',1,0,'A');
+$pdf->SetX(185); // Establecer la posición x e y del texto
+$pdf->Cell(15,4,$maestroDatos['sexo'],1,0,'C');
+$pdf->ln(4);
+$pdf->Cell(40,4, 'Domicilio Particular:',1,0,'A');
+$pdf->SetX(50); // Establecer la posición x e y del texto
+$pdf->Cell(90,4,$datosPersonales['RFC'],1,0,'C');
+$pdf->SetX(140); // Establecer la posición x e y del texto
+$pdf->Cell(30,4, 'Estado Civil:',1,0,'A');
+$pdf->SetX(170); // Establecer la posición x e y del texto
+$pdf->Cell(30,4,$maestroDatos['EstadoCivil'],1,0,'C');
+
+$pdf->ln(4);
+$pdf->Cell(17,4, 'RFC:',1,0,'A');
+$pdf->SetX(27); // Establecer la posición x e y del texto
+$pdf->Cell(40,4,$datosPersonales['RFC'],1,0,'C');
+$pdf->SetX(67); // Establecer la posición x e y del texto
+$pdf->Cell(17,4, 'CURP:',1,0,'A');
+$pdf->SetX(84); // Establecer la posición x e y del texto
+$pdf->Cell(56,4,$datosAdministracion['CURP'],1,0,'C');
+$pdf->SetX(140); // Establecer la posición x e y del texto
+$pdf->Cell(15,4, 'Edad:',1,0,'A');
+$pdf->SetX(155); // Establecer la posición x e y del texto
+$pdf->Cell(15,4,$maestroDatos['edad'],1,0,'C');
+$pdf->SetX(170); // Establecer la posición x e y del texto
+$pdf->Cell(15,4, 'Sexo:',1,0,'A');
+$pdf->SetX(185); // Establecer la posición x e y del texto
+$pdf->Cell(15,4,$maestroDatos['sexo'],1,0,'C');
+$pdf->ln(4);
+$pdf->Cell(40,4, 'Domicilio Particular:',1,0,'A');
+$pdf->SetX(50); // Establecer la posición x e y del texto
+$pdf->Cell(90,4,$datosPersonales['RFC'],1,0,'C');
+$pdf->SetX(140); // Establecer la posición x e y del texto
+$pdf->Cell(30,4, 'Estado Civil:',1,0,'A');
+$pdf->SetX(170); // Establecer la posición x e y del texto
+$pdf->Cell(30,4,$maestroDatos['EstadoCivil'],1,0,'C');
+
+$pdf->ln(4);
+$pdf->Cell(17,4, 'RFC:',1,0,'A');
+$pdf->SetX(27); // Establecer la posición x e y del texto
+$pdf->Cell(40,4,$datosPersonales['RFC'],1,0,'C');
+$pdf->SetX(67); // Establecer la posición x e y del texto
+$pdf->Cell(17,4, 'CURP:',1,0,'A');
+$pdf->SetX(84); // Establecer la posición x e y del texto
+$pdf->Cell(56,4,$datosAdministracion['CURP'],1,0,'C');
+$pdf->SetX(140); // Establecer la posición x e y del texto
+$pdf->Cell(15,4, 'Edad:',1,0,'A');
+$pdf->SetX(155); // Establecer la posición x e y del texto
+$pdf->Cell(15,4,$maestroDatos['edad'],1,0,'C');
+$pdf->SetX(170); // Establecer la posición x e y del texto
+$pdf->Cell(15,4, 'Sexo:',1,0,'A');
+$pdf->SetX(185); // Establecer la posición x e y del texto
+$pdf->Cell(15,4,$maestroDatos['sexo'],1,0,'C');
+$pdf->ln(4);
+$pdf->Cell(40,4, 'Domicilio Particular:',1,0,'A');
+$pdf->SetX(50); // Establecer la posición x e y del texto
+$pdf->Cell(90,4,$datosPersonales['RFC'],1,0,'C');
+$pdf->SetX(140); // Establecer la posición x e y del texto
+$pdf->Cell(30,4, 'Estado Civil:',1,0,'A');
+$pdf->SetX(170); // Establecer la posición x e y del texto
+$pdf->Cell(30,4,$maestroDatos['EstadoCivil'],1,0,'C');
+
 //daots profesionales
-$pdf->SetFont('Arial','B',12);
-$pdf->ln(10);
-$pdf->Cell($anchoPag-20,10, 'DATOS PROFECIONALES',1,0,'C',0);
+$pdf->SetFont('Arial','B',8);
+$pdf->ln(4);
+$pdf->Cell($anchoPag-20,4, 'DATOS PROFECIONALES',0,0,'C',0);
+
+$pdf->ln(4);
+$pdf->Cell(17,4, 'RFC:',1,0,'A');
+$pdf->SetX(27); // Establecer la posición x e y del texto
+$pdf->Cell(40,4,$datosPersonales['RFC'],1,0,'C');
+$pdf->SetX(67); // Establecer la posición x e y del texto
+$pdf->Cell(17,4, 'CURP:',1,0,'A');
+$pdf->SetX(84); // Establecer la posición x e y del texto
+$pdf->Cell(56,4,$datosAdministracion['CURP'],1,0,'C');
+$pdf->SetX(140); // Establecer la posición x e y del texto
+$pdf->Cell(15,4, 'Edad:',1,0,'A');
+$pdf->SetX(155); // Establecer la posición x e y del texto
+$pdf->Cell(15,4,$maestroDatos['edad'],1,0,'C');
+$pdf->SetX(170); // Establecer la posición x e y del texto
+$pdf->Cell(15,4, 'Sexo:',1,0,'A');
+$pdf->SetX(185); // Establecer la posición x e y del texto
+$pdf->Cell(15,4,$maestroDatos['sexo'],1,0,'C');
+$pdf->ln(4);
+$pdf->Cell(40,4, 'Domicilio Particular:',1,0,'A');
+$pdf->SetX(50); // Establecer la posición x e y del texto
+$pdf->Cell(90,4,$datosPersonales['RFC'],1,0,'C');
+$pdf->SetX(140); // Establecer la posición x e y del texto
+$pdf->Cell(30,4, 'Estado Civil:',1,0,'A');
+$pdf->SetX(170); // Establecer la posición x e y del texto
+$pdf->Cell(30,4,$maestroDatos['EstadoCivil'],1,0,'C');
+
+$pdf->ln(4);
+$pdf->Cell(17,4, 'RFC:',1,0,'A');
+$pdf->SetX(27); // Establecer la posición x e y del texto
+$pdf->Cell(40,4,$datosPersonales['RFC'],1,0,'C');
+$pdf->SetX(67); // Establecer la posición x e y del texto
+$pdf->Cell(17,4, 'CURP:',1,0,'A');
+$pdf->SetX(84); // Establecer la posición x e y del texto
+$pdf->Cell(56,4,$datosAdministracion['CURP'],1,0,'C');
+$pdf->SetX(140); // Establecer la posición x e y del texto
+$pdf->Cell(15,4, 'Edad:',1,0,'A');
+$pdf->SetX(155); // Establecer la posición x e y del texto
+$pdf->Cell(15,4,$maestroDatos['edad'],1,0,'C');
+$pdf->SetX(170); // Establecer la posición x e y del texto
+$pdf->Cell(15,4, 'Sexo:',1,0,'A');
+$pdf->SetX(185); // Establecer la posición x e y del texto
+$pdf->Cell(15,4,$maestroDatos['sexo'],1,0,'C');
+$pdf->ln(4);
+$pdf->Cell(40,4, 'Domicilio Particular:',1,0,'A');
+$pdf->SetX(50); // Establecer la posición x e y del texto
+$pdf->Cell(90,4,$datosPersonales['RFC'],1,0,'C');
+$pdf->SetX(140); // Establecer la posición x e y del texto
+$pdf->Cell(30,4, 'Estado Civil:',1,0,'A');
+$pdf->SetX(170); // Establecer la posición x e y del texto
+$pdf->Cell(30,4,$maestroDatos['EstadoCivil'],1,0,'C');
+
+$pdf->ln(4);
+$pdf->Cell(17,4, 'RFC:',1,0,'A');
+$pdf->SetX(27); // Establecer la posición x e y del texto
+$pdf->Cell(40,4,$datosPersonales['RFC'],1,0,'C');
+$pdf->SetX(67); // Establecer la posición x e y del texto
+$pdf->Cell(17,4, 'CURP:',1,0,'A');
+$pdf->SetX(84); // Establecer la posición x e y del texto
+$pdf->Cell(56,4,$datosAdministracion['CURP'],1,0,'C');
+$pdf->SetX(140); // Establecer la posición x e y del texto
+$pdf->Cell(15,4, 'Edad:',1,0,'A');
+$pdf->SetX(155); // Establecer la posición x e y del texto
+$pdf->Cell(15,4,$maestroDatos['edad'],1,0,'C');
+$pdf->SetX(170); // Establecer la posición x e y del texto
+$pdf->Cell(15,4, 'Sexo:',1,0,'A');
+$pdf->SetX(185); // Establecer la posición x e y del texto
+$pdf->Cell(15,4,$maestroDatos['sexo'],1,0,'C');
+$pdf->ln(4);
+$pdf->Cell(40,4, 'Domicilio Particular:',1,0,'A');
+$pdf->SetX(50); // Establecer la posición x e y del texto
+$pdf->Cell(90,4,$datosPersonales['RFC'],1,0,'C');
+$pdf->SetX(140); // Establecer la posición x e y del texto
+$pdf->Cell(30,4, 'Estado Civil:',1,0,'A');
+$pdf->SetX(170); // Establecer la posición x e y del texto
+$pdf->Cell(30,4,$maestroDatos['EstadoCivil'],1,0,'C');
+
+$pdf->ln(4);
+$pdf->Cell(17,4, 'RFC:',1,0,'A');
+$pdf->SetX(27); // Establecer la posición x e y del texto
+$pdf->Cell(40,4,$datosPersonales['RFC'],1,0,'C');
+$pdf->SetX(67); // Establecer la posición x e y del texto
+$pdf->Cell(17,4, 'CURP:',1,0,'A');
+$pdf->SetX(84); // Establecer la posición x e y del texto
+$pdf->Cell(56,4,$datosAdministracion['CURP'],1,0,'C');
+$pdf->SetX(140); // Establecer la posición x e y del texto
+$pdf->Cell(15,4, 'Edad:',1,0,'A');
+$pdf->SetX(155); // Establecer la posición x e y del texto
+$pdf->Cell(15,4,$maestroDatos['edad'],1,0,'C');
+$pdf->SetX(170); // Establecer la posición x e y del texto
+$pdf->Cell(15,4, 'Sexo:',1,0,'A');
+$pdf->SetX(185); // Establecer la posición x e y del texto
+$pdf->Cell(15,4,$maestroDatos['sexo'],1,0,'C');
+$pdf->ln(4);
+$pdf->Cell(40,4, 'Domicilio Particular:',1,0,'A');
+$pdf->SetX(50); // Establecer la posición x e y del texto
+$pdf->Cell(90,4,$datosPersonales['RFC'],1,0,'C');
+$pdf->SetX(140); // Establecer la posición x e y del texto
+$pdf->Cell(30,4, 'Estado Civil:',1,0,'A');
+$pdf->SetX(170); // Establecer la posición x e y del texto
+$pdf->Cell(30,4,$maestroDatos['EstadoCivil'],1,0,'C');
+
+$pdf->ln(4);
+$pdf->Cell(17,4, 'RFC:',1,0,'A');
+$pdf->SetX(27); // Establecer la posición x e y del texto
+$pdf->Cell(40,4,$datosPersonales['RFC'],1,0,'C');
+$pdf->SetX(67); // Establecer la posición x e y del texto
+$pdf->Cell(17,4, 'CURP:',1,0,'A');
+$pdf->SetX(84); // Establecer la posición x e y del texto
+$pdf->Cell(56,4,$datosAdministracion['CURP'],1,0,'C');
+$pdf->SetX(140); // Establecer la posición x e y del texto
+$pdf->Cell(15,4, 'Edad:',1,0,'A');
+$pdf->SetX(155); // Establecer la posición x e y del texto
+$pdf->Cell(15,4,$maestroDatos['edad'],1,0,'C');
+$pdf->SetX(170); // Establecer la posición x e y del texto
+$pdf->Cell(15,4, 'Sexo:',1,0,'A');
+$pdf->SetX(185); // Establecer la posición x e y del texto
+$pdf->Cell(15,4,$maestroDatos['sexo'],1,0,'C');
+$pdf->ln(4);
+$pdf->Cell(40,4, 'Domicilio Particular:',1,0,'A');
+$pdf->SetX(50); // Establecer la posición x e y del texto
+$pdf->Cell(90,4,$datosPersonales['RFC'],1,0,'C');
+$pdf->SetX(140); // Establecer la posición x e y del texto
+$pdf->Cell(30,4, 'Estado Civil:',1,0,'A');
+$pdf->SetX(170); // Establecer la posición x e y del texto
+$pdf->Cell(30,4,$maestroDatos['EstadoCivil'],1,0,'C');
+/*********************/
+$pdf->SetFont('Arial','',8);
+$pdf->ln(8);
+$pdf->Cell($anchoPag-20,5, 'Atentamente',0,0,'C',0);
+$pdf->SetFont('Arial','',7);
+$pdf->ln(7);
+$pdf->Cell($anchoPag-20,5, 'Prof:(a)________________________________________________',0,0,'C',0);
+$pdf->ln(5);
+$pdf->Cell($anchoPag-20,5, '(Nombre y Firma)',0,0,'C',0);
+$pdf->SetFont('Arial','',7);
+$pdf->ln(5);
+$pdf->Cell($anchoPag-20,5, utf8_decode('Bajo protesta de decir la verdad afirmo que los datos asentados anteriormente son todos y cada uno de los mimos verídicos,  y me comprometo a que en cuanto alguno de '),0,0,'C',0);
+$pdf->ln(5);
+$pdf->Cell($anchoPag-20,5, utf8_decode('ellos se modifique informar a esta instancia'),0,0,'C',0);
 
 //hace un recorrido por el resultado y se guarda en row 
 //en cada selda se colocara una ip de la base de datos

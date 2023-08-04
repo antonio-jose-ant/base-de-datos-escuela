@@ -49,6 +49,7 @@ session_start();
             'telefonoCasa'=> (!empty($_POST['telCel'])) ? $_POST['telCel'] : "",
             'correoElectronico'=> (!empty($_POST['emailpersonal'])) ? $_POST['emailpersonal'] : "",
             'edad'=> (!empty($_POST['edad'])) ? $_POST['edad'] : "",
+            'sexo'=> (!empty($_POST['sexo'])) ? $_POST['sexo'] : "",
             'EstadoCivil'=> (!empty($_POST['estadoC'])) ? $_POST['estadoC'] : "",
             'redSocial'=> (!empty($_POST['RedSocial'])) ? $_POST['RedSocial'] : ""
         )

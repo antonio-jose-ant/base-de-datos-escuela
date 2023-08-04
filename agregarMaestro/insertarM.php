@@ -61,11 +61,11 @@
         ,'".$datosA['Telefono']."'
         ,'".$datosA['EmailInstituto']."')";
         $resultadoo=mysqli_query($conexion,$insertaadmin);
-        $insertar= "INSERT INTO profesor (nomina,nombre,apellidoP,apellidoM,localidadOcolonia,Direccion,municipio,CP,telefonoPersonal,telefonoCasa,correoElectronico,edad,EstadoCivil,redSocial,CURP,RFC) 
+        $insertar= "INSERT INTO profesor (nomina,nombre,apellidoP,apellidoM,localidadOcolonia,Direccion,municipio,CP,telefonoPersonal,telefonoCasa,correoElectronico,edad,sexo,EstadoCivil,redSocial,CURP,RFC) 
         values ('".$datos['nomina']."'
-        ,'".ucwords($datos['nombre'])."'
-        ,'".ucwords($datos['apellidoP'])."'
-        ,'".ucwords($datos['apellidoM'])."'
+        ,'".ucfirst(strtolower($datos['nombre']))."'
+        ,'".ucfirst(strtolower($datos['apellidoP']))."'
+        ,'".ucfirst(strtolower($datos['apellidoM']))."'
         ,'".$datos['localidadOcolonia']."'
         ,'".$datos['Direccion']."'
         ,'".$datos['municipio']."'

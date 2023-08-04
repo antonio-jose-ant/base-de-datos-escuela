@@ -40,6 +40,7 @@ CREATE TABLE profesor(
     telefonoCasa varchar(12), 
     correoElectronico varchar(50), 
     edad int, 
+    sexo varchar(1),
     EstadoCivil varchar(8), 
     redSocial varchar(30),
     CURP varchar(30), 

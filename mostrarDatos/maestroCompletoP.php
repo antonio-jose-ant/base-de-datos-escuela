@@ -85,6 +85,13 @@
                 <span> Edad:</span>
                 <input type="number" name="edad" value="<?php echo $row['edad']; ?>"/>
             </div>
+            <div >
+                <span> Sexo:</span>
+                <select name="sexo">
+                    <option value="F" <?php if($row['sexo']=="F")  echo "selected";?>>F</option>
+                    <option value="M" <?php if($row['sexo']=="M")  echo "selected";?>>M</option>
+                </select>
+            </div>
             <div class="colC-2">
                 <span> Estado Civil:</span>
                 <input type="text" name="estadoC" value="<?php echo $row['EstadoCivil']; ?>"/>

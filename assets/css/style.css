@@ -40,10 +40,6 @@ iframe{
     padding: 0;
     border: none;
 }
-
-.mayusculas{
-    text-transform: uppercase;
-}
 a {
     font-size: 30px;
     text-decoration: none;

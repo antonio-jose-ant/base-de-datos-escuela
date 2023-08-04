@@ -73,6 +73,14 @@
             <span> Edad:</span>
             <input type="number" name="edad"/>
         </div>
+        <div>
+            <span> Sexo:</span>
+            <select name="sexo">
+                <option></option>
+                <option value="F">F</option>
+                <option value="M">M</option>
+            </select>
+        </div>
         <div class="colC-2">
             <span> Estado Civil:</span>
             <select name="estadoC">

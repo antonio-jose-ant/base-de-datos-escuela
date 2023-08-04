@@ -78,6 +78,14 @@
                 <span> Edad:</span>
                 <input type="number" name="edad" value="<?php echo $maestroDatos['edad']; ?>"/>
             </div>
+            <div>
+                <span> Sexo:</span>
+                <select name="sexo">
+                    <option></option>
+                    <option value="F">F</option>
+                    <option value="M">M</option>
+                </select>
+            </div>
             <div class="colC-2">
                 <span> Estado Civil:</span>
                 <input type="text" name="estadoC" value="<?php echo $maestroDatos['EstadoCivil']; ?>"/>

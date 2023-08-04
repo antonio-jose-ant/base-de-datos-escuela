@@ -7,8 +7,6 @@
         if(isset($_SESSION['user'])){
             //echo "hay sesion";
         $user->setUser($userSession->getCurrentUser());
-        
-        
         $consultaMaestro = "SELECT 
         profesor.nomina,
         profesor.nombre,
@@ -34,7 +32,7 @@
     <title>Agregar</title>
 </head>
 <body>
-    <form class="tabla profesor" action="maestroCompletoP.php" method="post"  name="form">
+    <form class="tabla profesor" action="./maestroCompletoP.php" method="post"  name="form">
         <div class="colR-3 colC-Complet tabla busquedaP">
             <div>
                 <p>Nombre:</p>
@@ -70,8 +68,8 @@
             <?php echo "<div><p>".$row['nomina']."  <input name='nomina' value='".$row['nomina']."' type='hidden'> </p></div>";?>
             <?php echo "<div><p>".$row["nombre"]." ".$row["apellidoP"]." ".$row["apellidoM"]."</p></div>";?>
             <?php echo "<div><p>".$row["telefonoPersonal"]."</p></div>";?>
-            <?php echo "<div><p class=\"mayusculas\">".$row["CURP"]."<input name='curpProfe' value='".$row['CURP']."' type='hidden'> </p></div>";?>
-            <?php echo "<div><p class=\"mayusculas\">".$row["RFC"]."<input name='rfcProfe' value='".$row['RFC']."' type='hidden'></p></div>";?>
+            <?php echo "<div><p>".$row["CURP"]."<input name='curpProfe' value='".$row['CURP']."' type='hidden'> </p></div>";?>
+            <?php echo "<div><p>".$row["RFC"]."<input name='rfcProfe' value='".$row['RFC']."' type='hidden'></p></div>";?>
             <?php echo "<div><p>".$row["PreparacionProfecional"]."</p></div>";?>
             <?php echo "</div>"?>
             <?php }?>
