@@ -112,7 +112,7 @@
         </div>
         <div class="colC-3">
             <span> RFC:</span>
-            <input type="text" name="RFC"  class="mayusculas" maxlength="12"/>
+            <input type="text" name="RFC"  class="mayusculas" maxlength="13"/>
         </div>
         <div class="colC-4">
             <span> Años de Servicio:</span>
@@ -140,7 +140,7 @@
         </div>
         <div class="colC-4">
             <span> Fecha De Ingreso A La Funcion Actual:</span>
-            <input type="text" id="date2" name="FechaINgreso"/>
+            <input type="text" id="date2" name="FechaINgreso" readonly/>
         </div>
          <!--aqui empieza datos profecionales -->
         <div class="colC-Complet"><h2>Datos Adscripción</h2></div> 
@@ -174,7 +174,7 @@
         </div>
         <div class="colC-3">
             <span> Fecha de Ingreso:</span>
-            <input type="text" id="date3" name="FechaFuncionA"/>
+            <input type="text" id="date3" name="FechaFuncionActual" readonly/>
         </div>
         <div class="colC-Complet">
             <input type="submit" value="Guardar Datos" class="btn" name="acction" />

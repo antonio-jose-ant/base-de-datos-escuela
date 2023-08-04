@@ -17,7 +17,7 @@ $datosA=$mDA->get_datosadministracion();
         ,datospersonales.ClaevServidor='".$datosP['ClaveS']."'
         ,datospersonales.FechaIngreso='".date("Y-m-d", strtotime($datosP['FechaINgreso']))."'
         ,datospersonales.NumeroPlaza='".$datosP['NumeroPa']."'
-        ,datospersonales.fechaIngresoFuncionActual='".date("Y-m-d", strtotime($datosP['FechaFuncionA']))."'
+        ,datospersonales.fechaIngresoFuncionActual='".date("Y-m-d", strtotime($datosP['FechaFuncionActual']))."'
         ,datospersonales.CodigoPuesto='".$datosP['CoddigoPuesto']."'
         ,datospersonales.PreparacionProfecional='".$datosP['PreparacionPro']."' ";
         

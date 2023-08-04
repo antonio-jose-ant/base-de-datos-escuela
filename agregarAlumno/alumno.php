@@ -21,7 +21,7 @@
 </head>
     <body> 
         <div>   
-            <form action="insertar.php" method="post" name="form" class="form">
+            <form action="insertarA.php" method="post" name="form" class="form">
 <!------------------------------------DATOS ALUMNO---------------------------------------------------->
                 <div class="colC-Complet">
                     <h2>DATOS DEL ALUMNO:</h2>

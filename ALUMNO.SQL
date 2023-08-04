@@ -13,9 +13,7 @@ create table Datos_Alumno(
     CURP_tutor1 varchar(18),
     CURP_tutor2 varchar(18),
     PRIMARY key (matricula),
-    FOREIGN key (CURP_tutor1) REFERENCES tutor1 (CURP_tutor1),
-    FOREIGN key (CURPAlu)  REFERENCES datos_medicos(CURPAlu),
-    FOREIGN key (CURP_tutor2) REFERENCES tutor2 (CURP_tutor2)
+    FOREIGN key (CURPAlu)  REFERENCES datos_medicos(CURPAlu)
 );
 
 create table datos_medicos(
@@ -40,7 +38,8 @@ create table tutor1(
     Estado_civil varchar (30),
     Ocupacion varchar(40),
     Grado_estudios varchar(40),
-    PRIMARY KEY (CURP_tutor1)
+    matricula varchar(12),
+    FOREIGN KEY (matricula) REFERENCES Datos_Alumno(matricula)
 );
 create table tutor2(
     CURP_tutor2 varchar(18),
@@ -52,7 +51,8 @@ create table tutor2(
     Estado_civil varchar (30),
     Ocupacion varchar(40),
     Grado_estudios varchar(40),
-    PRIMARY KEY (CURP_tutor2)
+    matricula varchar(12),
+    FOREIGN KEY (matricula) REFERENCES Datos_Alumno(matricula)
 );
 
 create table domicilio(

@@ -33,7 +33,7 @@ session_start();
         function get_accion() {
             return $this->accion;
         }
-    }
+    } 
     $mDatos= new maestros;
     $mDatos->set_maestrosDatos(
         array(
@@ -64,7 +64,7 @@ session_start();
             'ClaveS'=>  (!empty($_POST['ClaveS'])) ? $_POST['ClaveS'] : "",
             'FechaINgreso'=>  (!empty($_POST['FechaINgreso'])) ? $_POST['FechaINgreso'] : "",
             'NumeroPa'=>  (!empty($_POST['NumeroP'])) ? $_POST['NumeroP'] : "",
-            'FechaFuncionA'=>  (!empty($_POST['FechaFuncionA'])) ? $_POST['FechaFuncionA'] : "",
+            'FechaFuncionActual'=>  (!empty($_POST['FechaFuncionActual'])) ? $_POST['FechaFuncionActual'] : "",
             'CoddigoPuesto'=>  (!empty($_POST['CoddigoPuesto'])) ? $_POST['CoddigoPuesto'] : "",
             'AnosSerFUnciona'=>  (!empty($_POST['AnosSerFUncion'])) ? $_POST['AnosSerFUncion'] : "",
             'PreparacionPro'=> (!empty($_POST['PreparacionPro'])) ? $_POST['PreparacionPro'] : ""
@@ -82,7 +82,7 @@ session_start();
             'Telefono'=> (!empty($_POST['Telefono'])) ? $_POST['Telefono'] : "",
             'EmailInstituto'=> (!empty($_POST['emailInstituto'])) ? $_POST['emailInstituto'] : ""
         )
-    );
+    ); 
     $accionR= new maestros;
     $accionR->set_accion($_POST['acction']);
     $consulta=$accionR->get_accion();

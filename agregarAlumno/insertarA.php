@@ -123,32 +123,6 @@
         )";
         $resultadoBDMedicos=mysqli_query($conexion,$datos_medicosInsert);
 
-        $tutor1Insert="INSERT INTO tutor1 (CURP_tutor1,Nombre,Apellido_p,Apellido_m,Edad,Parentesco,Estado_civil,Ocupacion,Grado_estudios)
-        VALUES('".strtoupper($tutor1['CURPT1'])."'
-            ,'".$tutor1['nombreT1']."'
-            ,'".$tutor1['apellidoPT1']."'
-            ,'".$tutor1['apellidoMT1']."'
-            ,'".$tutor1['edadT1']."'
-            ,'".$tutor1['parentescoT1']."'
-            ,'".$tutor1['Estado_civilT1']."'
-            ,'".$tutor1['ocupacionT1']."'
-            ,'".$tutor1['estudioT1']."'
-        )";
-        $resultadoBDtutor1=mysqli_query($conexion,$tutor1Insert);
-
-        $tutor2Insert="INSERT INTO tutor2 (CURP_tutor2,Nombre,Apellido_p,Apellido_m,Edad,Parentesco,Estado_civil,Ocupacion,Grado_estudios)
-        VALUES('".strtoupper($tutor2['CURPT2'])."'
-            ,'".$tutor2['nombreT2']."'
-            ,'".$tutor2['apellidoPT2']."'
-            ,'".$tutor2['apellidoMT2']."'
-            ,'".$tutor2['edadT2']."'
-            ,'".$tutor2['parentescoT2']."'
-            ,'".$tutor2['Estado_civilT2']."'
-            ,'".$tutor2['ocupacionT2']."'
-            ,'".$tutor2['estudioT2']."'
-        )";
-        $resultadoBDtutor2=mysqli_query($conexion,$tutor2Insert); 
-
         $Datos_AlumnoInsert="INSERT INTO Datos_Alumno (matricula,Nombre_alu,Apellido_p,Apellido_m,CURPAlu,Fecha_n_alu,Edad_alu,Correo_alu,grado,grupo,turno,CURP_tutor1,CURP_tutor2)
         VALUES('".$Datos_Alumno['matricula']."'
             ,'".ucwords($Datos_Alumno['Nombre'])."'
@@ -161,10 +135,36 @@
             ,'".$Datos_Alumno['Grado']."'
             ,'".$Datos_Alumno['Grupo']."'
             ,'".$Datos_Alumno['Turno']."'
-            ,'".strtoupper($tutor1['CURPT1'])."'
-            ,'".strtoupper($tutor2['CURPT2'])."'
         )";
         $resultadoBDAlu=mysqli_query($conexion,$Datos_AlumnoInsert);
+
+        $tutor1Insert="INSERT INTO tutor1 (CURP_tutor1,Nombre,Apellido_p,Apellido_m,Edad,Parentesco,Estado_civil,Ocupacion,Grado_estudios,matricula)
+        VALUES('".strtoupper($tutor1['CURPT1'])."'
+            ,'".$tutor1['nombreT1']."'
+            ,'".$tutor1['apellidoPT1']."'
+            ,'".$tutor1['apellidoMT1']."'
+            ,'".$tutor1['edadT1']."'
+            ,'".$tutor1['parentescoT1']."'
+            ,'".$tutor1['Estado_civilT1']."'
+            ,'".$tutor1['ocupacionT1']."'
+            ,'".$tutor1['estudioT1']."'
+            ,'".$Datos_Alumno['matricula']."'
+        )";
+        $resultadoBDtutor1=mysqli_query($conexion,$tutor1Insert);
+
+        $tutor2Insert="INSERT INTO tutor2 (CURP_tutor2,Nombre,Apellido_p,Apellido_m,Edad,Parentesco,Estado_civil,Ocupacion,Grado_estudios,matricula)
+        VALUES('".strtoupper($tutor2['CURPT2'])."'
+            ,'".$tutor2['nombreT2']."'
+            ,'".$tutor2['apellidoPT2']."'
+            ,'".$tutor2['apellidoMT2']."'
+            ,'".$tutor2['edadT2']."'
+            ,'".$tutor2['parentescoT2']."'
+            ,'".$tutor2['Estado_civilT2']."'
+            ,'".$tutor2['ocupacionT2']."'
+            ,'".$tutor2['estudioT2']."'
+            ,'".$Datos_Alumno['matricula']."'
+        )";
+        $resultadoBDtutor2=mysqli_query($conexion,$tutor2Insert); 
 
         $domicilioInsert="INSERT INTO domicilio(Calle,Numero,CP,Calle1,Calle2,Referencia,Colonia,Municipio,Tel_casa,matricula)
         VALUES('".$domicilio['Calle']."'
@@ -195,7 +195,7 @@
     if($resultadoBDGenerales){
         echo "<script> alert('se a registrado con exito'); window.location='/base-de-datos-escuela/agregarAlumno/alumno.php'</script>";
     }else{
-        echo "<script> alert('no se registro');</script>";
+        echo "<script> alert('no se registro'); window.location='/base-de-datos-escuela/agregarAlumno/alumno.php'</script>";
         echo mysqli_errno($conexion) . ": " . mysqli_error($conexion). "\n";
     }
 ?>
