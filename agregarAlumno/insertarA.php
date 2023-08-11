@@ -1,201 +1,177 @@
 <?php
-    include '../includes/conexion-BD.php';
+include_once '../includes/user.php';
+include_once '../includes/user_session.php';
+$userSession = new UserSession();
+$user = new User();
+
+if(isset($_SESSION['user'])){
+    $user->setUser($userSession->getCurrentUser());
+    session_start();
+    
+    $DatosAlumno=$Datos_Alumno ->get_alumnoDatos();
+    $datosmedicos=$datos_medicos -> get_datosMedicosA();
+    $tutor1Alu=$tutor1 ->get_tutor1A();
+    $tutor2alu=$tutor2 ->get_tutor2A();
+    $domicilioAlu=$domicilio ->get_DomicilioA();
+    $DatosgeneralesAlu=$Datos_generales -> get_datosGeneralesA();
+
+    $_SESSION['alumnoDatos'] = $Datos_Alumno->get_alumnoDatos();
+    $_SESSION['datosMedicosA'] = $datos_medicos->get_datosMedicosA();
+    $_SESSION['tutor1A'] = $tutor1->get_tutor1A();
+    $_SESSION['tutor2A'] = $tutor2->get_tutor2A();
+    $_SESSION['DomicilioA'] = $domicilio->get_DomicilioA();
+    $_SESSION['datosGeneralesA'] = $Datos_generales->get_datosGeneralesA();
     $insert = true;
-    $Datos_Alumno =array(  
-        'matricula'=>strtoupper(substr($_POST['Nombre'],0,3).substr($_POST['ApeidoP'],0,2).substr($_POST['ApeidoM'],0,2).substr($_POST['Grado'],0,1).substr($_POST['Grupo'],0,1).substr($_POST['Turno'],0,1).substr($_POST['CURP'],-2)),
-        'Nombre'=>(!empty($_POST['Nombre'])) ? $_POST['Nombre'] : "",
-        'ApeidoP'=>(!empty($_POST['ApeidoP'])) ? $_POST['ApeidoP'] : "",
-        'ApeidoM'=>(!empty($_POST['ApeidoM'])) ? $_POST['ApeidoM'] : "",
-        'Grado'=>(!empty($_POST['Grado'])) ? $_POST['Grado'] : "",
-        'Grupo'=>(!empty($_POST['Grupo'])) ? $_POST['Grupo'] : "",
-        'Turno'=>(!empty($_POST['Turno'])) ? $_POST['Turno'] : "",
-        'CURP'=>(!empty($_POST['CURP'])) ? $_POST['CURP'] : "",
-        'Fecha_n'=>(!empty($_POST['Fecha_n'])) ? $_POST['Fecha_n'] : "",
-        'edad'=>(!empty($_POST['edad'])) ? $_POST['edad'] : "", 
-        'CorreoAlu'=>(!empty($_POST['CorreoAlu'])) ? $_POST['CorreoAlu'] : ""
-    );
-    $datos_medicos =array( 
-        //'CURPAlu'=>(!empty($_POST['CURP'])) ? $_POST['CURPAlu']:"",
-        'numEmergencia'=>(!empty($_POST['numEmergencia'])) ? $_POST['numEmergencia']:"",
-        'Talla'=>(!empty($_POST['Talla'])) ? $_POST['Talla']:"",
-        'peso'=>(!empty($_POST['peso'])) ? $_POST['peso']:"",
-        'tipoSangre'=>(!empty($_POST['tipoSangre'])) ? $_POST['tipoSangre']:"",
-        'alergia'=>(!empty($_POST['alergia'])) ? $_POST['alergia']:"",
-        'padecimiento'=>(!empty($_POST['padecimiento'])) ? $_POST['padecimiento']:"",
-        'piePlano'=>(!empty($_POST['piePlano'])) ? $_POST['piePlano']:"",
-        'lentes'=>(!empty($_POST['lentes'])) ? $_POST['lentes']:""
-    ); 
-    $tutor1 =array( 
-        'CURPT1'=>(!empty($_POST['CURPT1'])) ? $_POST['CURPT1']:"",
-        'nombreT1'=>(!empty($_POST['nombreT1'])) ? $_POST['nombreT1']:"",
-        'apellidoPT1'=>(!empty($_POST['apellidoPT1'])) ? $_POST['apellidoPT1']:"",
-        'apellidoMT1'=>(!empty($_POST['apellidoMT1'])) ? $_POST['apellidoMT1']:"",
-        'edadT1'=>(!empty($_POST['edadT1'])) ? $_POST['edadT1']:"",
-        'parentescoT1'=>(!empty($_POST['parentescoT1'])) ? $_POST['parentescoT1']:"",
-        'Estado_civilT1'=>(!empty($_POST['Estado_civilT1'])) ? $_POST['Estado_civilT1']:"",
-        'ocupacionT1'=>(!empty($_POST['ocupacionT1'])) ? $_POST['ocupacionT1']:"",
-        'estudioT1'=>(!empty($_POST['estudioT1'])) ? $_POST['estudioT1']:""
-    );
-    $tutor2 =array( 
-        'CURPT2'=>(!empty($_POST['CURPT2'])) ? $_POST['CURPT2']:"",
-        'nombreT2'=>(!empty($_POST['nombreT2'])) ? $_POST['nombreT2']:"",
-        'apellidoPT2'=>(!empty($_POST['apellidoPT2'])) ? $_POST['apellidoPT2']:"",
-        'apellidoMT2'=>(!empty($_POST['apellidoMT2'])) ? $_POST['apellidoMT2']:"",
-        'edadT2'=>(!empty($_POST['edadT2'])) ? $_POST['edadT2']:"",
-        'parentescoT2'=>(!empty($_POST['parentescoT2'])) ? $_POST['parentescoT2']:"",
-        'Estado_civilT2'=>(!empty($_POST['Estado_civilT2'])) ? $_POST['Estado_civilT2']:"",
-        'ocupacionT2'=>(!empty($_POST['ocupacionT2'])) ? $_POST['ocupacionT2']:"",
-        'estudioT2'=>(!empty($_POST['estudioT2'])) ? $_POST['estudioT2']:""
-    );
-    $domicilio =array( 
-        'Calle'=>(!empty($_POST['Calle'])) ? $_POST['Calle']:"",
-        'No'=>(!empty($_POST['No'])) ? $_POST['No']:"",
-        'CP'=>(!empty($_POST['CP'])) ? $_POST['CP']:"",
-        'Calle1'=>(!empty($_POST['Calle1'])) ? $_POST['Calle1']:"",
-        'Calle2'=>(!empty($_POST['Calle2'])) ? $_POST['Calle2']:"",
-        'referencia'=>(!empty($_POST['referencia'])) ? $_POST['referencia']:"sin Referencias",
-        'Colonia'=>(!empty($_POST['Colonia'])) ? $_POST['Colonia']:"",
-        'Municipio'=>(!empty($_POST['Municipio'])) ? $_POST['Municipio']:"",
-        'TelCasa'=>(!empty($_POST['TelCasa'])) ? $_POST['TelCasa']:""
-    );
-    $Datos_generales =array( 
-        'vivenC'=>(!empty($_POST['vivenC'])) ? $_POST['vivenC']:"",
-        'sostenHogar'=>(!empty($_POST['sostenHogar'])) ? $_POST['sostenHogar']:"",
-        'internet'=>(!empty($_POST['internet'])) ? $_POST['internet']:"No",
-        'television'=>(!empty($_POST['television'])) ? $_POST['television']:"No",
-        'celular'=>(!empty($_POST['celular'])) ? $_POST['celular']:"No",
-        'tablet'=>(!empty($_POST['tablet'])) ? $_POST['tablet']:"No",
-        'computadora'=>(!empty($_POST['computadora'])) ? $_POST['computadora']:"No"
-    );/*
-    foreach ($Datos_Alumno as $key => $value) {
+    foreach ($DatosAlumno as $key => $value) {
         if (empty($value)) {
             $insert = false;
-            echo "<script>alert('El campo $key está vacío');</script>";
+            echo "<script>alert('El campo $key está vacío');window.location='/base-de-datos-escuela/agregarAlumno/campoV.php'</script>";
+            exit;
             break;
         }
     }
-    foreach ($datos_medicos as $key => $value) {
+    foreach ($datosmedicos as $key => $value) {
         if (empty($value)) {
             $insert = false;
-            echo "<script>alert('El campo $key está vacío');</script>";
+            echo "<script>alert('El campo $key está vacío');window.location='/base-de-datos-escuela/agregarAlumno/campoV.php'</script>";
+            exit;
             break;
         }
     }
-    foreach ($tutor1 as $key => $value) {
+    foreach ($tutor1Alu as $key => $value) {
         if (empty($value)) {
             $insert = false;
-            echo "<script>alert('El campo $key está vacío');</script>";
+            echo "<script>alert('El campo $key está vacío');window.location='/base-de-datos-escuela/agregarAlumno/campoV.php'</script>";
+            exit;
             break;
         }
     }
-    foreach ($tutor2 as $key => $value) {
+    foreach ($tutor2alu as $key => $value) {
         if (empty($value)) {
             $insert = false;
-            echo "<script>alert('El campo $key está vacío');</script>";
+            echo "<script>alert('El campo $key está vacío');window.location='/base-de-datos-escuela/agregarAlumno/campoV.php'</script>";
+            exit;
             break;
         }
     }
-    foreach ($domicilio as $key => $value) {
+    foreach ($domicilioAlu as $key => $value) {
         if (empty($value)) {
             $insert = false;
-            echo "<script>alert('El campo $key está vacío');</script>";
+            echo "<script>alert('El campo $key está vacío');window.location='/base-de-datos-escuela/agregarAlumno/campoV.php'</script>";
+            exit;
             break;
         }
     }
-    foreach ($Datos_generales as $key => $value) {
+    foreach ($DatosgeneralesAlu as $key => $value) {
         if (empty($value)) {
             $insert = false;
-            echo "<script>alert('El campo $key está vacío');</script>";
+            echo "<script>alert('El campo $key está vacío');window.location='/base-de-datos-escuela/agregarAlumno/campoV.php'</script>";
+            exit;
             break;
         }
-    }*/
+    }
     if($insert){
-        $datos_medicosInsert="INSERT INTO datos_medicos (CURPAlu, Tel_emergencia, Talla, Peso, Tipo_sangre, Alergias, padecimiento, Pie_plano,lentes)
-        VALUES('".strtoupper($Datos_Alumno['CURP'])."'
-            ,'".$datos_medicos['numEmergencia']."'
-            ,'".$datos_medicos['Talla']."'
-            ,'".$datos_medicos['peso']."'
-            ,'".$datos_medicos['tipoSangre']."'
-            ,'".$datos_medicos['alergia']."'
-            ,'".$datos_medicos['padecimiento']."'
-            ,'".$datos_medicos['piePlano']."'
-            ,'".$datos_medicos['lentes']."'
+        $datosMedicosInsert="INSERT INTO datos_medicos (CURPAlu, Tel_emergencia, Talla, Peso, Tipo_sangre, Alergias, padecimiento, Pie_plano,lentes)
+        VALUES('".strtoupper($DatosAlumno['CURP'])."'
+            ,'".$datosmedicos['numEmergencia']."'
+            ,'".$datosmedicos['Talla']."'
+            ,'".$datosmedicos['peso']."'
+            ,'".$datosmedicos['tipoSangre']."'
+            ,'".$datosmedicos['alergia']."'
+            ,'".$datosmedicos['padecimiento']."'
+            ,'".$datosmedicos['piePlano']."'
+            ,'".$datosmedicos['lentes']."'
         )";
-        $resultadoBDMedicos=mysqli_query($conexion,$datos_medicosInsert);
-
-        $Datos_AlumnoInsert="INSERT INTO Datos_Alumno (matricula,Nombre_alu,Apellido_p,Apellido_m,CURPAlu,Fecha_n_alu,Edad_alu,Correo_alu,grado,grupo,turno,CURP_tutor1,CURP_tutor2)
-        VALUES('".$Datos_Alumno['matricula']."'
-            ,'".ucwords($Datos_Alumno['Nombre'])."'
-            ,'".ucwords($Datos_Alumno['ApeidoP'])."'
-            ,'".ucwords($Datos_Alumno['ApeidoM'])."'
-            ,'".strtoupper($Datos_Alumno['CURP'])."'
-            ,'".date("Y-m-d", strtotime($Datos_Alumno['Fecha_n']))."'
-            ,'".$Datos_Alumno['edad']."'
-            ,'".$Datos_Alumno['CorreoAlu']."'
-            ,'".$Datos_Alumno['Grado']."'
-            ,'".$Datos_Alumno['Grupo']."'
-            ,'".$Datos_Alumno['Turno']."'
+        $DatosAlumnoInsert="INSERT INTO Datos_Alumno (matricula,Nombre_alu,Apellido_p,Apellido_m,CURPAlu,Fecha_n_alu,Edad_alu,Correo_alu,grado,grupo,turno)
+        VALUES('".$DatosAlumno['matricula']."'
+            ,'".ucwords($DatosAlumno['Nombre'])."'
+            ,'".ucwords($DatosAlumno['ApeidoP'])."'
+            ,'".ucwords($DatosAlumno['ApeidoM'])."'
+            ,'".strtoupper($DatosAlumno['CURP'])."'
+            ,'".date("Y-m-d", strtotime($DatosAlumno['Fecha_n']))."'
+            ,'".$DatosAlumno['edad']."'
+            ,'".$DatosAlumno['CorreoAlu']."'
+            ,'".$DatosAlumno['Grado']."'
+            ,'".$DatosAlumno['Grupo']."'
+            ,'".$DatosAlumno['Turno']."'
         )";
-        $resultadoBDAlu=mysqli_query($conexion,$Datos_AlumnoInsert);
-
         $tutor1Insert="INSERT INTO tutor1 (CURP_tutor1,Nombre,Apellido_p,Apellido_m,Edad,Parentesco,Estado_civil,Ocupacion,Grado_estudios,matricula)
-        VALUES('".strtoupper($tutor1['CURPT1'])."'
-            ,'".$tutor1['nombreT1']."'
-            ,'".$tutor1['apellidoPT1']."'
-            ,'".$tutor1['apellidoMT1']."'
-            ,'".$tutor1['edadT1']."'
-            ,'".$tutor1['parentescoT1']."'
-            ,'".$tutor1['Estado_civilT1']."'
-            ,'".$tutor1['ocupacionT1']."'
-            ,'".$tutor1['estudioT1']."'
-            ,'".$Datos_Alumno['matricula']."'
+        VALUES('".strtoupper($tutor1Alu['CURPT1'])."'
+            ,'".$tutor1Alu['nombreT1']."'
+            ,'".$tutor1Alu['apellidoPT1']."'
+            ,'".$tutor1Alu['apellidoMT1']."'
+            ,'".$tutor1Alu['edadT1']."'
+            ,'".$tutor1Alu['parentescoT1']."'
+            ,'".$tutor1Alu['Estado_civilT1']."'
+            ,'".$tutor1Alu['ocupacionT1']."'
+            ,'".$tutor1Alu['estudioT1']."'
+            ,'".$DatosAlumno['matricula']."'
         )";
-        $resultadoBDtutor1=mysqli_query($conexion,$tutor1Insert);
-
         $tutor2Insert="INSERT INTO tutor2 (CURP_tutor2,Nombre,Apellido_p,Apellido_m,Edad,Parentesco,Estado_civil,Ocupacion,Grado_estudios,matricula)
-        VALUES('".strtoupper($tutor2['CURPT2'])."'
-            ,'".$tutor2['nombreT2']."'
-            ,'".$tutor2['apellidoPT2']."'
-            ,'".$tutor2['apellidoMT2']."'
-            ,'".$tutor2['edadT2']."'
-            ,'".$tutor2['parentescoT2']."'
-            ,'".$tutor2['Estado_civilT2']."'
-            ,'".$tutor2['ocupacionT2']."'
-            ,'".$tutor2['estudioT2']."'
-            ,'".$Datos_Alumno['matricula']."'
+        VALUES('".strtoupper($tutor2alu['CURPT2'])."'
+            ,'".$tutor2alu['nombreT2']."'
+            ,'".$tutor2alu['apellidoPT2']."'
+            ,'".$tutor2alu['apellidoMT2']."'
+            ,'".$tutor2alu['edadT2']."'
+            ,'".$tutor2alu['parentescoT2']."'
+            ,'".$tutor2alu['Estado_civilT2']."'
+            ,'".$tutor2alu['ocupacionT2']."'
+            ,'".$tutor2alu['estudioT2']."'
+            ,'".$DatosAlumno['matricula']."'
         )";
-        $resultadoBDtutor2=mysqli_query($conexion,$tutor2Insert); 
-
         $domicilioInsert="INSERT INTO domicilio(Calle,Numero,CP,Calle1,Calle2,Referencia,Colonia,Municipio,Tel_casa,matricula)
-        VALUES('".$domicilio['Calle']."'
-            ,'".$domicilio['No']."'
-            ,'".$domicilio['CP']."'
-            ,'".$domicilio['Calle1']."'
-            ,'".$domicilio['Calle2']."'
-            ,'".$domicilio['referencia']."'
-            ,'".$domicilio['Colonia']."'
-            ,'".$domicilio['Municipio']."'
-            ,'".$domicilio['TelCasa']."'
-            ,'".$Datos_Alumno['matricula']."'
+        VALUES('".$domicilioAlu['Calle']."'
+            ,'".$domicilioAlu['No']."'
+            ,'".$domicilioAlu['CP']."'
+            ,'".$domicilioAlu['Calle1']."'
+            ,'".$domicilioAlu['Calle2']."'
+            ,'".$domicilioAlu['referencia']."'
+            ,'".$domicilioAlu['Colonia']."'
+            ,'".$domicilioAlu['Municipio']."'
+            ,'".$domicilioAlu['TelCasa']."'
+            ,'".$DatosAlumno['matricula']."'
         )";
-        $resultadoBDDomicilio=mysqli_query($conexion,$domicilioInsert);
+        $DatosGeneralesInsert="INSERT INTO Datos_generales (personas_Viven,sosten_H,INTERNET,TELEVISIÓN,CELULAR,TABLET,COMPUTADORA,matricula)
+        VALUES('".$DatosgeneralesAlu['vivenC']."'
+            ,'".$DatosgeneralesAlu['sostenHogar']."'
+            ,'".$DatosgeneralesAlu['internet']."'
+            ,'".$DatosgeneralesAlu['television']."'
+            ,'".$DatosgeneralesAlu['celular']."'
+            ,'".$DatosgeneralesAlu['tablet']."'
+            ,'".$DatosgeneralesAlu['computadora']."'
+            ,'".$DatosAlumno['matricula']."'
+        )";
+    }
+    try {
+        $db = new DB();
+        $pdo = $db->connect();
+    
+        // Iniciar la transacción
+        $pdo->beginTransaction();
 
-        $Datos_generalesInsert="INSERT INTO Datos_generales (personas_Viven,sosten_H,INTERNET,TELEVISIÓN,CELULAR,TABLET,COMPUTADORA,matricula)
-        VALUES('".$Datos_generales['vivenC']."'
-            ,'".$Datos_generales['sostenHogar']."'
-            ,'".$Datos_generales['internet']."'
-            ,'".$Datos_generales['television']."'
-            ,'".$Datos_generales['celular']."'
-            ,'".$Datos_generales['tablet']."'
-            ,'".$Datos_generales['computadora']."'
-            ,'".$Datos_Alumno['matricula']."'
-        )";
-        $resultadoBDGenerales=mysqli_query($conexion,$Datos_generalesInsert);
+        $stmtMedicos= $pdo->prepare($datosMedicosInsert);
+        $stmtMedicos->execute();
+        $stmtDatos= $pdo->prepare($DatosAlumnoInsert);
+        $stmtDatos->execute();
+        $stmtTutor1= $pdo->prepare($tutor1Insert);
+        $stmtTutor1->execute();
+        $stmtTutor2= $pdo->prepare($tutor2Insert);
+        $stmtTutor2->execute();
+        $stmtDomicilio= $pdo->prepare($domicilioInsert);
+        $stmtDomicilio->execute();
+        $stmtGenerales= $pdo->prepare($DatosGeneralesInsert);
+        $stmtGenerales->execute();
+        // Confirmar la transacción
+        $pdo->commit();
+        echo "<script> alert('se Agrego con exito'); window.location='/base-de-datos-escuela/agregarAlumno/alumno.php';</script>";
+    } catch (PDOException $e) {
+        // Algo salió mal, realizar rollback y manejar el error
+        $pdo->rollBack();
+        echo "Error en las inserciones: " . $e->getMessage();
     }
-    if($resultadoBDGenerales){
-        echo "<script> alert('se a registrado con exito'); window.location='/base-de-datos-escuela/agregarAlumno/alumno.php'</script>";
-    }else{
-        echo "<script> alert('no se registro'); window.location='/base-de-datos-escuela/agregarAlumno/alumno.php'</script>";
-        echo mysqli_errno($conexion) . ": " . mysqli_error($conexion). "\n";
-    }
+
+}else{
+    //echo "login";
+    echo "<script> alert('no existe un inicio de secion'); window.location='/base-de-datos-escuela/'</script>";
+}
 ?>

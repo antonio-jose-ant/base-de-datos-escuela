@@ -20,8 +20,9 @@ if(isset($_SESSION['user'])){
         <select name="seciontipoUser">
             <option> </option>
             <option value="administrador">administrador</option>
-            <option value="Invitado">Invitado</option>
-            <option value="Basico">Basico</option>
+            <option value="administrador">sub administrador</option>
+            <option value="Invitado">Doncete</option>
+            <option value="Basico">Alumno</option>
         </select>
     </div>
     <div>

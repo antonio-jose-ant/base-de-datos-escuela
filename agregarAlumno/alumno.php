@@ -18,10 +18,12 @@
     <script src="../assets/js/jquery-1.9.1.js"></script>
     <script src="../assets/js/jquery-ui-1.11.0/jquery-ui.js"></script>
     <script src="../assets/js/mainad.js"></script>
+    <script src="../assets/js/jquery-ui-timepicker-0.3.3/jquery.ui.timepicker.js"></script>
+    <title>escuela</title>
 </head>
     <body> 
         <div>   
-            <form action="insertarA.php" method="post" name="form" class="form">
+            <form action="./alumno_C.php" method="post" name="form" class="form">
 <!------------------------------------DATOS ALUMNO---------------------------------------------------->
                 <div class="colC-Complet">
                     <h2>DATOS DEL ALUMNO:</h2>
@@ -329,7 +331,7 @@
                     </div>
                 </div>
                 <div class="colC-Complet">
-                    <input type="submit"value="Guardar Datos" class="btn"/>
+                    <input type="submit" value="Guardar Datos" name="acction" class="btn"/>
                 </div>
             </form>
         </div>

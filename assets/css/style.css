@@ -84,6 +84,16 @@ input:focus,select:focus{
     background: var(--cafe2) !important;
     color: var(--blanco2);
 }
+.mayusculas{
+    text-transform: uppercase;
+}
+.ceterText{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100;
+}
 .btn{
     width: auto;
     height: 38px;

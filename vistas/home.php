@@ -13,7 +13,6 @@ include_once 'includes/user_session.php';
     <script src="assets/js/jquery-1.9.1.js"></script>
     <script src="assets/js/jquery-ui-1.11.0/jquery-ui.js"></script>
     <script src="assets/js/main.js"></script>
-    <title>Agregar</title>
 </head>
 <body>
     <div id="menu-container" class="menu-contenedor"> 

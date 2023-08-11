@@ -16,7 +16,28 @@ $( function() {
     changeYear: true
   });
 } );
-
+$(document).ready(function() {
+  $('#timeInput').timepicker({
+      timeFormat: 'hh:mm', // Formato de hora y minutos
+      interval: 15, // Intervalo de minutos
+      scrollbar: true // Agregar una barra de desplazamiento para minutos
+  });
+  $('#timeInput2').timepicker({
+    timeFormat: 'hh:mm', // Formato de hora y minutos
+    interval: 15, // Intervalo de minutos
+    scrollbar: true // Agregar una barra de desplazamiento para minutos
+});
+$('#timeInput3').timepicker({
+  timeFormat: 'hh:mm', // Formato de hora y minutos
+  interval: 15, // Intervalo de minutos
+  scrollbar: true // Agregar una barra de desplazamiento para minutos
+});
+$('#timeInput4').timepicker({
+  timeFormat: 'hh:mm', // Formato de hora y minutos
+  interval: 15, // Intervalo de minutos
+  scrollbar: true // Agregar una barra de desplazamiento para minutos
+});
+});
 
 $(function() {
   $.datepicker.setDefaults({
