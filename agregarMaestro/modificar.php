@@ -6,8 +6,6 @@ $user = new User();
 if(isset($_SESSION['user'])){
     //echo "hay sesion";
 $user->setUser($userSession->getCurrentUser());
-
-
 $datos = $mDatos->get_maestrosDatos();
 $datosP=$mDP->get_datosProfecionales();
 $datosA=$mDA->get_datosLaborales();

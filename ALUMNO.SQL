@@ -10,8 +10,6 @@ create table Datos_Alumno(
     grado int(2),
     grupo char(2),
     turno varchar(12),
-    CURP_tutor1 varchar(18),
-    CURP_tutor2 varchar(18),
     PRIMARY key (matricula),
     FOREIGN key (CURPAlu)  REFERENCES datos_medicos(CURPAlu)
 );
@@ -30,27 +28,27 @@ create table datos_medicos(
 );
 create table tutor1(
     CURP_tutor1 varchar(18) NOT NULL,
-    Nombre varchar(25),
-    Apellido_p varchar(25),
-    Apellido_m varchar(25),
-    Edad int (2),
-    Parentesco varchar (20),
-    Estado_civil varchar (30),
-    Ocupacion varchar(40),
-    Grado_estudios varchar(40),
+    NombreT1 varchar(25),
+    Apellido_pT1 varchar(25),
+    Apellido_mT1 varchar(25),
+    EdadT1 int (2),
+    ParentescoT1 varchar (20),
+    Estado_civilT1 varchar (30),
+    OcupacionT1 varchar(40),
+    Grado_estudiosT1 varchar(40),
     matricula varchar(12),
     FOREIGN KEY (matricula) REFERENCES Datos_Alumno(matricula)
 );
 create table tutor2(
     CURP_tutor2 varchar(18),
-    Nombre varchar(25),
-    Apellido_p varchar(25),
-    Apellido_m varchar(25),
-    Edad int (2),
-    Parentesco varchar (20),
-    Estado_civil varchar (30),
-    Ocupacion varchar(40),
-    Grado_estudios varchar(40),
+    NombreT2 varchar(25),
+    Apellido_pT2 varchar(25),
+    Apellido_mT2 varchar(25),
+    EdadT2 int (2),
+    ParentescoT2 varchar (20),
+    Estado_civilT2 varchar (30),
+    OcupacionT2 varchar(40),
+    Grado_estudiosT2 varchar(40),
     matricula varchar(12),
     FOREIGN KEY (matricula) REFERENCES Datos_Alumno(matricula)
 );

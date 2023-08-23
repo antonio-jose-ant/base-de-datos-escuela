@@ -84,6 +84,10 @@ input:focus,select:focus{
     background: var(--cafe2) !important;
     color: var(--blanco2);
 }
+input[type="radio"],input[type="checkbox"]{
+    cursor: pointer;
+}
+    
 .mayusculas{
     text-transform: uppercase;
 }
@@ -446,15 +450,19 @@ input:focus,select:focus{
 }
 
 .alumno{
-    grid-template: 60px/32px 121px auto 53px 53px 75px 97px 126px;
+    grid-template: 60px/32px 156px auto 50px 50px 80px 85px 126px;
     align-items: center;
+}
+.alumnoContenido:hover div{
+    transition-duration: .5s;
+    background-color: var(--cafe);
 }
 .alumnoContenido{
     display: grid;
     width: 100%;
     height: auto;
 }
-.alumnoContenido p{
+.alumnoContenido p,a{
     font-size: 16px;/*tamaño de letra para todos los p que tengan la clase profesorContenido*/
 }
 
@@ -467,7 +475,11 @@ input:focus,select:focus{
     width: 100%;
     height: auto;
 }
-.profesorContenido p{
+.profesorContenido:hover div{
+    transition-duration: .5s;
+    background-color: var(--cafe);
+}
+.profesorContenido p,a{
     font-size: 16px;/*tamaño de letra para todos los p que tengan la clase profesorContenido*/
 }
 .busquedaP{

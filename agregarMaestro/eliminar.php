@@ -2,7 +2,7 @@
 include_once '../includes/user.php';
 include_once '../includes/user_session.php';
 $userSession = new UserSession();
-$user = new User();
+$user = new User(); 
 if(isset($_SESSION['user'])){
     $datos = $mDatos->get_maestrosDatos();
     $user->setUser($userSession->getCurrentUser());

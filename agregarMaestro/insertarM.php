@@ -2,7 +2,7 @@
 include_once '../includes/user.php';
 include_once '../includes/user_session.php';
 $userSession = new UserSession();
-$user = new User();
+$user = new User(); 
 if(isset($_SESSION['user'])){
     $user->setUser($userSession->getCurrentUser());
     session_start();
@@ -10,7 +10,7 @@ if(isset($_SESSION['user'])){
     $datos = $mDatos->get_maestrosDatos();
     $datosP=$mDP->get_datosProfecionales();
     $datosA=$mDA->get_datosLaborales(); 
-    
+     
     $_SESSION['maestroDatos'] = $mDatos->get_maestrosDatos();
     $_SESSION['datosProfecionales'] = $mDP->get_datosProfecionales();
     $_SESSION['datosLaborales'] = $mDA->get_datosLaborales();

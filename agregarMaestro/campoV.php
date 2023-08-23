@@ -1,7 +1,7 @@
 <?php
         include_once '../includes/user.php';
         include_once '../includes/user_session.php';
-        session_start();
+        session_start(); 
         $maestroDatos = $_SESSION['maestroDatos'];
         $datosProfecionales = $_SESSION['datosProfecionales'];
         $datosLaborales = $_SESSION['datosLaborales'];

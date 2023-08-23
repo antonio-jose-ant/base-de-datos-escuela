@@ -1,6 +1,14 @@
 <?php
 require('fpdf/fpdf.php');
-
+session_start();
+$alumnoDatosSession = $_SESSION['alumnoDatos'];
+$datosMedicosASession = $_SESSION['datosMedicosA'];
+$tutor1ASession = $_SESSION['tutor1A'];
+$tutor2ASession = $_SESSION['tutor2A'];
+$DomicilioASession = $_SESSION['DomicilioA'];
+$datosGeneralesASession = $_SESSION['datosGeneralesA'];
+$anchoPag = 215.9;
+$altoPag = 279.4;
 class PDF extends FPDF
 {
 
@@ -8,54 +16,18 @@ class PDF extends FPDF
 //se va a mostrar en todas las paginas
 function Header()
 {
-  
-    $this->Image('../assets/img/logo/logo.png',55,3,20,20,'png','https://www.youtube.com/watch?v=vsoSeBHqLSQ');
+    $this->Image('../assets/img/logo/logo.png',75,2,20,20,'png','https://www.youtube.com/watch?v=vsoSeBHqLSQ');
     $this->Image('../assets/img/pdf/go.png',20,2,30,20,'png','https://www.youtube.com/watch?v=30ptGTuG2tA');
+    $this->SetFont('TIMES','BI',9);
 
-   
-    $this->SetFont('TIMES','BI',9);
-    // Movernos a la derecha la celda
-    $this->Cell(80);
-    // Título y celda ancho y alto, texto,borde
-    $this->Cell(35,2,'ESC.PRIM.REY POETA CICLO 2021-2022',0,0,'C');
-    // Salto de línea
-    $this->Ln(5);
-    //formato fente, alineacion, fuente
-    $this->SetFont('TIMES','BI',9);
-    // Movernos a la derecha la celda
-    $this->Cell(80);
-    // Título y celda ancho y alto, texto,borde
-    $this->Cell(35,2,'TURNO: VESPERTINO CCT 15EPR4285U',0,0,'C');
-    // Salto de línea
-    $this->Ln(5);
-    $this->SetFont('ARIAL','IU',9);
-    // Movernos a la derecha la celda
-    $this->Cell(66);
-    // Título y celda ancho y alto, texto,borde
-    $this->Cell(40,2,'GRADO:            ',0,0,'');
-    // Salto de línea
-    $this->SetFont('ARIAL','IU',9);
-    $this->Ln(0);
-    // Movernos a la derecha la celda
-    $this->Cell(70);
-    //Título y celda ancho y alto, texto,borde
-    $this->Cell(70,2,'GRUPO:            ',0,0,'C');
-    //$this->line(90,20,80,2);
-   //$this->setDrawColor(); colo de linea
-   //$this->setLineWidth(1); grosor de la linea de linea
-    // Salto de línea
-    $this->Ln(0);
 }
 
 // Pie de página
 function Footer()
 {
-    // Posición: a 1,5 cm del final
-    $this->SetY(-10);
-    // Arial italic 8
     $this->SetFont('Arial','B',8);
-    // Número de página usando utf8 para que me respte la comilla
-    $this->Cell(0,10,utf8_decode('Página ').$this->PageNo().'/{nb}',0,0,'C');
+    $this->SetXY(100-9,$$altoPag-10); // Establecer la posición x e y del texto
+    $this->Cell(18,5,utf8_decode('Página ').$this->PageNo().'/{nb}',0,0,'C');
 }
 }
 
@@ -63,191 +35,180 @@ function Footer()
 $pdf = new PDF();
 $pdf->AliasNbPages();
 
-//$pdf->AddPage('portrait',array(150,300)); //ango y largo
-$pdf->AddPage();
-$pdf->SetFont('Arial','B',9);
+$pdf->AddPage('P', 'Letter');  // 'P' para orientación vertical, 'Letter' para tamaño carta
+$pdf->SetXY(98, 6); // Establecer la posición x e y del texto
+$pdf->Cell(60,4,'ESC.PRIM.REY POETA CICLO 2021-2022',0,0,'L');
+$pdf->Ln(5);
+$pdf->SetX(98); // Establecer la posición x e y del texto
+$pdf->Cell(60,4,'TURNO: '.$alumnoDatosSession['Turno'].' CCT 15EPR4285U',0,0,'L');
+$pdf->Ln(5);
+$pdf->SetX(98); // Establecer la posición x e y del texto
+$pdf->Cell(20,4,'GRADO: '.$alumnoDatosSession['Grado'],0,0,);
+$pdf->Cell(20,4,'GRUPO: '.$alumnoDatosSession['Grupo'],0,0,'C');
+
+$pdf->Ln(5);
+$pdf->SetX(10); // Establecer la posición x e y del texto
+$pdf->SetFont('Arial','B',10);
 $pdf->SetTextColor(0,240,97);//COLOR VERDE BONITO
-$pdf->Cell(55,10, 'DATOS DEL ALUMNO',0,0,'B',0);
-$pdf->Ln(7);
-
-$pdf->SetFont('Arial','B',8);
+$pdf->Cell(40,4, 'DATOS DEL ALUMNO',0,0,'B',0);
+$pdf->Ln();
+$pdf->SetFont('Arial','',9);
 $pdf->SetTextColor(0,0,0);//COLOR NEGRO
-$pdf->Cell(75,5, 'NOMBRE DEL ALUMNO: ',1,0,'C',0);
-$pdf->Cell(105,5,utf8_decode( $row['Nombre_alu']." ".$row['Apellido_p'].$row['Apellido_m']),1,0,'C',0);
+$pdf->Cell(90,5, 'NOMBRE DEL ALUMNO: ',1,0,'C',0);
+$pdf->Cell(100,5,utf8_decode(  $alumnoDatosSession['Nombre']." ".$alumnoDatosSession['ApeidoP']." ".$alumnoDatosSession['ApeidoM']),1,0,'C',0);
 $pdf->Ln(5);
-$pdf->Cell(75,5, 'CURP: ',1,0,'C',0);
-$pdf->Cell(105,5,utf8_decode( $row['CURP_alu']),1,0,'C',0);
+$pdf->Cell(90,5, 'CURP: ',1,0,'C',0);
+$pdf->Cell(100,5,utf8_decode($alumnoDatosSession['CURP']),1,0,'C',0);
 $pdf->Ln(5);
-$pdf->Cell(75,5, 'FECHA DE NACIMIENTO: ',1,0,'C',0);
-$pdf->Cell(105,5,utf8_decode( $row['Fecha_n_alu']),1,0,'C',0);
+$pdf->Cell(90,5, 'FECHA DE NACIMIENTO: ',1,0,'C',0);
+$pdf->Cell(100,5,utf8_decode( $alumnoDatosSession['Fecha_n']),1,0,'C',0);
 $pdf->Ln(5);
-$pdf->Cell(75,5, 'EDAD: ',1,0,'C',0);
-$pdf->Cell(105,5,utf8_decode( $row['Edad_alu']),1,0,'C',0);
+$pdf->Cell(90,5, 'EDAD: ',1,0,'C',0);
+$pdf->Cell(100,5,utf8_decode( $alumnoDatosSession['edad']),1,0,'C',0);
 $pdf->Ln(5);
-$pdf->Cell(75,5, 'CORREO ELECTRONICO: ',1,0,'C',0);
-$pdf->Cell(105,5,utf8_decode( $row['Correo_alu']),1,0,'C',0);
-$pdf->Ln(8);
+$pdf->Cell(90,5, 'CORREO ELECTRONICO: ',1,0,'C',0);
+$pdf->Cell(100,5,utf8_decode( $alumnoDatosSession['CorreoAlu']),1,0,'C',0);
 
-
-$pdf->SetFont('Arial','B',9);
+$pdf->Ln(6);
+$pdf->SetFont('Arial','B',10);
 $pdf->SetTextColor(160,81,134);//COLOR LILA CHULO
-$pdf->Cell(45,5, 'DOMICILIO ',0,0,'B',0);
+$pdf->Cell(30,5, 'DOMICILIO ',0,0,'B',0);
 $pdf->Ln(5);
 
-$pdf->SetFont('Arial','B',8);
+$pdf->SetFont('Arial','',9);
 $pdf->SetTextColor(0,0,0);//COLOR NEGRO
-$pdf->Cell(75,5, 'CALLE: ',1,0,'C',0);
-//$pdf->Cell(105,5,utf8_decode( $row['calle']),1,0,'C',0);
+$pdf->Cell(90,5, 'CALLE: ',1,0,'C',0);
+$pdf->Cell(100,5,utf8_decode( $DomicilioASession['Calle']),1,0,'C',0);
 $pdf->Ln(5);
-$pdf->Cell(75,5, 'N0. ',1,0,'C',0);
-//$pdf->Cell(105,5,utf8_decode( $row['n0']),1,0,'C',0);
+$pdf->Cell(90,5, 'N0. ',1,0,'C',0);
+$pdf->Cell(100,5,utf8_decode( $DomicilioASession['No']),1,0,'C',0);
 $pdf->Ln(5);
-$pdf->Cell(75,5, 'CODIGO POSTAL: ',1,0,'C',0);
-//$pdf->Cell(105,5,utf8_decode( $row['cp']),1,0,'C',0);
+$pdf->Cell(90,5, 'CODIGO POSTAL: ',1,0,'C',0);
+$pdf->Cell(100,5,utf8_decode( $DomicilioASession['CP']),1,0,'C',0);
 $pdf->Ln(5);
-$pdf->Cell(75,5, 'ENTRE CALLE: ',1,0,'C',0);
-//$pdf->Cell(105,5,utf8_decode( $row['enc']),1,0,'C',0);
+$pdf->Cell(90,5, 'ENTRE CALLE: ',1,0,'C',0);
+$pdf->Cell(100,5,utf8_decode( $DomicilioASession['Calle1']),1,0,'C',0);
 $pdf->Ln(5);
-$pdf->Cell(75,5, 'Y CALLE: ',1,0,'C',0);
-//$pdf->Cell(105,5,utf8_decode( $row['yc']),1,0,'C',0);
+$pdf->Cell(90,5, 'Y CALLE: ',1,0,'C',0);
+$pdf->Cell(100,5,utf8_decode( $DomicilioASession['Calle2']),1,0,'C',0);
 $pdf->Ln(5);
-$pdf->Cell(75,5, 'OTRA REFERENCIA: ',1,0,'C',0);
+$pdf->Cell(90,5, 'OTRA REFERENCIA: ',1,0,'C',0);
+$pdf->Cell(100,5,utf8_decode( $DomicilioASession['referencia']),1,0,'C',0);
 $pdf->Ln(5);
-$pdf->Cell(75,5, 'COLONIA: ',1,0,'C',0);
-//$pdf->Cell(105,5,utf8_decode( $row['colonia']),1,0,'C',0);
+$pdf->Cell(90,5, 'COLONIA: ',1,0,'C',0);
+$pdf->Cell(100,5,utf8_decode( $DomicilioASession['Colonia']),1,0,'C',0);
 $pdf->Ln(5);
-$pdf->Cell(75,5, 'MUNICIPIO: ',1,0,'C',0);
+$pdf->Cell(90,5, 'MUNICIPIO: ',1,0,'C',0);
+$pdf->Cell(100,5,utf8_decode( $DomicilioASession['Municipio']),1,0,'C',0);
 $pdf->Ln(5);
-$pdf->Cell(75,5, 'TELEFONO DE CASA: ',1,0,'C',0);
-$pdf->Ln(8);
+$pdf->Cell(90,5, 'TELEFONO DE CASA: ',1,0,'C',0);
+$pdf->Cell(100,5,utf8_decode( $DomicilioASession['TelCasa']),1,0,'C',0);
 
-$pdf->SetFont('Arial','B',9);
+$pdf->Ln(6);
+$pdf->SetFont('Arial','B',10);
 $pdf->SetTextColor(89,89,255);//COLOR AZUL-LILA
-$pdf->Cell(45,5, 'DATOS MEDICOS ',0,0,'B',0);
-$pdf->Ln(5);
-$pdf->SetFont('Arial','B',8);
+$pdf->Cell(30,4, 'DATOS MEDICOS ',0,0,'B',0);
+$pdf->Ln(4);
+$pdf->SetFont('Arial','',9);
 $pdf->SetTextColor(0,0,0);//COLOR NEGRO
-$pdf->Cell(75,5, 'TELEFONO DE EMERGENCIA/CELULAR: ',1,0,'C',0);
-$pdf->Cell(105,5,utf8_decode( $row['Tel_emergencia']),1,0,'C',0);
+$pdf->Cell(90,5, 'TELEFONO DE EMERGENCIA/CELULAR: ',1,0,'C',0);
+$pdf->Cell(100,5,utf8_decode( $datosMedicosASession['numEmergencia']),1,0,'C',0);
 $pdf->Ln(5);
-$pdf->Cell(75,5, 'TALLA: ',1,0,'C',0);
-$pdf->Cell(105,5,utf8_decode( $row['Talla']),1,0,'C',0);
+$pdf->Cell(90,5, 'TALLA: ',1,0,'C',0);
+$pdf->Cell(100,5,utf8_decode( $datosMedicosASession['Talla']),1,0,'C',0);
 $pdf->Ln(5);
-$pdf->Cell(75,5, 'PESO: ',1,0,'C',0);
-$pdf->Cell(105,5,utf8_decode( $row['Peso']),1,0,'C',0);
+$pdf->Cell(90,5, 'PESO: ',1,0,'C',0);
+$pdf->Cell(100,5,utf8_decode( $datosMedicosASession['peso']),1,0,'C',0);
 $pdf->Ln(5);
-$pdf->Cell(75,5, 'TIPO DE SANGRE: ',1,0,'C',0);
-$pdf->Cell(105,5,utf8_decode( $row['Tipo_sangre']),1,0,'C',0);
+$pdf->Cell(90,5, 'TIPO DE SANGRE: ',1,0,'C',0);
+$pdf->Cell(100,5,utf8_decode( $datosMedicosASession['tipoSangre']),1,0,'C',0);
 $pdf->Ln(5);
-$pdf->Cell(75,5, 'ALERGIAS: ',1,0,'C',0);
-$pdf->Cell(105,5,utf8_decode( $row['Alergias']),1,0,'C',0);
+$pdf->Cell(90,5, 'ALERGIAS: ',1,0,'C',0);
+$pdf->Cell(100,5,utf8_decode( $datosMedicosASession['alergia']),1,0,'C',0);
 $pdf->Ln(5);
-$pdf->Cell(75,5, 'PADECIMIENTOS: ',1,0,'C',0);
-$pdf->Cell(105,5,utf8_decode( $row['padecimiento']),1,0,'C',0);
+$pdf->Cell(90,5, 'PADECIMIENTOS: ',1,0,'C',0);
+$pdf->Cell(100,5,utf8_decode( $datosMedicosASession['padecimiento']),1,0,'C',0);
 $pdf->Ln(5);
-$pdf->Cell(75,5, 'PADECIMIENTOS: ',1,0,'C',0);
-$pdf->Cell(105,5,utf8_decode( $row['padecimiento']),1,0,'C',0);
+$pdf->Cell(90,5, 'PADECIMIENTOS: ',1,0,'C',0);
+$pdf->Cell(100,5,utf8_decode( $datosMedicosASession['piePlano']),1,0,'C',0);
 $pdf->Ln(5);
-$pdf->Cell(75,5, 'OTROS: ',1,0,'C',0);
-$pdf->Cell(105,5,utf8_decode( "Pie plano: ".$row['Pie_plano']."   Lentes: ".$row['lentes']),1,0,'C',0);
-$pdf->Ln(8);
+$pdf->Cell(90,5, 'OTROS: ',1,0,'C',0);
+$pdf->Cell(100,5,utf8_decode( "Pie plano: ".$datosMedicosASession['lentes']."   Lentes: ".$datosMedicosASession['lentes']),1,0,'C',0);
 
-
-$pdf->SetFont('Arial','B',9);
+$pdf->Ln(6);
+$pdf->SetFont('Arial','B',10);
 $pdf->SetTextColor(232,232,0);//COLOR AMARILLO
-$pdf->Cell(45,5, 'DATOS DEL PADRE/MADRE O TUTOR ',0,0,'B',0);
-$pdf->Ln(5);+
-
-$pdf->SetFont('Arial','B',8);
+$pdf->Cell(45,4, 'DATOS DEL PADRE/MADRE O TUTOR ',0,0,'B',0);
+$pdf->Ln(4);
+$pdf->SetFont('Arial','',9);
 $pdf->SetTextColor(0,0,0);//COLOR NEGRO
-$pdf->Cell(75,5, 'NOMBRE COMPLETO: ',1,0,'C',0);
-$pdf->Cell(105,5,utf8_decode( $row['Nombre']." ".$row['Apellido_p'].$row['Apellido_m']),1,0,'C',0);
+$pdf->Cell(90,5, 'NOMBRE COMPLETO: ',1,0,'C',0);
+$pdf->Cell(100,5,utf8_decode( $tutor1ASession['nombreT1']." ".$tutor1ASession['apellidoPT1']." ".$tutor1ASession['apellidoMT1']),1,0,'C',0);
 $pdf->Ln(5);
-$pdf->Cell(75,5, 'CURP: ',1,0,'C',0);
-$pdf->Cell(105,5,utf8_decode( $row['CURP_tutor1']),1,0,'C',0);
+$pdf->Cell(90,5, 'CURP: ',1,0,'C',0);
+$pdf->Cell(100,5,utf8_decode( $tutor1ASession['CURPT1']),1,0,'C',0);
 $pdf->Ln(5);
-$pdf->Cell(75,5, 'EDAD: ',1,0,'C',0);
-$pdf->Cell(105,5,utf8_decode( $row['Edad']),1,0,'C',0);
+$pdf->Cell(90,5, 'EDAD: ',1,0,'C',0);
+$pdf->Cell(100,5,utf8_decode( $tutor1ASession['edadT1']),1,0,'C',0);
 $pdf->Ln(5);
-$pdf->Cell(75,5, 'RELACION DE PARENTESCO: ',1,0,'C',0);
-$pdf->Cell(105,5,utf8_decode( $row['Parentesco']),1,0,'C',0);
+$pdf->Cell(90,5, 'RELACION DE PARENTESCO: ',1,0,'C',0);
+$pdf->Cell(100,5,utf8_decode( $tutor1ASession['parentescoT1']),1,0,'C',0);
 $pdf->Ln(5);
-$pdf->Cell(75,5, 'ESTADO CIVIL: ',1,0,'C',0);
-$pdf->Cell(105,5,utf8_decode( $row['Estado_civil']),1,0,'C',0);
+$pdf->Cell(90,5, 'ESTADO CIVIL: ',1,0,'C',0);
+$pdf->Cell(100,5,utf8_decode( $tutor1ASession['Estado_civilT1']),1,0,'C',0);
 $pdf->Ln(5);
-$pdf->Cell(75,5, 'OCUPACION: ',1,0,'C',0);
-$pdf->Cell(105,5,utf8_decode( $row['Ocupacion']),1,0,'C',0);
+$pdf->Cell(90,5, 'OCUPACION: ',1,0,'C',0);
+$pdf->Cell(100,5,utf8_decode( $tutor1ASession['ocupacionT1']),1,0,'C',0);
 $pdf->Ln(5);
-$pdf->Cell(75,5, 'GRADO DE ESTUDIOS: ',1,0,'C',0);
-$pdf->Cell(105,5,utf8_decode( $row['Grado_estudios']),1,0,'C',0);
-$pdf->Ln(8);
+$pdf->Cell(90,5, 'GRADO DE ESTUDIOS: ',1,0,'C',0);
+$pdf->Cell(100,5,utf8_decode( $tutor1ASession['estudioT1']),1,0,'C',0);
 
-
-$pdf->SetFont('Arial','B',9);
+$pdf->Ln(6);
+$pdf->SetFont('Arial','B',10);
 $pdf->SetTextColor(255,84,2);//COLOR NARANJA
-$pdf->Cell(45,5, 'DATOS DEL PADRE/MADRE O TUTOR ',0,0,'B',0);
-$pdf->Ln(5);
-$pdf->SetFont('Arial','B',8);
+$pdf->Cell(45,4, 'DATOS DEL PADRE/MADRE O TUTOR ',0,0,'B',0);
+$pdf->Ln(4);
+$pdf->SetFont('Arial','',9);
 $pdf->SetTextColor(0,0,0);//COLOR NEGRO
-$pdf->Cell(75,5, 'NOMBRE COMPLETO: ',1,0,'C',0);
-$pdf->Cell(105,5,utf8_decode( $row['Nombre']." ".$row['Apellido_p'].$row['Apellido_m']),1,0,'C',0);
+$pdf->Cell(90,5, 'NOMBRE COMPLETO: ',1,0,'C',0);
+$pdf->Cell(100,5,utf8_decode( $tutor2ASession['nombreT2']." ".$tutor2ASession['apellidoPT2']." ".$tutor2ASession['apellidoMT2']),1,0,'C',0);
 $pdf->Ln(5);
-$pdf->Cell(75,5, 'CURP: ',1,0,'C',0);
-$pdf->Cell(105,5,utf8_decode( $row['CURP_tutor2']),1,0,'C',0);
+$pdf->Cell(90,5, 'CURP: ',1,0,'C',0);
+$pdf->Cell(100,5,utf8_decode( $tutor2ASession['CURPT2']),1,0,'C',0);
 $pdf->Ln(5);
-$pdf->Cell(75,5, 'EDAD: ',1,0,'C',0);
-$pdf->Cell(105,5,utf8_decode( $row['Edad']),1,0,'C',0);
+$pdf->Cell(90,5, 'EDAD: ',1,0,'C',0);
+$pdf->Cell(100,5,utf8_decode( $tutor2ASession['edadT2']),1,0,'C',0);
 $pdf->Ln(5);
-$pdf->Cell(75,5, 'RELACION DE PARENTESCO: ',1,0,'C',0);
-$pdf->Cell(105,5,utf8_decode( $row['Parentesco']),1,0,'C',0);
+$pdf->Cell(90,5, 'RELACION DE PARENTESCO: ',1,0,'C',0);
+$pdf->Cell(100,5,utf8_decode( $tutor2ASession['parentescoT2']),1,0,'C',0);
 $pdf->Ln(5);
-$pdf->Cell(75,5, 'ESTADO CIVIL: ',1,0,'C',0);
-$pdf->Cell(105,5,utf8_decode( $row['Estado_civil']),1,0,'C',0);
+$pdf->Cell(90,5, 'ESTADO CIVIL: ',1,0,'C',0);
+$pdf->Cell(100,5,utf8_decode( $tutor2ASession['Estado_civilT2']),1,0,'C',0);
 $pdf->Ln(5);
-$pdf->Cell(75,5, 'OCUPACION: ',1,0,'C',0);
-$pdf->Cell(105,5,utf8_decode( $row['Ocupacion']),1,0,'C',0);
+$pdf->Cell(90,5, 'OCUPACION: ',1,0,'C',0);
+$pdf->Cell(100,5,utf8_decode( $tutor2ASession['ocupacionT2']),1,0,'C',0);
 $pdf->Ln(5);
-$pdf->Cell(75,5, 'GRADO DE ESTUDIOS: ',1,0,'C',0);
-$pdf->Cell(105,5,utf8_decode( $row['Grado_estudios']),1,0,'C',0);
-$pdf->Ln(8);
+$pdf->Cell(90,5, 'GRADO DE ESTUDIOS: ',1,0,'C',0);
+$pdf->Cell(100,5,utf8_decode( $tutor2ASession['estudioT2']),1,0,'C',0);
 
-
-$pdf->SetFont('Arial','B',9);
+$pdf->Ln(6);
+$pdf->SetFont('Arial','B',10);
 $pdf->SetTextColor(280,0,0);//COLOR ROJO
-$pdf->Cell(45,5, 'DATOS GENERALES',0,0,'B',0);
-$pdf->Ln(5);
-
-
-/*
-Mostrar texto en pantalla hay 2 metodos:
-$this->Cell(70,2,'GRUPO:',0,0,'C');
-.CELL, 1.celda (ancho, alto, texto, 1.bordes,2.Posicion inicial ,3.alineacion(C)centrado,(L)(R),
-4.relleno (con color), (true)
-$pdf->setfilecolor(55,89,78)
-links
-.WRITE,(alto,texto,link) alinea de texto- sin importancia del ordena miento
-*/
-$pdf->SetFont('Arial','B',8);
+$pdf->Cell(45,4, 'DATOS GENERALES',0,0,'B',0);
+$pdf->Ln(4);
+$pdf->SetFont('Arial','',9);
 $pdf->SetTextColor(0,0,0);//COLOR NEGRO
-$pdf->Cell(75,9,utf8_decode ('¿CUANTAS PERSONAS INCLUYENDO AL '),1,0,'C',0);
-$pdf->Ln(5);
-$pdf->Cell(75,5,utf8_decode ('ALUMNO(A) VIVEN EN ESE DOMICILIO?'),0,0,'C',0);
-//$pdf->Write(2, 'ALUMNO(A) VIVEN EN ESE DOMICILIO?');
-$pdf->Ln(5);
-$pdf->Cell(75,9,utf8_decode ('¿QUIEN SOSTIENE ECONOMICAMENTE AL') ,1,0,'C',0);
-$pdf->Ln(5);
-$pdf->Cell(75,5,utf8_decode( 'HOGAR? SEÑALE LA OPCIÓN') ,0,0,'C',0);
-$pdf->Ln(5);
-$pdf->Cell(75,9,utf8_decode ('¿CON QUE MEDIOS CUENTA?'),1,0,'C',0);
-$pdf->Ln(5);
-$pdf->Cell(75,5, 'RESPONDA SI O NO ',0,0,'C',0);
-$pdf->Ln(7);
-
-$pdf->SetFont('Arial','B',11);
-$pdf->SetTextColor(0,0,0);//COLOR NEGRO
-$pdf->Cell(75,5, utf8_decode('¿EL TUTOR O PADRE O MADRE DE FAMILIA PADECIO COVID-19? '),0,0,'c',0);
-$pdf->Ln(5);
-
+$pdf->Multicell(90,4.5,utf8_decode ("¿CUANTAS PERSONAS INCLUYENDO AL ALUMNO(A) VIVEN EN ESE DOMICILIO? "), 1, 'l', false);
+$pdf->SetXY(100,231);
+$pdf->Cell(100,9,$datosGeneralesASession['vivenC'],1,0,'C',0);
+$pdf->Ln(9);
+$pdf->Multicell(90,4.5,utf8_decode ("¿QUIEN SOSTIENE ECONOMICAMENTE AL HOGAR? SEÑALE LA OPCIÓN"), 1, 'l', false);
+$pdf->SetXY(100,240);
+$pdf->Cell(100,9,$datosGeneralesASession['sostenHogar'],1,0,'C',0);
+$pdf->SetXY(10,249);
+$pdf->Cell(90,10,utf8_decode ("¿CON QUE MEDIOS CUENTA?\n"), 1, 'l', false);
+$pdf->SetFont('Arial','B',9);
+$pdf->Multicell(100,5,"Internet (".$datosGeneralesASession['internet'].")   Television (".$datosGeneralesASession['television'].")   Celular (".$datosGeneralesASession['celular'].")   Tablet (".$datosGeneralesASession['tablet'].")   Computadora (".$datosGeneralesASession['computadora'].") ", 1, 'C', false);
 
 $pdf->Output('I','Datos_Alumno:.pdf');
 ?>

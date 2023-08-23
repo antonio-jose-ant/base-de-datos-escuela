@@ -18,7 +18,7 @@ if(isset($_SESSION['user'])){
     $_SESSION['alumnoDatos'] = $Datos_Alumno->get_alumnoDatos();
     $_SESSION['datosMedicosA'] = $datos_medicos->get_datosMedicosA();
     $_SESSION['tutor1A'] = $tutor1->get_tutor1A();
-    $_SESSION['tutor2A'] = $tutor2->get_tutor2A();
+    $_SESSION['tutor2A'] = $tutor2->get_tutor2A();     
     $_SESSION['DomicilioA'] = $domicilio->get_DomicilioA();
     $_SESSION['datosGeneralesA'] = $Datos_generales->get_datosGeneralesA();
     $insert = true;
@@ -95,11 +95,11 @@ if(isset($_SESSION['user'])){
             ,'".$DatosAlumno['Grupo']."'
             ,'".$DatosAlumno['Turno']."'
         )";
-        $tutor1Insert="INSERT INTO tutor1 (CURP_tutor1,Nombre,Apellido_p,Apellido_m,Edad,Parentesco,Estado_civil,Ocupacion,Grado_estudios,matricula)
+        $tutor1Insert="INSERT INTO tutor1 (CURP_tutor1,NombreT1,Apellido_pT1,Apellido_mT1,EdadT1,ParentescoT1,Estado_civilT1,OcupacionT1,Grado_estudiosT1,matricula)
         VALUES('".strtoupper($tutor1Alu['CURPT1'])."'
-            ,'".$tutor1Alu['nombreT1']."'
-            ,'".$tutor1Alu['apellidoPT1']."'
-            ,'".$tutor1Alu['apellidoMT1']."'
+            ,'".ucwords($tutor1Alu['nombreT1'])."'
+            ,'".ucwords($tutor1Alu['apellidoPT1'])."'
+            ,'".ucwords($tutor1Alu['apellidoMT1'])."'
             ,'".$tutor1Alu['edadT1']."'
             ,'".$tutor1Alu['parentescoT1']."'
             ,'".$tutor1Alu['Estado_civilT1']."'
@@ -107,11 +107,11 @@ if(isset($_SESSION['user'])){
             ,'".$tutor1Alu['estudioT1']."'
             ,'".$DatosAlumno['matricula']."'
         )";
-        $tutor2Insert="INSERT INTO tutor2 (CURP_tutor2,Nombre,Apellido_p,Apellido_m,Edad,Parentesco,Estado_civil,Ocupacion,Grado_estudios,matricula)
+        $tutor2Insert="INSERT INTO tutor2 (CURP_tutor2,NombreT2,Apellido_pT2,Apellido_mT2,EdadT2,ParentescoT2,Estado_civilT2,OcupacionT2,Grado_estudiosT2,matricula)
         VALUES('".strtoupper($tutor2alu['CURPT2'])."'
-            ,'".$tutor2alu['nombreT2']."'
-            ,'".$tutor2alu['apellidoPT2']."'
-            ,'".$tutor2alu['apellidoMT2']."'
+            ,'".ucwords($tutor2alu['nombreT2'])."'
+            ,'".ucwords($tutor2alu['apellidoPT2'])."'
+            ,'".ucwords($tutor2alu['apellidoMT2'])."'
             ,'".$tutor2alu['edadT2']."'
             ,'".$tutor2alu['parentescoT2']."'
             ,'".$tutor2alu['Estado_civilT2']."'
@@ -169,7 +169,6 @@ if(isset($_SESSION['user'])){
         $pdo->rollBack();
         echo "Error en las inserciones: " . $e->getMessage();
     }
-
 }else{
     //echo "login";
     echo "<script> alert('no existe un inicio de secion'); window.location='/base-de-datos-escuela/'</script>";

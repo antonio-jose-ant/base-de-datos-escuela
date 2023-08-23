@@ -5,7 +5,7 @@ session_start();
         public $maestrosDatos;
         public $datosProfecionales;
         public $datosLaborales;
-        public $modificado;
+        public $modificado; 
         function set_maestrosDatos($maestrosDatos) {
             $this->maestrosDatos = $maestrosDatos;
         }

@@ -1,6 +1,6 @@
 <?php
 session_start();
-    class alumnos{
+    class alumnos{ 
         public $accionA; 
         public $alumnoDatos;
         public $datosGeneralesA;
@@ -114,6 +114,7 @@ session_start();
             'estudioT2'=>(!empty($_POST['estudioT2'])) ? $_POST['estudioT2']:""
         )
     );
+    
     $domicilio = new alumnos;
     $domicilio ->set_DomicilioA(
         array( 
@@ -143,7 +144,23 @@ session_start();
     $accionR= new alumnos;
     $accionR->set_accionA($_POST['acction']);
     $consulta=$accionR->get_accionA();
-    if($consulta=="Guardar Datos"){
+    if($consulta=="Guardar Datos"){ 
         include_once 'insertarA.php';
+    }
+    if($consulta=="Eliminar Datos"){ 
+        include_once 'eliminar.php';
+    }
+    if($consulta=="Modificar Datos"){ 
+        include_once 'modificar.php';
+    }
+    if($consulta=="PDF"){ 
+        $_SESSION['alumnoDatos'] = $Datos_Alumno->get_alumnoDatos();
+        $_SESSION['datosMedicosA'] = $datos_medicos->get_datosMedicosA();
+        $_SESSION['tutor1A'] = $tutor1->get_tutor1A();
+        $_SESSION['tutor2A'] = $tutor2->get_tutor2A();     
+        $_SESSION['DomicilioA'] = $domicilio->get_DomicilioA();
+        $_SESSION['datosGeneralesA'] = $Datos_generales->get_datosGeneralesA();
+        header("Location: ../pdf/pdfalu.php");
+        exit;
     }
 ?>

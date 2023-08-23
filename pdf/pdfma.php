@@ -10,7 +10,7 @@ $anchoPag = 210.00155555556;
 $altoPag = 297.00008333333;
 class PDF extends FPDF
 {
-
+ 
 // Cabecera de página
 //se va a mostrar en todas las paginas
 function Header()
@@ -41,7 +41,7 @@ function Footer()
     $this->Cell(73,5,utf8_decode('SUPERVISIÓN ESCOLAR P2'),0,0,'R');
     $this->Image('../assets/img/pdf/footer.png',0,252,220,28,'png');
 }
-}
+} 
 //apartir de esta line se mostrara el contenido del pdf
 $pdf = new PDF();
 $pdf->AliasNbPages();

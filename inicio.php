@@ -10,11 +10,11 @@ if(isset($_SESSION['user'])){
 <style>
 /*****inicio.php************/
     body{
-        margin:0;
+        margin:0; 
     }
     .inicio{
     width: 100%;
-    height: 100%;
+    height: 100%;  
     display: flex;
     flex-direction: column;
     align-items: center;
