@@ -68,7 +68,7 @@
                         <option value="Vespertino">Vespertino</option>
                     </select>
                 </div>
-                <div class="colC-3 colC-CompletMin">
+                <div class="colC-4 colC-CompletMin">
                     <p> CURP:</p>
                     <input type="text" name="CURP"  class="mayusculas" maxlength="18"/>
                 </div>
@@ -144,6 +144,7 @@
                 <div class="colC-3 colCMin-6">
                     <p>TIPO DE SANGRE:</p>
                     <select name="tipoSangre">
+                        <option></option>
                         <option value="A+">A+</option>
                         <option value="A-">A-</option>
                         <option value="B+">B+</option>

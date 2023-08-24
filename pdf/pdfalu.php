@@ -129,11 +129,8 @@ $pdf->Ln(5);
 $pdf->Cell(90,5, 'PADECIMIENTOS: ',1,0,'C',0);
 $pdf->Cell(100,5,utf8_decode( $datosMedicosASession['padecimiento']),1,0,'C',0);
 $pdf->Ln(5);
-$pdf->Cell(90,5, 'PADECIMIENTOS: ',1,0,'C',0);
-$pdf->Cell(100,5,utf8_decode( $datosMedicosASession['piePlano']),1,0,'C',0);
-$pdf->Ln(5);
 $pdf->Cell(90,5, 'OTROS: ',1,0,'C',0);
-$pdf->Cell(100,5,utf8_decode( "Pie plano: ".$datosMedicosASession['lentes']."   Lentes: ".$datosMedicosASession['lentes']),1,0,'C',0);
+$pdf->Cell(100,5,utf8_decode( "Pie plano: ".$datosMedicosASession['piePlano']."   Lentes: ".$datosMedicosASession['lentes']),1,0,'C',0);
 
 $pdf->Ln(6);
 $pdf->SetFont('Arial','B',10);

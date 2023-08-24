@@ -84,7 +84,7 @@
                         <option value="Vespertino" <?php if($row['turno']=="Vespertino") echo "selected"; ?>>Vespertino</option>
                     </select>
                 </div>
-                <div class="colC-3 colC-CompletMin">
+                <div class="colC-4 colC-CompletMin">
                     <span> CURP:</span>
                     <p><?php echo  $row['CURPAlu'];?></p>
                     <input type="hidden" name="CURP"  class="mayusculas" value="<?php echo  $row['CURPAlu'];?>" maxlength="18"/>
@@ -347,13 +347,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="colC-4">
+                <div class="colC-4 colC-CompletMin">
                     <input type="submit" name="acction" value="PDF" class="btn btnPDF" />
                 </div>
-                <div class="colC-4">
+                <div class="colC-4 colC-CompletMin">
                     <input type="submit" name="acction" value="Modificar Datos" class="btn btnModificar" />
                 </div>
-                <div class="colC-4">
+                <div class="colC-4 colC-CompletMin">
                     <input type="submit" name="acction" value="Eliminar Datos" class="btn btnEliminar" />
                 </div>
                 <?php 

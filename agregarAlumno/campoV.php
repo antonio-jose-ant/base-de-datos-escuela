@@ -30,7 +30,7 @@
 </head>
     <body> 
         <div>   
-            <form action="./alumno_C.php" method="post" name="form" class="form">
+            <form action="./alumno_C.php" method="post" name="form" class="form" id="campoV">
 <!------------------------------------DATOS ALUMNO---------------------------------------------------->
                 <div class="colC-Complet">
                     <h2>DATOS DEL ALUMNO:</h2>
@@ -62,7 +62,7 @@
                 <div class="colCMin-4">
                     <p> Grupo:</p> 
                     <select name="Grupo">
-                        <option>  </option> 
+                        <option>  </option>
                         <option value="A"  <?php if($alumnoDatosSession['Grupo']=="A") echo "selected"; ?>>A</option>
                         <option value="B"  <?php if($alumnoDatosSession['Grupo']=="B") echo "selected"; ?>>B</option>
                     </select>
@@ -75,7 +75,7 @@
                         <option value="Vespertino" <?php if($alumnoDatosSession['Turno']=="Vespertino") echo "selected"; ?>>Vespertino</option>
                     </select>
                 </div>
-                <div class="colC-3 colC-CompletMin">
+                <div class="colC-4 colC-CompletMin">
                     <p> CURP:</p>
                     <input type="text" name="CURP"  class="mayusculas" value="<?php echo  $alumnoDatosSession['CURP'];?>" maxlength="18"/>
                 </div>
@@ -151,6 +151,7 @@
                 <div class="colC-3 colCMin-6">
                     <p>TIPO DE SANGRE:</p>
                     <select name="tipoSangre">
+                        <option>  </option>
                         <option value="A+" <?php if($datosMedicosASession['tipoSangre']=="A+") echo "selected";?>>A+</option>
                         <option value="A-" <?php if($datosMedicosASession['tipoSangre']=="A-") echo "selected";?>>A-</option>
                         <option value="B+" <?php if($datosMedicosASession['tipoSangre']=="B+") echo "selected";?>>B+</option>
@@ -215,8 +216,8 @@
                 </div>
                 <div class="colC-3 colCMin-10">
                     <p>ESTADO CIVIL:</p>
-                    <select name="Estado_civilT1">
-                        <option></option>
+                    <select name="Estado_civilT1"> 
+                        <option>  </option>
                         <option value="Casado" <?php if("Casado"==$tutor1ASession['Estado_civilT1'] ) echo "selected";?>>Casado(a)</option>
                         <option value="Conviviente" <?php if("Conviviente"==$tutor1ASession['Estado_civilT1'] ) echo "selected";?>>Conviviente</option>
                         <option value="Anulado" <?php if("Anulado"==$tutor1ASession['Estado_civilT1'] ) echo "selected";?>>Anulado(a)</option>
@@ -265,7 +266,7 @@
                 <div class="colC-3 colCMin-10">
                     <p>ESTADO CIVIL:</p>
                     <select name="Estado_civilT2">
-                        <option></option>
+                        <option>  </option>
                         <option value="Casado" <?php if("Casado"==$tutor2ASession['Estado_civilT2'] ) echo "selected";?>>Casado(a)</option>
                         <option value="Conviviente" <?php if("Conviviente"==$tutor2ASession['Estado_civilT2'] ) echo "selected";?>>Conviviente</option>
                         <option value="Anulado" <?php if("Anulado"==$tutor2ASession['Estado_civilT2'] ) echo "selected";?>>Anulado(a)</option>
@@ -343,6 +344,27 @@
             </form>
         </div>
     </body>
+    <script>
+        window.addEventListener('load',contarCamposVacios)
+        function contarCamposVacios() {
+            var formulario = document.getElementById('campoV');
+            var campos = formulario.getElementsByTagName("input");
+            var camposvalue = formulario.getElementsByTagName("select");
+
+            for (var i = 0; i < camposvalue.length; i++) {
+                var selectedOption = camposvalue[i].options[camposvalue[i].selectedIndex].value;
+                if (selectedOption === "") {
+                    camposvalue[i].classList.add("vacio");
+                }
+            }
+
+            for (var i = 0; i < campos.length; i++) {
+                if (campos[i].value === "") {
+                    campos[i].classList.add("vacio");
+                }
+            }
+        }
+    </script>
 </html>
 <?php
 }else{

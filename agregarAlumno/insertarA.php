@@ -25,7 +25,7 @@ if(isset($_SESSION['user'])){
     foreach ($DatosAlumno as $key => $value) {
         if (empty($value)) {
             $insert = false;
-            echo "<script>alert('El campo $key está vacío');window.location='/base-de-datos-escuela/agregarAlumno/campoV.php'</script>";
+            echo "<script>alert('Existen campos vacios');window.location='/base-de-datos-escuela/agregarAlumno/campoV.php'</script>";
             exit;
             break;
         }
@@ -33,7 +33,7 @@ if(isset($_SESSION['user'])){
     foreach ($datosmedicos as $key => $value) {
         if (empty($value)) {
             $insert = false;
-            echo "<script>alert('El campo $key está vacío');window.location='/base-de-datos-escuela/agregarAlumno/campoV.php'</script>";
+            echo "<script>alert('Existen campos vacios');window.location='/base-de-datos-escuela/agregarAlumno/campoV.php'</script>";
             exit;
             break;
         }
@@ -41,7 +41,7 @@ if(isset($_SESSION['user'])){
     foreach ($tutor1Alu as $key => $value) {
         if (empty($value)) {
             $insert = false;
-            echo "<script>alert('El campo $key está vacío');window.location='/base-de-datos-escuela/agregarAlumno/campoV.php'</script>";
+            echo "<script>alert('Existen campos vacios');window.location='/base-de-datos-escuela/agregarAlumno/campoV.php'</script>";
             exit;
             break;
         }
@@ -49,7 +49,7 @@ if(isset($_SESSION['user'])){
     foreach ($tutor2alu as $key => $value) {
         if (empty($value)) {
             $insert = false;
-            echo "<script>alert('El campo $key está vacío');window.location='/base-de-datos-escuela/agregarAlumno/campoV.php'</script>";
+            echo "<script>alert('Existen campos vacios');window.location='/base-de-datos-escuela/agregarAlumno/campoV.php'</script>";
             exit;
             break;
         }
@@ -57,7 +57,7 @@ if(isset($_SESSION['user'])){
     foreach ($domicilioAlu as $key => $value) {
         if (empty($value)) {
             $insert = false;
-            echo "<script>alert('El campo $key está vacío');window.location='/base-de-datos-escuela/agregarAlumno/campoV.php'</script>";
+            echo "<script>alert('Existen campos vacios');window.location='/base-de-datos-escuela/agregarAlumno/campoV.php'</script>";
             exit;
             break;
         }
@@ -65,7 +65,7 @@ if(isset($_SESSION['user'])){
     foreach ($DatosgeneralesAlu as $key => $value) {
         if (empty($value)) {
             $insert = false;
-            echo "<script>alert('El campo $key está vacío');window.location='/base-de-datos-escuela/agregarAlumno/campoV.php'</script>";
+            echo "<script>alert('Existen campos vacios');window.location='/base-de-datos-escuela/agregarAlumno/campoV.php'</script>";
             exit;
             break;
         }

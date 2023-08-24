@@ -141,6 +141,7 @@ session_start();
             'computadora'=>(!empty($_POST['computadora'])) ? $_POST['computadora']:"No"
         )
     );
+
     $accionR= new alumnos;
     $accionR->set_accionA($_POST['acction']);
     $consulta=$accionR->get_accionA();

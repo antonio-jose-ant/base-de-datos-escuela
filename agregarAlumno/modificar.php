@@ -14,6 +14,29 @@ if(isset($_SESSION['user'])){
     $domicilioAlu=$domicilio ->get_DomicilioA();
     $DatosgeneralesAlu=$Datos_generales -> get_datosGeneralesA();
 
+    $conexion = mysqli_connect("localhost", "root", "TOYOTS99", "escuela");
+    mysqli_set_charset($conexion, "utf8");
+    $matriculaMC;
+    $matriculaC = "SELECT matricula FROM datos_alumno WHERE CURPAlu = '" . $DatosAlumno['CURP'] . "'";
+    $resultado = mysqli_query($conexion, $matriculaC);
+    
+    if ($resultado) {
+        // Extraer el valor de la matrícula
+        $fila = mysqli_fetch_assoc($resultado);
+        $matriculaMC = $fila['matricula'];
+    
+        // Imprimir en la consola de JavaScript
+        echo "<script>console.log('Matrícula: " . $matriculaMC . "');</script>";
+    
+        // Liberar el resultado
+        mysqli_free_result($resultado);
+    } else {
+        echo "Error en la consulta: " . mysqli_error($conexion);
+    }
+    
+    // Cerrar la conexión
+    mysqli_close($conexion);
+
         $datosMedicosUpdate="datos_medicos.CURPAlu='".strtoupper($DatosAlumno['CURP'])."'
         ,datos_medicos.Tel_emergencia='".$datosmedicos['numEmergencia']."'
         ,datos_medicos.Talla='".$datosmedicos['Talla']."'
@@ -24,7 +47,7 @@ if(isset($_SESSION['user'])){
         ,datos_medicos.Pie_plano='".$datosmedicos['piePlano']."'
         ,datos_medicos.lentes='".$datosmedicos['lentes']."'
         ";
-        $DatosAlumnoUpdate=",Datos_Alumno.matricula='".strtoupper($DatosAlumno['matricula'])."'
+        $DatosAlumnoUpdate=",Datos_Alumno.matricula='".strtoupper($matriculaMC)."'
             ,Datos_Alumno.Nombre_alu='".ucwords($DatosAlumno['Nombre'])."'
             ,Datos_Alumno.Apellido_p='".ucwords($DatosAlumno['ApeidoP'])."'
             ,Datos_Alumno.Apellido_m='".ucwords($DatosAlumno['ApeidoM'])."'
@@ -45,7 +68,7 @@ if(isset($_SESSION['user'])){
             ,tutor1.Estado_civilT1='".$tutor1Alu['Estado_civilT1']."'
             ,tutor1.OcupacionT1='".$tutor1Alu['ocupacionT1']."'
             ,tutor1.Grado_estudiosT1='".$tutor1Alu['estudioT1']."'
-            ,tutor1.matricula='".$DatosAlumno['matricula']."'
+            ,tutor1.matricula='".$matriculaMC."'
         ";
         $tutor2Update=",tutor2.CURP_tutor2='".strtoupper($tutor2aluM['CURPT2'])."'
             ,tutor2.NombreT2='".ucwords($tutor2aluM['nombreT2'])."'
@@ -56,7 +79,7 @@ if(isset($_SESSION['user'])){
             ,tutor2.Estado_civilT2='".$tutor2aluM['Estado_civilT2']."'
             ,tutor2.OcupacionT2='".$tutor2aluM['ocupacionT2']."'
             ,tutor2.Grado_estudiosT2='".$tutor2aluM['estudioT2']."'
-            ,tutor2.matricula='".$DatosAlumno['matricula']."'
+            ,tutor2.matricula='".$matriculaMC."'
         ";
 
         $domicilioUpdate=",domicilio.Calle='".$domicilioAlu['Calle']."'
@@ -68,7 +91,7 @@ if(isset($_SESSION['user'])){
             ,domicilio.Colonia='".$domicilioAlu['Colonia']."'
             ,domicilio.Municipio='".$domicilioAlu['Municipio']."'
             ,domicilio.Tel_casa='".$domicilioAlu['TelCasa']."'
-            ,domicilio.matricula='".$DatosAlumno['matricula']."'
+            ,domicilio.matricula='".$matriculaMC."'
         ";
         $DatosGeneralesUpdate=",Datos_generales.personas_Viven='".$DatosgeneralesAlu['vivenC']."'
             ,Datos_generales.sosten_H='".$DatosgeneralesAlu['sostenHogar']."'
@@ -77,7 +100,7 @@ if(isset($_SESSION['user'])){
             ,Datos_generales.CELULAR='".$DatosgeneralesAlu['celular']."'
             ,Datos_generales.TABLET='".$DatosgeneralesAlu['tablet']."'
             ,Datos_generales.COMPUTADORA='".$DatosgeneralesAlu['computadora']."'
-            ,Datos_generales.matricula='".$DatosAlumno['matricula']."'
+            ,Datos_generales.matricula='".$matriculaMC."'
         ";
     try {
         $db = new DB();
@@ -89,7 +112,7 @@ if(isset($_SESSION['user'])){
         JOIN domicilio ON domicilio.matricula = Datos_Alumno.matricula
         JOIN Datos_generales ON Datos_generales.matricula = Datos_Alumno.matricula
         set ".$datosMedicosUpdate.$DatosAlumnoUpdate.$tutor1Update.$tutor2Update.$domicilioUpdate.$DatosGeneralesUpdate."
-        WHERE Datos_Alumno.matricula='".$DatosAlumno['matricula']."'";
+        WHERE Datos_Alumno.matricula='".$matriculaMC."'";
         $stmt = $pdo->prepare($queryUpdate);
         $stmt->execute();
         echo "<script> alert(' se Modifico con exito'); window.location='/base-de-datos-escuela/mostrarDatos/mostrarAlumn.php';</script>";

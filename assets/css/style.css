@@ -134,6 +134,9 @@ input[type="radio"],input[type="checkbox"]{
 .btn:focus{
     background-color: var(--azul2) !important;
 }
+input.vacio,select.vacio{
+    border: 1px solid var(--rojo);
+}
 /************login*************************/
 .contenedor-login {
     width: 100%;
@@ -250,6 +253,9 @@ input[type="radio"],input[type="checkbox"]{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+.nav-menu ul li div.deplegado a:hover{
+    background-color: var(--azul2);
 }
 .nav-menu ul{
     width: 100%;
@@ -450,7 +456,7 @@ input[type="radio"],input[type="checkbox"]{
 }
 
 .alumno{
-    grid-template: 60px/32px 156px auto 50px 50px 80px 85px 126px;
+    grid-template: 60px/32px 166px auto 50px 50px 80px 85px 120px;
     align-items: center;
 }
 .alumnoContenido:hover div{
