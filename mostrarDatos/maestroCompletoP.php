@@ -1,6 +1,7 @@
 <?php
 
         $nomina=$_POST['buscaP'];
+
         $conMaestro ="SELECT * FROM profesor 
         inner JOIN datos_laborales 
         on profesor.CURP=datos_laborales.CURP
@@ -12,6 +13,9 @@
         $userSession = new UserSession();
         $user = new User();
         if(isset($_SESSION['user'])){
+            if (empty($nomina)){
+                echo "<script>alert('Selecciona una registro');window.location='/base-de-datos-escuela/mostrarDatos/mosrarprofeor.php'</script>";
+            }else{
             //echo "hay sesion"; 
         $user->setUser($userSession->getCurrentUser());
         $db = new DB();
@@ -319,10 +323,17 @@
             }
         ?>
     </form>
+    <script>
+            document.addEventListener("keydown", function(event) {
+                if (event.key === "Enter") {
+                    event.preventDefault();
+                }
+            });
+    </script>
 </body>
 </html>
 <?php
-}else{
+}}else{
     //echo "login";
     echo "<script> alert('no existe un inicio de secion'); window.location='/test/base-de-datos-escuela/maestroCompletoP'</script>";
 }

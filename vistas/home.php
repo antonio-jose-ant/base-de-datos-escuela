@@ -41,6 +41,13 @@ include_once 'includes/user_session.php';
                             <a onclick="changueContentH('#divContentNav','mostrarDatos/mosrarprofeor.php')" id="contraeMenu400"><img src="assets/img/iconos/Vacantes.png"><span>Mostrar Docente</span></a>
                         </div>
                     </li>
+                    <li>
+                        <p id="menu-desplega3"><img src="assets/img/iconos/address-book.png"><span> usuarios</span></p>
+                        <div id="menu-III" class="oculta">
+                            <a onclick="changueContentH('#divContentNav','usuario/usuarios.php')" id="contraeMenu300"><img src="assets/img/iconos/Vacantes.png"><span>Agregar Usiario</span></a>
+                            <a onclick="changueContentH('#divContentNav','usuario/mostraraUsuario.php')" id="contraeMenu200"><img src="assets/img/iconos/Vacantes.png"><span>Mostrar Usiario</span></a>
+                        </div>
+                    </li>
                 </ul>
                 <div class="menu-salir">
                     <a href="includes/logout.php">

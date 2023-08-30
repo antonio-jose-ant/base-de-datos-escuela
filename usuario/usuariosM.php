@@ -29,18 +29,13 @@ if(isset($_SESSION['user'])){
             </div>
             <div class="colC-Complet">
                 <span> Tipo</span>
-                <select name="seciontipoUser" id="tipoUser" onchange="seleccionEstadoC();">
+                <select name="seciontipoUser">
                     <option> </option>
-                    <option value="administrador">Administrador</option>
-                    <option value="sub-administrador">Sub administrador</option>
-                    <option value="Encargado">Encargado</option>
-                    <option value="Doncete">Doncete</option>
-                    <option value="Alumno">Alumno</option>
+                    <option value="administrador">administrador</option>
+                    <option value="sub-administrador">sub administrador</option>
+                    <option value="Invitado">Doncete</option>
+                    <option value="Basico">Alumno</option>
                 </select>
-            </div>
-            <div class="colC-Complet" id="RFCUser" style="display: none;">
-                <span> RFC</span>
-                <input type="text" name="RFCUser">
             </div>
             <div class="colC-Complet">
                 <span> Contraseña</span>
@@ -51,25 +46,11 @@ if(isset($_SESSION['user'])){
             </div>
         </form>
     </div>
-    <script>
-        window.addEventListener('load',seleccionEstadoC)
-        function seleccionEstadoC(){
-            var estadoCivil=document.getElementById('tipoUser');
-            var parejaR=document.getElementById('RFCUser');
-            estadoCivil.addEventListener('change',parejaName());
-            function parejaName(){
-                if(estadoCivil.value==='Doncete'){
-                    parejaR.style.display = "flex";
-                }else{
-                    parejaR.style.display = "none";
-                }
-            }
-        }
-    </script>
     </body>
 </html>
 <?php
 }else{
+    //echo "login";
     echo "<script> alert('no existe un inicio de secion'); window..history.go(-1);</script>";
 }
 ?>

@@ -26,8 +26,6 @@ if(isset($_SESSION['user'])){
     } else {
         echo "Error en la consulta: " . mysqli_error($conexion);
     }
-    
-    // Cerrar la conexión
     mysqli_close($conexion);
     $DatosGeneralesDelete="DELETE Datos_generales from Datos_generales where matricula='".$matriculaMC."'";
     $domicilioDelete = "DELETE domicilio  from domicilio  where matricula='".$matriculaMC."'";

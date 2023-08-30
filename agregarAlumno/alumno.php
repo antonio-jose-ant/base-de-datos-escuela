@@ -332,7 +332,7 @@
                     </div>
                 </div>
                 <div class="colC-Complet">
-                    <input type="submit" value="Guardar Datos" name="acction" class="btn"/>
+                    <input type="submit" value="Guardar Datos" name="acction" class="btn btnAgregar"/>
                 </div>
             </form>
         </div>

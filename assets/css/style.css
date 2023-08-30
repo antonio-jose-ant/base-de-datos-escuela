@@ -131,6 +131,13 @@ input[type="radio"],input[type="checkbox"]{
     border-color: var(--naranja) !important;
     background-image: url(../img/iconos/pdf.png);
 }
+.btnBuscar{
+    background-image: url(../img/iconos/buscar.png);
+}
+.btnConsulta{
+    background-image: url(../img/iconos/consultar.png);
+    width: 160px;
+}
 .btn:focus{
     background-color: var(--azul2) !important;
 }
@@ -228,14 +235,11 @@ input.vacio,select.vacio{
 /********Home***********/
 
 /************menu************/
-
-
-
 .menu-contenedor{
     width: 100%;
     height: 100%;
     display: grid;
-    grid-template:100%/ 25% 75%;
+    grid-template:100%/ 240px calc(100% - 240px);
 }
 .menu{
     width: 100%;
@@ -345,6 +349,7 @@ input.vacio,select.vacio{
 }
 .colC-Complet{
     grid-column: 1/-1;
+    text-align: center;
 }
 .colR-2{
     grid-row: span 2;
@@ -378,7 +383,7 @@ input.vacio,select.vacio{
     display: grid;
     flex-direction: row;
     margin: 5px 0;
-    width: 100%;
+    width: 100%; 
     height: auto;
     grid-template:auto/repeat(4,25%) ;
     grid-gap: 10px 0;
@@ -395,104 +400,160 @@ input.vacio,select.vacio{
     flex-direction: row;
 }
 /********tablas**********/
-
-
+form.tableB{
+    width: 100%;
+    height: auto;
+    background-color: var(--gris);
+    padding: 5px;
+    box-sizing: border-box;
+}
+.form.tableB tr p,a{
+    font-size: 16px;
+}
+.busqueda{
+    width: 100%;
+    padding: 5px 15px;
+    margin: 5px 0;
+    box-sizing: border-box;
+    background-color: var(--blanco);
+}
+ table {
+    width: 100%;
+    height: auto;
+    background-color: var(--blanco2);
+    display: grid;
+ }
+ thead ,tfoot{
+    width: 100%;
+    height: 45px;
+ }
+ tfoot tr{
+    background-color: var(--naranja);
+    color: var(--blanco);
+    height: 100%;
+ }
+ table tbody.contenidoT{
+    max-height: 400px;
+    overflow: auto;
+    width: 100%;
+    padding-right: 2px;
+    scrollbar-width: none; /* Oculta la barra de desplazamiento */
+ }
+ table tr{
+    width: 100%;
+    display: grid;
+ }
+ table td{
+    width: calc(100% - 2px);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+ }
 .title{
     background-color: var(--azul2);
     border-right: solid 1px var(--blanco2);
-    height: 60px;
-    width: calc(100% - 1px);
+    border-left: solid 1px var(--blanco2);
+    height: 100%;
+    width: calc(100% - 2px);
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--blanco);
-}
-.footerTable{
-    background-color: var(--azul2);
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    padding-left:10px ;
-    color: var(--blanco);
-}
-.tabla{
-    width: 100%;
-    height: auto;
-    display: grid;
-    box-sizing: border-box;
-    background: var(--gris);
 }
 .even{
     background-color: var(--blanco2);
 }
-.even div{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-left: 1px solid var(--gris);
-    height: 100%;
-    width: auto;
-    text-align: center;
-}
 .odd{
     background-color: var(--gris);
 }
-.odd div{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-left: 1px solid var(--blanco2);
-    height: 100%;
-    width: auto;
-    text-align: center;
-}
-
-.contenidoT{
-    max-height: 450px;
-    overflow: auto;
-    width: 100%;
-}
-
-.alumno{
-    grid-template: 60px/32px 166px auto 50px 50px 80px 85px 120px;
-    align-items: center;
-}
-.alumnoContenido:hover div{
-    transition-duration: .5s;
+.even:hover{
     background-color: var(--cafe);
+    transition-duration: .5s;
 }
-.alumnoContenido{
+.odd:hover{
+    background-color: var(--cafe);
+    transition-duration: .5s;
+}
+.even td{
+    border-left:solid 1px  var(--gris);
+    border-right:solid 1px  var(--gris);
+}
+.odd td{
+    border-left:solid 1px  var(--blanco2);
+    border-right:solid 1px  var(--blanco2);
+}
+/*******profesor********/
+.profesor {
     display: grid;
-    width: 100%;
-    height: auto;
-}
-.alumnoContenido p,a{
-    font-size: 16px;/*tamaño de letra para todos los p que tengan la clase profesorContenido*/
-}
-
-.profesor{
-    grid-template: 60px/32px 68px 138px 85px 156px 118px auto;
+    grid-template-columns: minmax(32px, 5%) minmax(138px, 25%) minmax(81px, 10%) minmax(182px, 23%) minmax(128px, 16%) minmax(90px, auto);
+    grid-template-rows: 45px;
     align-items: center;
 }
-.profesorContenido{
+/*******profesor fin**********/
+/*******alumno********/
+.alumno {
     display: grid;
-    width: 100%;
-    height: auto;
+    grid-template-columns:minmax(32px, 5%) minmax(182px, 15%) minmax(146px, auto) minmax(48px, 5%) minmax(48px, 5%) minmax(88px, 8%) minmax(107px, 8%) minmax(91px, 8%);
+    grid-template-rows: 45px;
+    align-items: center;
 }
-.profesorContenido:hover div{
-    transition-duration: .5s;
-    background-color: var(--cafe);
+/*******alumno fin**********/
+/*******usuariosT********/
+.usuariosT {
+    display: grid;
+    grid-template-columns:minmax(32px, 6%) minmax(182px, auto) minmax(146px, 25%) minmax(146px, 25%);
+    grid-template-rows: 45px;
+    align-items: center;
 }
-.profesorContenido p,a{
-    font-size: 16px;/*tamaño de letra para todos los p que tengan la clase profesorContenido*/
-}
+/*******usuariosT fin**********/
 .busquedaP{
     grid-template: 50px/repeat(3,1fr);
     align-items: center;
 }
 /********tablas fin**********/
+
+/********usuarios*********/
+
+.usuarios{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.usuarios .form {
+    grid-template-rows: 60px;
+}
+.usuarios .tableB {
+    border-radius: 10px;
+    width: 80%;
+    height: auto;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.usuarios .form{
+    background-color: var(--gris);
+    border: 2px solid var(--azul);
+    border-radius: 10px;
+    width: 60%;
+    height: auto;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.usuarios .form div {
+    display: flex;
+    width: auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.usuarios .form input,select {
+    width: 80%;
+}
 /*************@media*************/
 @media (max-width: 600px) {
     input[type="text"],
@@ -528,7 +589,54 @@ input.vacio,select.vacio{
     /**************login fin**********/
 }
 @media (max-width: 750px) {
-
+    /*******usuarios*****/
+    .usuarios .form{
+        width: 100%;
+    }
+    /***********tabla*******/
+    .profesor{
+        grid-template: 1fr/100%;
+    }
+    .alumno{
+        grid-template: 1fr/100%;
+    }
+    .usuariosT{
+        grid-template: 1fr/100%;
+    }
+    thead{
+        display: none;
+    }
+    table th.title{
+        display: none;
+     }
+     table td::before {
+        margin-bottom: 3px;
+        content: attr(data-title);
+        width: auto;
+        padding-left: 20px;
+        font-size: 12px;
+        line-height: 10px;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: var(--azul);
+        display: block;
+    }
+    table td {
+        flex-direction: column;
+        align-items:flex-start;
+    }
+    .contenidoT tr p, a {
+        display:inline;
+        padding-left: 20px;
+    }
+    .even{
+        background-color: var(--blanco2);
+        padding: 10px 0;
+    }
+    .odd{
+        background-color: var(--gris);
+        padding: 10px 0;
+    }
     /*********menu*************/
     .harmburger{
         display:block;
@@ -614,6 +722,7 @@ input.vacio,select.vacio{
     }
     .colC-CompletMin{
         grid-column: 1/-1;
+        text-align: center;
     }
     /********adaptacion del formulario a pantallas pequeñas fin**********/
 }

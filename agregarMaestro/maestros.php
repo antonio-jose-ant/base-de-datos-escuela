@@ -287,7 +287,7 @@ if(isset($_SESSION['user'])){
             <input type="text" name="Otros_Estudios"/>
         </div>
         <div class="colC-Complet">
-            <input type="submit" value="Guardar Datos" class="btn" name="acction" />
+            <input type="submit" value="Guardar Datos" class="btn btnAgregar" name="acction" />
         </div>
     </form>
 </body>

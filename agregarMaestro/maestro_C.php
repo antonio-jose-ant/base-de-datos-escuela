@@ -124,8 +124,9 @@ session_start();
     $accionR= new maestros;
     $accionR->set_accion($_POST['acction']);
     $consulta=$accionR->get_accion();
+    
     if($consulta=="Guardar Datos"){
-        include_once 'insertarM.php';
+        include_once 'insertarM.php'; 
     }
     if($consulta=="Modificar Datos"){
         include_once 'modificar.php';

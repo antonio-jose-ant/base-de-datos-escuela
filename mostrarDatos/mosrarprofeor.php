@@ -31,55 +31,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/style.css">
-    <script src="../assets/js/jquery-1.10.2.js"></script>
-    <script src="../assets/js/jquery-1.9.1.js"></script>
-    <script src="../assets/js/jquery-ui-1.11.0/jquery-ui.js"></script>
     <title>Agregar</title>
 </head>
 <body>
-    <form class="tabla profesor" action="./maestroCompletoP.php" method="post"  name="form">
-        <div class="colR-3 colC-Complet tabla busquedaP">
-            <div>
+    <form class="tableB" action="./maestroCompletoP.php" method="post"  name="form">
+        <div class="busqueda form">
+            <div class="colC-4 colC-CompletMin">
                 <p>Nombre:</p>
                 <input type="text" name="profe"/>
             </div>
-            <div>
+            <div class="colC-4 colC-CompletMin">
                 <p>ingresa RFC</p>
                 <input type="text" name="datospersonales"/>
             </div>
-            <div>
+            <div class="colC-4 colC-CompletMin">
                 <p>ingresa CURP</p>
                 <input type="text" name="datosadministracion"/>
             </div>
             <div class="colC-Complet">
-                <input type="submit" value="Buscar" name="Buscar"  class="btn">
+                <input type="submit" value="Buscar" name="Buscar"  class="btn btnBuscar">
             </div>
         </div>
-        <div class="title"><p>Sel </p></div> 
-        <div class="title"><p>Nomina </p></div>    
-        <div class="title"><p>Nombre </p></div>        
-        <div class="title"><p>TEL. Celular</p></div>   
-        <div class="title"><p>CURP</p></div> 
-        <div class="title"><p>RFC</p></div>       
-        <div class="title"><p>PREPARAION</p></div>
-        <div class="contenidoT colC-Complet">       
-            <?php 
-                $nrow=0;
-                foreach ($resultados as $row) {
-            ?>
-            <?php echo "<div class='profesor profesorContenido ".($nrow++%2?'even':'odd')."'>"?>
-            <?php echo "<div> <input name='buscaP' value='".$row['nomina']."' type='radio'></div>";?>
-            <?php echo "<div><p>".$row['nomina']."  <input name='nomina' value='".$row['nomina']."' type='hidden'> </p></div>";?>
-            <?php echo "<div><p>".$row["nombre"]." ".$row["apellidoP"]." ".$row["apellidoM"]."</p></div>";?>
-            <?php echo "<div><a href='".$row["telefonoPersonal"]."'>".$row["telefonoPersonal"]."</a></div>";?>
-            <?php echo "<div><p>".$row["CURP"]."<input name='curpProfe' value='".$row['CURP']."' type='hidden'> </p></div>";?>
-            <?php echo "<div><p>".$row["RFC"]."<input name='rfcProfe' value='".$row['RFC']."' type='hidden'></p></div>";?>
-            <?php echo "<div><p>".$row["Preparacion_Profecional"]."</p></div>";?>
-            <?php echo "</div>"?>
-            <?php }?>
-        </div>
-        <div class="colC-Complet footerTable"><p>Numero De Docentes: <?php echo $nrow;  ?></p></div>  
+
+        <table id="selectAuto">
+            <thead>
+                <tr class="profesor">
+                    <th class="title">Sel</th>
+                    <th class="title">Nombre</th>
+                    <th class="title">TEL. Celular</th>
+                    <th class="title">CURP</th>
+                    <th class="title">RFC</th>
+                    <th class="title">PREPARAION</th> 
+                </tr>
+            </thead>
+            <tbody class="contenidoT" id="profesores">
+                <?php 
+                    $nrow=0;
+                    $tr=count($resultados);
+                    foreach ($resultados as $row) {
+                        echo "<tr class='profesor ".($nrow++%2?'even':'odd')."'>";
+                        echo "<td > <input name='buscaP' value='".$row['nomina']."' type='radio'></td>";
+                        echo "<td data-title='Nombre'><p>".$row["nombre"]." ".$row["apellidoP"]." ".$row["apellidoM"]."</p></td>";
+                        echo "<td data-title='TEL. Celular'><a href='tel:".$row["telefonoPersonal"]."'>".$row["telefonoPersonal"]."</a></td>";
+                        echo "<td data-title='CURP'><p>".$row["CURP"]."<input name='curpProfe' value='".$row['CURP']."' type='hidden'> </p></td>";
+                        echo "<td data-title='RFC'><p>".$row["RFC"]."<input name='rfcProfe' value='".$row['RFC']."' type='hidden'></p></td>";
+                        echo "<td data-title='PREPARAION'><p>".$row["Preparacion_Profecional"]."</p></td>";
+                        echo "</tr>";
+                    }
+                ?>
+
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td><p>Numero De Docentes: <?php echo $nrow;  ?></p></td>
+                </tr>
+            </tfoot>
+        </table>
     </form>
+<script>
+    document.addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+        }
+    });
+    var tabla = document.getElementById('selectAuto');
+    var filas = tabla.getElementsByTagName("tr");
+
+        for (var i = 0; i < filas.length; i++) {
+            filas[i].addEventListener("click", function() {
+                var radioInput = this.querySelector("input[type='radio']");
+                if (radioInput) {
+                    radioInput.checked = true;
+                }
+            });
+        }
+</script>
 </body>
 </html>
 <?php

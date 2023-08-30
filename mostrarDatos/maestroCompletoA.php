@@ -13,6 +13,9 @@
         $userSession = new UserSession();
         $user = new User(); 
         if(isset($_SESSION['user'])){
+        if (empty($matriculaC)){
+            echo "<script>alert('Selecciona una registro');window.location='/base-de-datos-escuela/mostrarDatos/mostrarAlumn.php'</script>";
+        }else{
             //echo "hay sesion";
         $user->setUser($userSession->getCurrentUser());
 
@@ -315,7 +318,7 @@
                         <div class="colCMin-2">
                             <label for="hogarAmbos">AMBOS</label>                    
                             <input type="radio" name="sostenHogar" <?php if($row['sosten_H']=="AMBOS") echo "checked";?>  value="AMBOS" id="hogarAmbos"/>
-                        </div>
+                        </div> 
                         <div class="colCMin-2">
                             <label for="hogarOtro">OTRO</label>                    
                             <input type="radio" name="sostenHogar" <?php if($row['sosten_H']=="OTRO") echo "checked";?>  value="OTRO" id="hogarOtro"/>
@@ -361,10 +364,17 @@
                 ?>
             </form>
         </div>
+        <script>
+            document.addEventListener("keydown", function(event) {
+                if (event.key === "Enter") {
+                    event.preventDefault();
+                }
+            });
+        </script>
     </body>
 </html>
 <?php
-}else{
+}}else{
     //echo "login";
     echo "<script> alert('no existe un inicio de secion'); window.location='/base-de-datos-escuela'</script>";
 }
