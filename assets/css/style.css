@@ -11,7 +11,7 @@
     --azul:#1e455c;
     --azul2:#235f81;
     --rojo:#f40404;
-    --naranja:#e23400;
+    --naranja:#f97d27;
     --cafe:#a36449;
     --cafe2:#5b2b26;
     --verde:#c9c768;
@@ -433,11 +433,10 @@ form.tableB{
     height: 100%;
  }
  table tbody.contenidoT{
-    max-height: 400px;
+    height: 300px;
     overflow: auto;
-    width: 100%;
     padding-right: 2px;
-    scrollbar-width: none; /* Oculta la barra de desplazamiento */
+    display: inline;
  }
  table tr{
     width: 100%;
@@ -445,7 +444,7 @@ form.tableB{
  }
  table td{
     width: calc(100% - 2px);
-    height: 100%;
+    height: calc(100% - 2px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -480,10 +479,14 @@ form.tableB{
 .even td{
     border-left:solid 1px  var(--gris);
     border-right:solid 1px  var(--gris);
+    border-top:solid 1px  var(--blanco2);
+    border-bottom:solid 1px  var(--gris);
 }
 .odd td{
     border-left:solid 1px  var(--blanco2);
     border-right:solid 1px  var(--blanco2);
+    border-top:solid 1px  var(--gris);
+    border-bottom:solid 1px  var(--blanco2);
 }
 /*******profesor********/
 .profesor {
