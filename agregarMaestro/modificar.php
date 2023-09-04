@@ -29,7 +29,7 @@ $modificarT=$modificados->get_modificado();
         ,datos_profecionales.Nivel_Variante='".$datosP['Nivel_Variante']."'
         ,datos_profecionales.Otros_Estudios='".$datosP['Otros_Estudios']."'";
 
-
+ 
         $insertaadmin="        
         ,datos_laborales.CURP='".$datosA['CURP']."'
         ,datos_laborales.Nombre_Dependencia='".$datosA['Nombre_Dependencia']."'
@@ -101,6 +101,6 @@ $modificarT=$modificados->get_modificado();
 
 }else{
     //echo "login";
-    echo "<script> alert('no existe un inicio de secion'); window.location='/base-de-datos-escuela/'</script>";
+    echo "<script>alert('no existe un inicio de secion');window.location='/base-de-datos-escuela/'</script>";
 }
 ?>

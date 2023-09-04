@@ -101,7 +101,7 @@ session_start();
         )
     );
     $tutor2 = new alumnos;
-    $tutor2 ->set_tutor2A(
+    $tutor2 ->set_tutor2A( 
         array( 
             'CURPT2'=>(!empty($_POST['CURPT2'])) ? $_POST['CURPT2']:"",
             'nombreT2'=>(!empty($_POST['nombreT2'])) ? $_POST['nombreT2']:"",

@@ -82,6 +82,6 @@
 <?php
 }else{
     //echo "login";
-    echo "<script> alert('no existe un inicio de secion'); window.location='/test/base-de-datos-escuela/mostrarDatos/maestroCompletoP'</script>";
+    echo "<script>alert('no existe un inicio de secion');window.location='/base-de-datos-escuela/'</script>";
 }
 ?>

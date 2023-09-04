@@ -70,6 +70,6 @@ if(isset($_SESSION['user'])){
 </html>
 <?php
 }else{
-    echo "<script> alert('no existe un inicio de secion'); window..history.go(-1);</script>";
+    echo "<script>alert('no existe un inicio de secion');window.location='/base-de-datos-escuela/'</script>";
 }
 ?>

@@ -21,7 +21,7 @@ if(isset($_SESSION['user'])){
     justify-content: center;
 }
 .inicio img{
-    width: 60%;
+    height:70%;
 }
 .inicio h2{
     font-family:arial;

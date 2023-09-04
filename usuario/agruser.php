@@ -35,17 +35,15 @@ try {
     $stmt->execute();
     echo "<script> alert('se a registrado con exito'); window.location='/base-de-datos-escuela/usuario/usuarios.php'</script>";
 } catch (PDOException $e) {
-    // Verificar si el mensaje de error contiene información específica
     if (strpos($e->getMessage(), "Duplicate entry") !== false && strpos($e->getMessage(), "for key 'UserName'") !== false) {
         echo "<script> alert('Usuario duplicado. Por favor, elige otro nombre de usuario.'); window.location='/base-de-datos-escuela/usuario/usuarios.php'</script>";
 
     } else {
-        // Ocurrió otro tipo de error, mostrar mensaje genérico
         echo "Ocurrió un error en la consulta: " . $e->getMessage();
     }
 }
 }else{
     //echo "login";
-    echo "<script> alert('no existe un inicio de secion'); window.location='/base-de-datos-escuela/'</script>";
+    echo "<script>alert('no existe un inicio de secion');window.location='/base-de-datos-escuela/'</script>";
 }
 ?>

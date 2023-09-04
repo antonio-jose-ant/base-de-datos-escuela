@@ -11,7 +11,7 @@ $( function() {
     changeMonth: true,
     changeYear: true
   });
-  $( "#date3" ).datepicker({
+  $( "#date3" ).datepicker({ 
     changeMonth: true,
     changeYear: true
   });

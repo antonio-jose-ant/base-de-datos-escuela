@@ -133,7 +133,7 @@ session_start();
     }
     if($consulta=="Eliminar Datos"){
 
-        include_once 'eliminar.php';
+        include_once 'eliminar.php'; 
     }
     if($consulta=="PDF"){
         $_SESSION['maestroDatos'] = $mDatos->get_maestrosDatos();

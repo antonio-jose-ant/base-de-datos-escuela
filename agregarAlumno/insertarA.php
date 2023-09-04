@@ -60,7 +60,7 @@ if(isset($_SESSION['user'])){
             echo "<script>alert('Existen campos vacios');window.location='/base-de-datos-escuela/agregarAlumno/campoV.php'</script>";
             exit;
             break;
-        }
+        } 
     }
     foreach ($DatosgeneralesAlu as $key => $value) {
         if (empty($value)) {
@@ -171,6 +171,6 @@ if(isset($_SESSION['user'])){
     }
 }else{
     //echo "login";
-    echo "<script> alert('no existe un inicio de secion'); window.location='/base-de-datos-escuela/'</script>";
+    echo "<script>alert('no existe un inicio de secion');window.location='/base-de-datos-escuela/'</script>";
 }
 ?>

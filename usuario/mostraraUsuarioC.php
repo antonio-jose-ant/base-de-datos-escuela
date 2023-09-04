@@ -1,4 +1,4 @@
-<?php
+<?php 
         $secionUsr=$_POST['secionUsr'];
         $consultaMaestro = "SELECT * FROM   usuario WHERE UserName='".$secionUsr."'";
         include_once '../includes/user.php';
@@ -6,6 +6,9 @@
         $userSession = new UserSession();
         $user = new User();
         if(isset($_SESSION['user'])){
+            if (empty($secionUsr)){
+                echo "<script>alert('Selecciona una registro');window.location='/base-de-datos-escuela/usuario/mostraraUsuario.php'</script>";
+            }else{
             //echo "hay sesion"; 
         $user->setUser($userSession->getCurrentUser());
         $db = new DB();
@@ -27,7 +30,7 @@
         <?php
             foreach ($resultados as $row) {
         ?>
-            <div class="colC-Complet colR-2">
+            <div class="colC-Complet colR-2"> 
                 <h2> Agregar Usuario</h2>
             </div>
             <div class="colC-Complet">
@@ -43,7 +46,8 @@
             <div class="colC-Complet">
                 <span> Tipo</span>
                 <p> <?php echo $row['tipo_usuario'];?></p>
-                <input type="hidden" name="secionUsr" value="<?php echo $row['RFCUser'];?>">
+                <input type="hidden" name="seciontipoUser" value="<?php echo $row['tipo_usuario'];?>">
+                <input type="hidden" name="RFCUser" value="<?php echo $row['RFCUser'];?>">
             </div>
             <div class="colC-Complet">
                 <span> Contraseña</span>
@@ -63,8 +67,8 @@
     </body>
 </html>
 <?php
-}else{
+}}else{
     //echo "login";
-    echo "<script> alert('no existe un inicio de secion'); window..history.go(-1);</script>";
+    echo "<script>alert('no existe un inicio de secion');window.location='/base-de-datos-escuela/'</script>";
 }
 ?>

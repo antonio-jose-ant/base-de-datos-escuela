@@ -341,6 +341,6 @@
 <?php
 }else{
     //echo "login";
-    echo "<script> alert('no existe un inicio de secion'); window.location='/base-de-datos-escuela'</script>";
+    echo "<script>alert('no existe un inicio de secion');window.location='/base-de-datos-escuela/'</script>";
 }
 ?>
