@@ -44,7 +44,7 @@
             </div>
         </div>
 
-        <table id="selectAuto">
+        <table class="tabConten" id="selectAuto">
             <thead>
                 <tr class="alumno">
                     <th class="title">Sel</th>

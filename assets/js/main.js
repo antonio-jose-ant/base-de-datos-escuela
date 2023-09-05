@@ -1,64 +1,66 @@
 window.addEventListener('load',desplegar1)
 
 function desplegar1() { 
-    var menu_desplega=document.getElementById('menu-desplega');
-    menu_desplega.addEventListener('click',mostrar);
-    var menu_desplega2=document.getElementById('menu-desplega2');
-    menu_desplega2.addEventListener('click',mostrar2);
-    var menu_desplega3=document.getElementById('menu-desplega3');
-    menu_desplega3.addEventListener('click',mostrar3);
-    let menu_I=document.getElementById('menu-I');
-    let menu_II=document.getElementById('menu-II');
-    let menu_III=document.getElementById('menu-III');
-    let harmburger=document.getElementById('harmburger');
-    harmburger.addEventListener('click',with700)
+    var formulario = document.getElementById('menuOpciones');
+    var liContenido = formulario.getElementsByTagName("li");
 
-    function mostrar(){
-        if (menu_I.className == "deplegado") {
-            menu_I.className = "oculta";
-        } else{
-            menu_I.className = "deplegado";
-        }
-    }
-    function mostrar2(){
-        if (menu_II.className == "deplegado") {
-            menu_II.className = "oculta";
-        } else{
-            menu_II.className = "deplegado";
-        }
-    }
-    function mostrar3(){
-        if (menu_III.className == "deplegado") {
-            menu_III.className = "oculta";
-        } else{
-            menu_III.className = "deplegado";
-        }
-    }
-    function with700(){
-        let  menu_contenedor=document.getElementById('menu-container');
-        let  contraeMenu700=document.getElementById('contraeMenu700');
-        contraeMenu700.addEventListener('click',with700);
-        let  contraeMenu600=document.getElementById('contraeMenu600');
-        contraeMenu600.addEventListener('click',with700);
-        let  contraeMenu500=document.getElementById('contraeMenu500');
-        contraeMenu500.addEventListener('click',with700);
-        let  contraeMenu400=document.getElementById('contraeMenu400');
-        contraeMenu400.addEventListener('click',with700);
-        let  contraeMenu300=document.getElementById('contraeMenu300');
-        contraeMenu300.addEventListener('click',with700);
-        let  contraeMenu200=document.getElementById('contraeMenu200');
-        contraeMenu200.addEventListener('click',with700);
-        if(screen.width <= 750){
-            if (menu_contenedor.className == "menu-contenedor") {
-                menu_contenedor.className += " menu-cont-dep";
+    for (var i = 0; i < liContenido.length; i++) {
+        liContenido[i].addEventListener("click", function(event) {
+            var div = this.querySelector(".oculta");
+            if(div==null){
+                var divD = this.querySelector(".deplegado");
+
+                if (divD.classList.contains("oculta")) {
+                    divD.classList.remove("oculta");
+                    divD.classList.add("deplegado");
+                } else {
+                    divD.classList.remove("deplegado");
+                    divD.classList.add("oculta");
+                }
             }else{
-                menu_contenedor.className = "menu-contenedor";
+                if (div.classList.contains("deplegado")) {
+                    div.classList.remove("deplegado");
+                    div.classList.add("oculta");
+                } else {
+                    div.classList.remove("oculta");
+                    div.classList.add("deplegado");
+                }
             }
+
+        });
+        var links = liContenido[i].getElementsByTagName("a");
+        for (var j = 0; j < links.length; j++) {
+            links[j].addEventListener("click", function(event) {
+                event.stopPropagation();
+            });
         }
     }
     
-    
-} 
+
+    let harmburger = document.getElementById('harmburger');
+    harmburger.addEventListener('click', toggleMenu);
+
+    let menuContainer = document.getElementById('menu-container');
+
+    var menuLinks = menuContainer.getElementsByTagName("a");
+
+    for (var i = 0; i < menuLinks.length; i++) {
+        if (window.innerWidth <= 750) {
+            menuLinks[i].addEventListener('click', toggleMenu);
+        }
+    }
+    function toggleMenu() {
+        if (menuContainer.classList.contains("menu-cont-dep")) {
+            menuContainer.classList.remove("menu-cont-dep");
+        } else {
+            menuContainer.classList.add("menu-cont-dep");
+        }
+    }
+
+}
+
+
+
 function changueContentH(div,url){ 
     $(div).attr("src",url);
 }

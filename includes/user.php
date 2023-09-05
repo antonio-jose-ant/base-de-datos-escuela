@@ -1,9 +1,10 @@
 <?php
-include 'db.php';
+include_once 'db.php';
 
 class User extends DB{
     private $nombre;
     private $username;
+    private $tipo_usuario;
 
  
     public function userExists($user, $pass){
@@ -12,6 +13,10 @@ class User extends DB{
         $query->execute(['user' => $user, 'pass' => $md5pass]);
 
         if($query->rowCount()){
+            $row = $query->fetch();
+            $this->nombre = $row['nombre'];
+            $this->username = $row['username'];
+            $this->tipo_usuario = $row['tipo_usuario'];
             return true;
         }else{
             return false;
@@ -24,11 +29,14 @@ class User extends DB{
         foreach ($query as $currentUser) {
             $this->nombre = $currentUser['nombre'];
             $this->usename = $currentUser['username'];
+            $this->tipo_usuario = $currentUser['tipo_usuario'];
         }
     }
-
     public function getNombre(){
         return $this->nombre;
+    }
+    public function getTipoUsuario(){
+        return $this->tipo_usuario;
     }
 }
 

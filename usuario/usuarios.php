@@ -34,7 +34,7 @@ if(isset($_SESSION['user'])){
                     <option value="administrador">Administrador</option>
                     <option value="sub-administrador">Sub administrador</option>
                     <option value="Encargado">Encargado</option>
-                    <option value="Doncete">Doncete</option>
+                    <option value="Docente">Docente</option>
                     <option value="Alumno">Alumno</option>
                 </select>
             </div>

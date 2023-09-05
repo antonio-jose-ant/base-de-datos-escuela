@@ -25,7 +25,7 @@
 <body>
 <div class="usuarios">
     <form class="tableB" action="./mostraraUsuarioC.php" method="post"  name="form">
-        <table id="selectAuto">
+        <table class="tabConten" id="selectAuto">
             <thead>
                 <tr class="usuariosT">
                     <th class="title">Sel</th>

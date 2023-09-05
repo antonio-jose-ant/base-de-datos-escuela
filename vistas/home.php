@@ -24,30 +24,44 @@ include_once 'includes/user_session.php';
             </div> 
             <nav class="nav-menu">
                 <div>
-                    <p>¡Bienvenido!  <?php echo $user->getNombre();?></p>
+                    <p>¡Bienvenido!  <?php echo $nombreUsuarioS;?></p>
                 </div>
-                <ul>
+                <ul id="menuOpciones">
                     <li>
-                            <p id="menu-desplega"><img src="assets/img/iconos/Agregar.png"><span> Agregar Datos</span></p>
-                            <div id="menu-I" class="oculta">
-                                <a onclick="changueContentH('#divContentNav','agregarAlumno/alumno.php')"  id="contraeMenu700"><img src="assets/img/iconos/Vacantes.png"><span>Agregar Alumno</span></a>
-                                <a onclick="changueContentH('#divContentNav','agregarMaestro/maestros.php')"  id="contraeMenu600"><img src="assets/img/iconos/Vacantes.png"><span>Agregar Docente</span></a>
+                        <p><img src="assets/img/iconos/Agregar.png"><span> Agregar Datos</span></p>
+                        <div class="oculta">
+                            <?php if ($tipo_usuario!="Doncete"){
+                                echo "<a onclick=\"changueContentH('#divContentNav','agregarAlumno/alumno.php')\" ><img src=\"assets/img/iconos/Vacantes.png\"><span>Agregar Alumno</span></a>";
+                            }
+                            ?> 
+                            <?php if ($tipo_usuario!="Alumno"){
+                            echo "<a onclick=\"changueContentH('#divContentNav','agregarMaestro/maestros.php')\" ><img src=\"assets/img/iconos/Vacantes.png\"><span>Agregar Docente</span></a>";
+                            }
+                            ?>
+                        </div>
+                    </li>    
+
+                            <?php if ($tipo_usuario!="Doncete" && $tipo_usuario!="Alumno"){
+                                echo"<li>
+                                        <p><img src=\"assets/img/iconos/expediente.png\"><span> Mostrar Datos</span></p>
+                                        <div class=\"oculta\">
+                                            <a onclick=\"changueContentH('#divContentNav','mostrarDatos/mostrarAlumn.php')\" ><img src=\"assets/img/iconos/Vacantes.png\"><span>Mostrar Alumno</span></a>
+                                            <a onclick=\"changueContentH('#divContentNav','mostrarDatos/mosrarprofeor.php')\"><img src=\"assets/img/iconos/Vacantes.png\"><span>Mostrar Docente</span></a>
+                                        </div>
+                                    </li>";
+                                }
+                            ?>
+
+                    <?php if ($tipo_usuario=="administrador" || $tipo_usuario=="sub-administrador"){
+                        echo "<li>
+                            <p ><img src=\"assets/img/iconos/address-book.png\"><span> usuarios</span></p>
+                            <div class=\"oculta\">
+                                <a onclick=\"changueContentH('#divContentNav','usuario/usuarios.php')\" ><img src=\"assets/img/iconos/Vacantes.png\"><span>Agregar Usiario</span></a>
+                                <a onclick=\"changueContentH('#divContentNav','usuario/mostraraUsuario.php')\"><img src=\"assets/img/iconos/Vacantes.png\"><span>Mostrar Usiario</span></a>
                             </div>
-                    </li>
-                    <li>
-                        <p id="menu-desplega2"><img src="assets/img/iconos/expediente.png"><span> Mostrar Datos</span></p>
-                        <div id="menu-II" class="oculta">
-                            <a onclick="changueContentH('#divContentNav','mostrarDatos/mostrarAlumn.php')" id="contraeMenu500"><img src="assets/img/iconos/Vacantes.png"><span>Mostrar Alumno</span></a>
-                            <a onclick="changueContentH('#divContentNav','mostrarDatos/mosrarprofeor.php')" id="contraeMenu400"><img src="assets/img/iconos/Vacantes.png"><span>Mostrar Docente</span></a>
-                        </div>
-                    </li>
-                    <li>
-                        <p id="menu-desplega3"><img src="assets/img/iconos/address-book.png"><span> usuarios</span></p>
-                        <div id="menu-III" class="oculta">
-                            <a onclick="changueContentH('#divContentNav','usuario/usuarios.php')" id="contraeMenu300"><img src="assets/img/iconos/Vacantes.png"><span>Agregar Usiario</span></a>
-                            <a onclick="changueContentH('#divContentNav','usuario/mostraraUsuario.php')" id="contraeMenu200"><img src="assets/img/iconos/Vacantes.png"><span>Mostrar Usiario</span></a>
-                        </div>
-                    </li>
+                        </li>";
+                    }
+                    ?>
                 </ul>
                 <div class="menu-salir">
                     <a href="includes/logout.php">

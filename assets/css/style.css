@@ -417,7 +417,7 @@ form.tableB{
     box-sizing: border-box;
     background-color: var(--blanco);
 }
- table {
+ table.tabConten {
     width: 100%;
     height: auto;
     background-color: var(--blanco2);
@@ -432,17 +432,17 @@ form.tableB{
     color: var(--blanco);
     height: 100%;
  }
- table tbody.contenidoT{
+ table.tabConten tbody.contenidoT{
     height: 300px;
     overflow: auto;
     padding-right: 2px;
     display: inline;
  }
- table tr{
+ table.tabConten tr{
     width: 100%;
     display: grid;
  }
- table td{
+ table.tabConten td{
     width: calc(100% - 2px);
     height: calc(100% - 2px);
     display: flex;
@@ -609,10 +609,10 @@ form.tableB{
     thead{
         display: none;
     }
-    table th.title{
+    table.tabConten th.title{
         display: none;
      }
-     table td::before {
+     table.tabConten td::before {
         margin-bottom: 3px;
         content: attr(data-title);
         width: auto;
@@ -624,7 +624,7 @@ form.tableB{
         color: var(--azul);
         display: block;
     }
-    table td {
+    table.tabConten td {
         flex-direction: column;
         align-items:flex-start;
     }

@@ -53,7 +53,7 @@
             </div>
         </div>
 
-        <table id="selectAuto">
+        <table class="tabConten" id="selectAuto">
             <thead>
                 <tr class="profesor">
                     <th class="title">Sel</th>
