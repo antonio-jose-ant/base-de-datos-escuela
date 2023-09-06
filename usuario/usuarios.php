@@ -58,7 +58,7 @@ if(isset($_SESSION['user'])){
             var parejaR=document.getElementById('RFCUser');
             estadoCivil.addEventListener('change',parejaName());
             function parejaName(){
-                if(estadoCivil.value==='Doncete'){
+                if(estadoCivil.value==='Docente'){
                     parejaR.style.display = "flex";
                 }else{
                     parejaR.style.display = "none";

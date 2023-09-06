@@ -1,25 +1,40 @@
 <?php
-        $nomina=$_POST['rfcProfe'];
-        $conMaestro ="SELECT * FROM profesor 
-        inner JOIN datos_laborales 
-        on profesor.CURP=datos_laborales.CURP 
-        inner join datos_profecionales 
-        on profesor.RFC=datos_profecionales.RFC 
-        where profesor.RFC='$nomina'";
+
         include_once '../includes/user.php';
         include_once '../includes/user_session.php';
         $userSession = new UserSession();
         $user = new User();
         if(isset($_SESSION['user'])){
-            if (empty($nomina)){
-                echo "<script>alert('Selecciona una registro');window.location='/base-de-datos-escuela/mostrarDatos/mosrarprofeor.php'</script>";
-            }else{
             //echo "hay sesion"; 
         $user->setUser($userSession->getCurrentUser());
         $tipo_usuario = $user->getTipoUsuario();
+        $usuarioPri= $tipo_usuario['tipo_usuario'];
+        $RFCMP= $tipo_usuario['RFC'];
+
+        $conMaestroM ="SELECT * FROM profesor 
+        inner JOIN datos_laborales 
+        on profesor.CURP=datos_laborales.CURP 
+        inner join datos_profecionales 
+        on profesor.RFC=datos_profecionales.RFC 
+        where profesor.RFC='$RFCMP'";
+
+        $nomina=$_POST['buscaP'];
+        $conMaestro ="SELECT * FROM profesor 
+        inner JOIN datos_laborales 
+        on profesor.CURP=datos_laborales.CURP
+        inner join datos_profecionales 
+        on profesor.RFC=datos_profecionales.RFC 
+        where profesor.nomina='$nomina'";
         $db = new DB();
         $pdo = $db->connect();
-        $stmt = $pdo->prepare($conMaestro);
+        if($usuarioPri=="Docente"){
+            echo "<script>console.log('entro aqui ');</script>";
+
+            $stmt = $pdo->prepare($conMaestroM);
+        }else{
+            echo "<script>console.log('easd');</script>";
+            $stmt = $pdo->prepare($conMaestro);
+        }
         $stmt->execute();
         $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -311,7 +326,7 @@
             <div></div>
 
             <?php
-                if ($tipo_usuario=="administrador" || $tipo_usuario=="sub-administrador"){
+                if ($usuarioPri=="administrador" || $usuarioPri=="sub-administrador"){
                     echo "
                     <div class=\"colC-4 colC-CompletMin\">
                         <input type=\"submit\" name=\"acction\" value=\"PDF\" class=\"btn btnPDF\" />
@@ -351,7 +366,7 @@
 </body>
 </html>
 <?php
-}}else{
+}else{
     echo "<script>alert('no existe un inicio de secion');window.location='/base-de-datos-escuela/'</script>";
   }
 ?>

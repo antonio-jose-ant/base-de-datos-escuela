@@ -78,7 +78,7 @@ create table usuario(
     Nombre varchar(50), 
     UserName varchar(25),
     tipo_usuario varchar(30),
-    RFCUser varchar(18),
+    rfcu varchar(18),
     password varchar(50), 
     unique key (UserName)
 );

@@ -1,6 +1,16 @@
 <?php 
 include_once 'includes/user.php';
 include_once 'includes/user_session.php';
+$usuarioPri= $tipo_usuario['tipo_usuario'];
+$nombreUsuarioS=$tipo_usuario['nombre'];
+$RFCU=$tipo_usuario['RFC'];
+if ($user->compUser($RFCU)) {
+    $maestroDI="mostrarDatos/maestroCompletoP.php";
+} else {
+    $maestroDI="agregarMaestro/maestros.php";
+
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -28,22 +38,22 @@ include_once 'includes/user_session.php';
                 </div>
                 <ul id="menuOpciones">
                     <li>
-                        <p><img src="assets/img/iconos/Agregar.png"><span><?php if ($tipo_usuario=="Doncete"){ echo "Modifcar Datos";}else{echo "Agregar Datos";}?> </span></p>
+                        <p><img src="assets/img/iconos/Agregar.png"><span><?php if ($usuarioPri=="Docente"){ echo "Modifcar Datos";}else{echo "Agregar Datos";}?> </span></p>
                         <div class="oculta">
-                            <?php if ($tipo_usuario!="Doncete"){
+                            <?php if ($usuarioPri!="Docente"){
                                 echo "<a onclick=\"changueContentH('#divContentNav','agregarAlumno/alumno.php')\" ><img src=\"assets/img/iconos/Vacantes.png\"><span>Agregar Alumno</span></a>";
-                            }elseif ($tipo_usuario=="Doncete"){
+                            }elseif ($usuarioPri=="Docente"){
                                 echo "<a onclick=\"changueContentH('#divContentNav','mostrarDatos/maestroCompletoP.php')\"><img src=\"assets/img/iconos/Vacantes.png\"><span>Mostrar Docente</span></a>";
                             }
                             ?> 
-                            <?php if ($tipo_usuario!="Doncete" && $tipo_usuario!="Alumno"){
+                            <?php if ($usuarioPri!="Docente" && $usuarioPri!="Alumno"){
                             echo "<a onclick=\"changueContentH('#divContentNav','agregarMaestro/maestros.php')\" ><img src=\"assets/img/iconos/Vacantes.png\"><span>Agregar Docente</span></a>";
                             }
                             ?>
                         </div>
                     </li>    
 
-                            <?php if ($tipo_usuario!="Doncete" && $tipo_usuario!="Alumno"){
+                            <?php if ($usuarioPri!="Docente" && $usuarioPri!="Alumno"){
                                 echo"<li>
                                         <p><img src=\"assets/img/iconos/expediente.png\"><span> Mostrar Datos</span></p>
                                         <div class=\"oculta\">
@@ -54,7 +64,7 @@ include_once 'includes/user_session.php';
                                 }
                             ?>
 
-                    <?php if ($tipo_usuario=="administrador" || $tipo_usuario=="sub-administrador"){
+                    <?php if ($usuarioPri=="administrador" || $usuarioPri=="sub-administrador"){
                         echo "<li>
                             <p ><img src=\"assets/img/iconos/address-book.png\"><span> usuarios</span></p>
                             <div class=\"oculta\">
@@ -74,7 +84,7 @@ include_once 'includes/user_session.php';
             </nav>
         </header>
         <div class="cont">
-            <iframe   <?php if ($tipo_usuario=="Doncete"){echo "src=\"agregarMaestro/maestros.php\"";}else{echo "src=\"inicio.php\"";}?> src="inicio.php" id="divContentNav"> 
+            <iframe   <?php if ($usuarioPri=="Docente"){echo "src='".$maestroDI."'";}else{echo "src=\"inicio.php\"";}?> src="inicio.php" id="divContentNav"> 
             </iframe>
         </div>
     </div>

@@ -20,7 +20,8 @@
             //echo "hay sesion"; 
         $user->setUser($userSession->getCurrentUser());
         $tipo_usuario = $user->getTipoUsuario();
-        if ($tipo_usuario!="Doncete" && $tipo_usuario!="Alumno"){
+        $usuarioPri= $tipo_usuario['tipo_usuario'];
+        if ($usuarioPri!="Docente" && $usuarioPri!="Alumno"){
         $db = new DB();
         $pdo = $db->connect();
         $stmt = $pdo->prepare($consultaMaestro);

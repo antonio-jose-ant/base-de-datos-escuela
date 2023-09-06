@@ -23,7 +23,7 @@
         'secionUsr' => !empty($_POST['secionUsr'])?$_POST['secionUsr']:"",
         'seciontipoUser' => !empty($_POST['seciontipoUser'])?$_POST['seciontipoUser']:"",
         'secionPass' => !empty($_POST['secionPass'])?md5($_POST['secionPass']):"",
-        'RFCUser' => !empty($_POST['RFCUser'])?$_POST['RFCUser']:$_POST['secionUsr'],
+        'RFCUser' => !empty($_POST['RFCUser'])?strtoupper($_POST['RFCUser']):$_POST['secionUsr'],
         )
     );
     $accionR= new userAgr;

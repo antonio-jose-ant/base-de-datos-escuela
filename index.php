@@ -22,8 +22,8 @@ if(isset($_SESSION['user'])){
         //echo "Existe el usuario";
         $userSession->setCurrentUser($userForm);
         $user->setUser($userForm);
-        
         $tipo_usuario = $user->getTipoUsuario();
+        
         include_once 'vistas/home.php';
 
     }else{

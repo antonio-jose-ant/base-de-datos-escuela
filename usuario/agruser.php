@@ -22,7 +22,7 @@ foreach ($secionusuariosA as $key => $value) {
 try {
     $db = new DB();
     $pdo = $db->connect();
-    $agregarUserSesion=" INSERT INTO usuario(Nombre,UserName,tipo_usuario,RFCUser,password)
+    $agregarUserSesion=" INSERT INTO usuario(Nombre,UserName,tipo_usuario,rfcu,password)
     VALUES(
         '".$secionusuariosA['secionNom']."',
         '".$secionusuariosA['secionUsr']."',

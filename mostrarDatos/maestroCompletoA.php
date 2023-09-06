@@ -19,6 +19,8 @@
             //echo "hay sesion";
         $user->setUser($userSession->getCurrentUser());
         $tipo_usuario = $user->getTipoUsuario();
+        $usuarioPri= $tipo_usuario['tipo_usuario'];
+
         $db = new DB();
         $pdo = $db->connect();
         $stmt = $pdo->prepare($selectMA);
@@ -352,7 +354,7 @@
                 </div>
 
                 <?php
-                if ($tipo_usuario=="administrador" || $tipo_usuario=="sub-administrador"){
+                if ($usuarioPri=="administrador" || $usuarioPri=="sub-administrador"){
                     echo "
                     <div class=\"colC-4 colC-CompletMin\">
                         <input type=\"submit\" name=\"acction\" value=\"PDF\" class=\"btn btnPDF\" />
