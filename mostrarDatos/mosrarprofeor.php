@@ -19,6 +19,8 @@
         if(isset($_SESSION['user'])){
             //echo "hay sesion"; 
         $user->setUser($userSession->getCurrentUser());
+        $tipo_usuario = $user->getTipoUsuario();
+        if ($tipo_usuario!="Doncete" && $tipo_usuario!="Alumno"){
         $db = new DB();
         $pdo = $db->connect();
         $stmt = $pdo->prepare($consultaMaestro);
@@ -109,6 +111,9 @@
 </body>
 </html>
 <?php
+    }else{
+        echo "<script>alert('no cuentas con los permisos para esta opción');window.location='/base-de-datos-escuela/inicio.php'</script>";
+    }
 }else{
     //echo "login";
     echo "<script>alert('no existe un inicio de secion');window.location='/base-de-datos-escuela/'</script>";

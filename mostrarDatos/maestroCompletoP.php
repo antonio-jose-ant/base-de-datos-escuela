@@ -1,11 +1,11 @@
 <?php
-        $nomina=$_POST['buscaP'];
+        $nomina=$_POST['rfcProfe'];
         $conMaestro ="SELECT * FROM profesor 
         inner JOIN datos_laborales 
-        on profesor.CURP=datos_laborales.CURP
+        on profesor.CURP=datos_laborales.CURP 
         inner join datos_profecionales 
         on profesor.RFC=datos_profecionales.RFC 
-        where profesor.nomina='$nomina'";
+        where profesor.RFC='$nomina'";
         include_once '../includes/user.php';
         include_once '../includes/user_session.php';
         $userSession = new UserSession();
@@ -16,6 +16,7 @@
             }else{
             //echo "hay sesion"; 
         $user->setUser($userSession->getCurrentUser());
+        $tipo_usuario = $user->getTipoUsuario();
         $db = new DB();
         $pdo = $db->connect();
         $stmt = $pdo->prepare($conMaestro);
@@ -308,15 +309,34 @@
                 <input type="text" value="<?php echo $row['Otros_Estudios']; ?>" name="Otros_Estudios"/>
             </div>
             <div></div>
-            <div class="colC-4 colC-CompletMin">
-                <input type="submit" name="acction" value="PDF" class="btn btnPDF" />
-            </div>
-            <div class="colC-4 colC-CompletMin">
-                <input type="submit" name="acction" value="Modificar Datos" class="btn btnModificar" />
-            </div>
-            <div class="colC-4 colC-CompletMin">
-                <input type="submit" name="acction" value="Eliminar Datos" class="btn btnEliminar" />
-            </div>
+
+            <?php
+                if ($tipo_usuario=="administrador" || $tipo_usuario=="sub-administrador"){
+                    echo "
+                    <div class=\"colC-4 colC-CompletMin\">
+                        <input type=\"submit\" name=\"acction\" value=\"PDF\" class=\"btn btnPDF\" />
+                    </div>
+                    <div class=\"colC-4 colC-CompletMin\">
+                        <input type=\"submit\" name=\"acction\" value=\"Modificar Datos\" class=\"btn btnModificar\" />
+                    </div>
+                    <div class=\"colC-4 colC-CompletMin\">
+                        <input type=\"submit\" name=\"acction\" value=\"Eliminar Datos\" class=\"btn btnEliminar\"/>
+                    </div>
+                    ";
+                }else{
+                    echo "
+                    <div class=\"colC-6 colC-CompletMin\">
+                        <input type=\"submit\" name=\"acction\" value=\"PDF\" class=\"btn btnPDF\" />
+                    </div>
+                    <div class=\"colC-6 colC-CompletMin\">
+                        <input type=\"submit\" name=\"acction\" value=\"Modificar Datos\" class=\"btn btnModificar\" />
+                    </div>
+                    ";
+                }
+
+            ?>
+
+                
         <?php 
             }
         ?>

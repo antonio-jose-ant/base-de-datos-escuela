@@ -9,9 +9,12 @@
         if(isset($_SESSION['user'])){
             //echo "hay sesion";
         $user->setUser($userSession->getCurrentUser());
+        $tipo_usuario = $user->getTipoUsuario();
+        echo "<script>console.log('".$tipo_usuario."');</script>";
+        if ($tipo_usuario!="Doncete" && $tipo_usuario!="Alumno"){
         $db = new DB();
         $pdo = $db->connect();
-        $stmt = $pdo->prepare($usuarios);
+        $stmt = $pdo->prepare($usuarios); 
         $stmt->execute();
         $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -102,6 +105,9 @@
 </body>
 </html>
 <?php
+    }else{
+        echo "<script>alert('no cuentas con los permisos para esta opción');window.location='/base-de-datos-escuela/inicio.php'</script>";
+    }
 }else{
     //echo "login";
     echo "<script>alert('no existe un inicio de secion');window.location='/base-de-datos-escuela/'</script>";

@@ -18,7 +18,7 @@
         }else{
             //echo "hay sesion";
         $user->setUser($userSession->getCurrentUser());
-
+        $tipo_usuario = $user->getTipoUsuario();
         $db = new DB();
         $pdo = $db->connect();
         $stmt = $pdo->prepare($selectMA);
@@ -350,15 +350,32 @@
                         </div>
                     </div>
                 </div>
-                <div class="colC-4 colC-CompletMin">
-                    <input type="submit" name="acction" value="PDF" class="btn btnPDF" />
-                </div>
-                <div class="colC-4 colC-CompletMin">
-                    <input type="submit" name="acction" value="Modificar Datos" class="btn btnModificar" />
-                </div>
-                <div class="colC-4 colC-CompletMin">
-                    <input type="submit" name="acction" value="Eliminar Datos" class="btn btnEliminar" />
-                </div>
+
+                <?php
+                if ($tipo_usuario=="administrador" || $tipo_usuario=="sub-administrador"){
+                    echo "
+                    <div class=\"colC-4 colC-CompletMin\">
+                        <input type=\"submit\" name=\"acction\" value=\"PDF\" class=\"btn btnPDF\" />
+                    </div>
+                    <div class=\"colC-4 colC-CompletMin\">
+                        <input type=\"submit\" name=\"acction\" value=\"Modificar Datos\" class=\"btn btnModificar\" />
+                    </div>
+                    <div class=\"colC-4 colC-CompletMin\">
+                        <input type=\"submit\" name=\"acction\" value=\"Eliminar Datos\" class=\"btn btnEliminar\"/>
+                    </div>
+                    ";
+                }else{
+                    echo "
+                    <div class=\"colC-6 colC-CompletMin\">
+                        <input type=\"submit\" name=\"acction\" value=\"PDF\" class=\"btn btnPDF\" />
+                    </div>
+                    <div class=\"colC-6 colC-CompletMin\">
+                        <input type=\"submit\" name=\"acction\" value=\"Modificar Datos\" class=\"btn btnModificar\" />
+                    </div>
+                    ";
+                }
+
+            ?>
                 <?php 
                     }
                 ?>

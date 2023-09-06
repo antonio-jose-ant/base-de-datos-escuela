@@ -68,7 +68,7 @@ if(isset($_SESSION['user'])){
         ,'".$datosA['TEL_Celular_laboral']."'
         ,'".$datosA['Fecha_Ingreso_GEM']."'
         ,'".$datosA['Numero_Prelación']."'
-        ,'".$datosA['Antiguedad']."'
+        ,'".$datosA['Antiguedad']."' 
         ,'".$datosA['Puesto_Profeciona']."'
         ,'".$datosA['Categoria_TalonCheque']."'
         ,'".$datosA['Estado_Categoria']."'
@@ -80,7 +80,7 @@ if(isset($_SESSION['user'])){
         ,'".$datosA['CCT_S_Plaza']."'
         ,'".$datosA['H_Lt2']."'
         ,'".$datosA['H_Lt2_2']."')";
-        $insertar= "INSERT INTO profesor (nomina,nombre,apellidoP,apellidoM,ColoniaFracc,Direccion,Ciudad,no_int,no_ext,municipio,CP,telefonoPersonal,telefonoCasa,correoElectronico,edad,sexo,Lugar_De_Nacimiento,EstadoCivil,nombrePareja,redSocial,CURP,RFC) 
+        $insertar= "INSERT INTO profesor (nomina,nombre,apellidoP,apellidoM,ColoniaFracc,Direccion,Ciudad,no_int,no_ext,municipio,CP,localidadProfesor,gradoMEstudio,telefonoPersonal,telefonoCasa,correoElectronico,edad,sexo,Lugar_De_Nacimiento,EstadoCivil,nombrePareja,redSocial,CURP,RFC) 
         values ('".$datos['nomina']."'
         ,'".ucfirst(strtolower($datos['nombre']))."'
         ,'".ucfirst(strtolower($datos['apellidoP']))."'
@@ -92,6 +92,8 @@ if(isset($_SESSION['user'])){
         ,'".$datos['no_ext']."'
         ,'".$datos['municipio']."'
         ,'".$datos['CP']."'
+        ,'".$datos['localidadProfesor']."'
+        ,'".$datos['gradoMEstudio']."'
         ,'".$datos['telefonoPersonal']."'
         ,'".$datos['telefonoCasa']."'
         ,'".$datos['correoElectronico']."'

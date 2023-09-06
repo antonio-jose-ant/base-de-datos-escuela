@@ -28,13 +28,15 @@ include_once 'includes/user_session.php';
                 </div>
                 <ul id="menuOpciones">
                     <li>
-                        <p><img src="assets/img/iconos/Agregar.png"><span> Agregar Datos</span></p>
+                        <p><img src="assets/img/iconos/Agregar.png"><span><?php if ($tipo_usuario=="Doncete"){ echo "Modifcar Datos";}else{echo "Agregar Datos";}?> </span></p>
                         <div class="oculta">
                             <?php if ($tipo_usuario!="Doncete"){
                                 echo "<a onclick=\"changueContentH('#divContentNav','agregarAlumno/alumno.php')\" ><img src=\"assets/img/iconos/Vacantes.png\"><span>Agregar Alumno</span></a>";
+                            }elseif ($tipo_usuario=="Doncete"){
+                                echo "<a onclick=\"changueContentH('#divContentNav','mostrarDatos/maestroCompletoP.php')\"><img src=\"assets/img/iconos/Vacantes.png\"><span>Mostrar Docente</span></a>";
                             }
                             ?> 
-                            <?php if ($tipo_usuario!="Alumno"){
+                            <?php if ($tipo_usuario!="Doncete" && $tipo_usuario!="Alumno"){
                             echo "<a onclick=\"changueContentH('#divContentNav','agregarMaestro/maestros.php')\" ><img src=\"assets/img/iconos/Vacantes.png\"><span>Agregar Docente</span></a>";
                             }
                             ?>
@@ -72,7 +74,7 @@ include_once 'includes/user_session.php';
             </nav>
         </header>
         <div class="cont">
-            <iframe src="inicio.php" id="divContentNav"> 
+            <iframe   <?php if ($tipo_usuario=="Doncete"){echo "src=\"agregarMaestro/maestros.php\"";}else{echo "src=\"inicio.php\"";}?> src="inicio.php" id="divContentNav"> 
             </iframe>
         </div>
     </div>
