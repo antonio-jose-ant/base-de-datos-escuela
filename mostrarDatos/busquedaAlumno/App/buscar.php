@@ -1,6 +1,15 @@
 <?php
         include_once '../../../includes/user.php';
         include_once '../../../includes/user_session.php';        
+        $userSession = new UserSession();
+        $user = new User();
+        
+        if(isset($_SESSION['user'])){
+            //echo "hay sesion";
+        $user->setUser($userSession->getCurrentUser());
+        $tipo_usuario = $user->getTipoUsuario();
+        $usuarioPri= $tipo_usuario['tipo_usuario'];
+        if ($usuarioPri!="Docente" && $usuarioPri!="Alumno"){
         $db = new DB();
         $pdo = $db->connect();
         $usuarios ="SELECT * FROM datos_alumno inner join datos_medicos on datos_alumno.CURPAlu=datos_medicos.CURPAlu";
@@ -83,4 +92,11 @@
         }
         echo $salida;
         $pdo = null;
+    }else{
+        echo "<script>alert('no cuentas con los permisos para esta opción');window.location='/base-de-datos-escuela/inicio.php'</script>";
+    }
+}else{
+    //echo "login";
+    echo "<script>alert('no existe un inicio de secion');window.location='/base-de-datos-escuela/'</script>";
+}
 ?>

@@ -40,7 +40,7 @@ if(isset($_SESSION['user'])){
             </div>
             <div class="colC-Complet" id="RFCUser" style="display: none;">
                 <span> RFC</span>
-                <input type="text" name="RFCUser">
+                <input type="text" name="RFCUser" maxlength="13">
             </div>
             <div class="colC-Complet">
                 <span> Contraseña</span>
