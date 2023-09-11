@@ -2,7 +2,7 @@
     font-family: "poc";
     font-style: normal;
     font-weight: normal;
-    src: local("?"), url("../fuente/ConcertOne-Regular.woff") format("woff"), url("../fuente/ConcertOne-Regular.ttf") format("truetype");
+    src: local("?"), url("../font/ConcertOne-Regular.woff") format("woff"), url("../font/ConcertOne-Regular.ttf") format("truetype");
 }
 :root{
     --amarillo:#fbe726;
@@ -24,7 +24,9 @@
     --gris:#cacaca;
 }    
 *{font-family: poc;font-size: 18px; margin: 0;text-transform: capitalize;}
-
+input[type="email"]{
+    text-transform: lowercase;
+}
 html,
 body {
         margin: 0;
@@ -90,6 +92,11 @@ input[type="radio"],input[type="checkbox"]{
     
 .mayusculas{
     text-transform: uppercase;
+}
+.centrar {
+    justify-content: center;
+    align-items: center;
+    align-content: center;
 }
 .ceterText{
     display: flex;
@@ -377,6 +384,18 @@ input.vacio,select.vacio{
 }
 .colC-7{
     grid-column: span 7;
+}
+.colC-8{
+    grid-column: span 8;
+}
+.colC-9{
+    grid-column: span 9;
+}
+.colC-10{
+    grid-column: span 10;
+}
+.colC-11{
+    grid-column: span 11;
 }
 /***********contenido grids fin***********/
 .row-Grid{

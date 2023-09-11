@@ -28,11 +28,8 @@
         $db = new DB();
         $pdo = $db->connect();
         if($usuarioPri=="Docente"){
-            echo "<script>console.log('entro aqui ');</script>";
-
             $stmt = $pdo->prepare($conMaestroM);
         }else{
-            echo "<script>console.log('easd');</script>";
             $stmt = $pdo->prepare($conMaestro);
         }
         $stmt->execute();
