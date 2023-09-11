@@ -7,6 +7,9 @@ $user = new User();
 
 if(isset($_SESSION['user'])){
     $user->setUser($userSession->getCurrentUser());
+    $tipo_usuario = $user->getTipoUsuario();
+    $usuarioPri= $tipo_usuario['tipo_usuario'];
+    if ($usuarioPri=="administrador"){
     $cons="Modifico";
     $secionusuariosA = $secionusuarios ->get_usuarioDef();
 
@@ -34,7 +37,10 @@ if(isset($_SESSION['user'])){
 
 
 }else{
-    //echo "login";
-    echo "<script>alert('no existe un inicio de secion');window.location='/base-de-datos-escuela/'</script>";
+    echo "<script>alert('no cuentas con los permisos para esta opción');window.location='/base-de-datos-escuela/inicio.php'</script>";
+}
+}else{
+//echo "login";
+echo "<script>alert('no existe un inicio de secion');window.location='/base-de-datos-escuela/'</script>";
 }
 ?>

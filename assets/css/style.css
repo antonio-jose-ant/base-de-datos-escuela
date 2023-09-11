@@ -652,12 +652,16 @@ form.tableB{
         padding-left: 20px;
     }
     .even{
-        background-color: var(--blanco2);
         padding: 10px 0;
     }
     .odd{
-        background-color: var(--gris);
         padding: 10px 0;
+    }
+    .even td{
+        border:none;
+    }
+    .odd td{
+        border:none;
     }
     /*********menu*************/
     .harmburger{

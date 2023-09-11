@@ -9,7 +9,7 @@ if(isset($_SESSION['user'])){
     $tipo_usuario = $user->getTipoUsuario();
     $usuarioPri= $tipo_usuario['tipo_usuario'];
     
-    if ($usuarioPri=="administrador" || $usuarioPri=="sub-administrador"){
+    if ($usuarioPri=="administrador"){
         try {
             $db = new DB();
             $pdo = $db->connect();

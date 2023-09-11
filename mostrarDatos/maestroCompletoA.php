@@ -354,7 +354,7 @@
                 </div>
 
                 <?php
-                if ($usuarioPri=="administrador" || $usuarioPri=="sub-administrador"){
+                if ($usuarioPri=="administrador"){
                     echo "
                     <div class=\"colC-4 colC-CompletMin\">
                         <input type=\"submit\" name=\"acction\" value=\"PDF\" class=\"btn btnPDF\" />

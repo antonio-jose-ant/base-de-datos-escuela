@@ -7,7 +7,7 @@ if(isset($_SESSION['user'])){
     $user->setUser($userSession->getCurrentUser());
     $tipo_usuario = $user->getTipoUsuario();
     $usuarioPri= $tipo_usuario['tipo_usuario'];
-    if ($usuarioPri=="administrador" || $usuarioPri=="sub-administrador"){
+    if ($usuarioPri=="administrador"){
         $Datos_AlumnoE = $Datos_Alumno->get_alumnoDatos();
         $conexion = mysqli_connect("localhost", "root", "TOYOTS99", "escuela");
         mysqli_set_charset($conexion, "utf8");

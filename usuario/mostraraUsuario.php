@@ -8,11 +8,14 @@
         if(isset($_SESSION['user'])){
             //echo "hay sesion"; 
         $user->setUser($userSession->getCurrentUser());
-        $db = new DB();
-        $pdo = $db->connect();
-        $stmt = $pdo->prepare($consultaMaestro);
-        $stmt->execute();
-        $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $tipo_usuario = $user->getTipoUsuario();
+        $usuarioPri= $tipo_usuario['tipo_usuario'];
+        if ($usuarioPri=="administrador"){
+            $db = new DB();
+            $pdo = $db->connect();
+            $stmt = $pdo->prepare($consultaMaestro);
+            $stmt->execute();
+            $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -81,7 +84,10 @@
 </html>
 <?php
 }else{
-    //echo "login";
-    echo "<script>alert('no existe un inicio de secion');window.location='/base-de-datos-escuela/'</script>";
+    echo "<script>alert('no cuentas con los permisos para esta opción');window.location='/base-de-datos-escuela/inicio.php'</script>";
+}
+}else{
+//echo "login";
+echo "<script>alert('no existe un inicio de secion');window.location='/base-de-datos-escuela/'</script>";
 }
 ?>

@@ -64,7 +64,7 @@ if ($user->compUser($RFCU)) {
                                 }
                             ?>
 
-                    <?php if ($usuarioPri=="administrador" || $usuarioPri=="sub-administrador"){
+                    <?php if ($usuarioPri=="administrador"){
                         echo "<li>
                             <p ><img src=\"assets/img/iconos/address-book.png\"><span> usuarios</span></p>
                             <div class=\"oculta\">
